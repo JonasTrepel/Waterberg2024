@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document id="root_doc">
+<Schema name="jembisa_and_willowisp_camera_locations_econovo_waterberg2024" id="jembisa_and_willowisp_camera_locations_econovo_waterberg2024">
+	<SimpleField name="plot_ID" type="string"></SimpleField>
+	<SimpleField name="photo" type="string"></SimpleField>
+	<SimpleField name="notes." type="string"></SimpleField>
+	<SimpleField name="date_time" type="string"></SimpleField>
+</Schema>
+<Folder><name>jembisa_and_willowisp_camera_locations_econovo_waterberg2024</name>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#jembisa_and_willowisp_camera_locations_econovo_waterberg2024">
+		<SimpleData name="plot_ID">ECO_06</SimpleData>
+		<SimpleData name="photo">DCIM/JPEG_20240221120200591.JPG</SimpleData>
+		<SimpleData name="date_time">2024/02/21 13:01:53.113+00</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>28.3869116666667,-23.968405</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#jembisa_and_willowisp_camera_locations_econovo_waterberg2024">
+		<SimpleData name="plot_ID">ECO_07</SimpleData>
+		<SimpleData name="photo">DCIM/JPEG_20240222101106450.JPG</SimpleData>
+		<SimpleData name="date_time">2024/02/22 11:10:51.409+00</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>28.4127566666667,-23.9387266666667</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#jembisa_and_willowisp_camera_locations_econovo_waterberg2024">
+		<SimpleData name="plot_ID">ECO_08</SimpleData>
+		<SimpleData name="photo">DCIM/JPEG_20240222140724311.JPG</SimpleData>
+		<SimpleData name="date_time">2024/02/22 15:07:14.502+00</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>28.4258633333333,-23.9355316666667</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#jembisa_and_willowisp_camera_locations_econovo_waterberg2024">
+		<SimpleData name="plot_ID">ECO_09</SimpleData>
+		<SimpleData name="photo">DCIM/JPEG_20240223075540125.JPG</SimpleData>
+		<SimpleData name="date_time">2024/02/23 08:55:24.324+00</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>28.38649,-23.9763583333333</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#jembisa_and_willowisp_camera_locations_econovo_waterberg2024">
+		<SimpleData name="plot_ID">ECO_10</SimpleData>
+		<SimpleData name="photo">DCIM/JPEG_20240223122940625.JPG</SimpleData>
+		<SimpleData name="date_time">2024/02/23 13:29:51.326+00</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>28.3935566666667,-23.964755</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#jembisa_and_willowisp_camera_locations_econovo_waterberg2024">
+		<SimpleData name="plot_ID">ECO_11</SimpleData>
+		<SimpleData name="photo">DCIM/JPEG_20240224074519239.JPG</SimpleData>
+		<SimpleData name="date_time">2024/02/24 08:45:33.128+00</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>28.3719533333333,-23.9843416666667</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#jembisa_and_willowisp_camera_locations_econovo_waterberg2024">
+		<SimpleData name="plot_ID">ECO_12</SimpleData>
+		<SimpleData name="photo">DCIM/JPEG_20240224131030263.JPG</SimpleData>
+		<SimpleData name="date_time">2024/02/24 14:10:44.600+00</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>28.3717283333333,-23.979385</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#jembisa_and_willowisp_camera_locations_econovo_waterberg2024">
+		<SimpleData name="plot_ID">ECO_13</SimpleData>
+		<SimpleData name="photo">DCIM/JPEG_20240225070811770.JPG</SimpleData>
+		<SimpleData name="date_time">2024/02/25 08:08:18.698+00</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>28.3764016666667,-23.9733816666667</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#jembisa_and_willowisp_camera_locations_econovo_waterberg2024">
+		<SimpleData name="plot_ID">ECO_14</SimpleData>
+		<SimpleData name="photo">DCIM/JPEG_20240225114504197.JPG</SimpleData>
+		<SimpleData name="date_time">2024/02/25 12:45:22.617+00</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>28.3713516666667,-23.972105</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#jembisa_and_willowisp_camera_locations_econovo_waterberg2024">
+		<SimpleData name="plot_ID">ECO_15</SimpleData>
+		<SimpleData name="photo">DCIM/JPEG_20240225144753025.JPG</SimpleData>
+		<SimpleData name="date_time">2024/02/25 15:48:13.563+00</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>28.3755366666667,-23.9672333333333</coordinates></Point>
+  </Placemark>
+</Folder>
+</Document></kml>
