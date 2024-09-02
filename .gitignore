@@ -1,6 +1,8 @@
 ###################
 builds/plots/inkscape/
 
+data/rawData/reserves_metadata_waterberg2024.csv
+
 ###################
 # History files
 .Rhistory
