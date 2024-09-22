@@ -63,7 +63,7 @@ glimpse(traits)
 traits2 <- traits[, `:=` (
   growth_form = Mode(growth_form),
   height_cm = max(height_cm, na.rm = T), 
-  reproductive_height = mean(reproductive_height, na.rm = T), 
+  reproductive_height = max(reproductive_height, na.rm = T), 
   hairs = Mode(hairs), 
   leaf_size = Mode(leaf_size), 
   bulk_density = Mode(bulk_density)
@@ -1227,6 +1227,7 @@ dt.beta <- data.table(
   mean_beta_divq0 = NA,
   mean_beta_divq1 = NA, 
   mean_beta_divq2 = NA, 
+  reserve_sor_beta_div = NA,
   reserve = NA
 ) %>% filter(!is.na(reserve))
 
@@ -1255,7 +1256,7 @@ reserve.weights <- reserve.data %>%
   as.matrix()
 
 
-## calculate 
+## calculate functional beta div 
 tr_cat_fdist <- tr_cat
 tr_cat_fdist$trait_weight <- c(1, 1, 1, 1, 1) #
 fdist <- mFD::funct.dist(sp_tr = sp_tr, tr_cat = tr_cat_fdist, metric = "gower")
@@ -1268,11 +1269,18 @@ beta.div <- beta.fd.hill(asb_sp_w = reserve.weights, sp_dist = fdist)
 ## the q argument defines the importance of species weight compared to trait based distances (higher q, species weight is considered more important)
 mFD::dist.to.df(list_dist = list("FDq1" = beta.div$"beta_fd_q"$"q1"))
 ##
+
+
+### calculate beta diversity using the vegan approach (Soerensen dissimilarity index)
+
+tmpVeg <- betadiver(reserve.weights, method = "w") %>% mean(na.rm = T)
+
 ## extract mean beta div
 tmp <- data.table(
   mean_beta_divq0 = mean(beta.div$beta_fd_q$q0),
   mean_beta_divq1 = mean(beta.div$beta_fd_q$q1),
   mean_beta_divq2 = mean(beta.div$beta_fd_q$q2),
+  reserve_sor_beta_div = tmpVeg,
   reserve = reserve_name
 )
 
@@ -1284,6 +1292,11 @@ print(paste0(reserve_name, " done"))
 
 dt.beta
 
+## use vegan approach 
+library(vegan)
+test <- betadiver(weight.mat.site, method = "w")
+
+
 ########################## beta diversity within sites ##################################
 
 # Has to be calculated for each site seperately
@@ -1293,6 +1306,7 @@ dt.beta.site <- data.table(
   site_mean_beta_divq0 = NA,
   site_mean_beta_divq1 = NA, 
   site_mean_beta_divq2 = NA, 
+  site_sor_beta_div = NA,
   site_ID = NA
 ) %>% filter(!is.na(site_ID))
 
@@ -1333,12 +1347,19 @@ for(site in unique(dt.p$site_ID)){
   
   ## the q argument defines the importance of species weight compared to trait based distances (higher q, species weight is considered more important)
   mFD::dist.to.df(list_dist = list("FDq1" = beta.div$"beta_fd_q"$"q1"))
-  ##
+  
+  
+  ### calculate beta diversity using the vegan approach (Soerensen dissimilarity index)
+  
+  tmpVegSite <- betadiver(site.weights, method = "w") %>% mean(na.rm = T)
+
+  
   ## extract mean beta div
   tmp <- data.table(
     site_mean_beta_divq0 = mean(beta.div.site$beta_fd_q$q0),
     site_mean_beta_divq1 = mean(beta.div.site$beta_fd_q$q1),
     site_mean_beta_divq2 = mean(beta.div.site$beta_fd_q$q2),
+    site_sor_beta_div = tmpVegSite, 
     site_ID = site
   )
   
@@ -1426,14 +1447,14 @@ dt.div.plot <- fread("data/processedData/dataFragments/plot_traits_and_div_water
 
 
 #### load lidar
-res.lid.raw <- fread("data/processedData/dataFragments/lidar_results_waterberg_reserves_2024_25m_radius_july.csv")
+res.lid.raw <- fread("data/processedData/dataFragments/LidarResultsWaterberg2024Radius20m.csv")
 names(res.lid.raw)
 res.lid.raw2 <- res.lid.raw %>% 
   dplyr::select(
     name, adjusted_mean_3d, adjusted_mean_3d_woody, adjusted_mean_3d_herb,
-    point_fraction, point_fraction_understory, fraction_points_woody,
+    point_fraction, fraction_points_woody, point_fraction_understory,
     sd_3d,  sd_3d_woody, sd_3d_herb, 
-    sd_fraction_points_partial, sd_adjusted_3d_partial, sd_adjusted_3d_partial_woody, sd_adjusted_3d_partial_herb
+    sd_fraction_points_partial, sd_adjusted_3d_partial,
   )
 
 names(res.lid.raw2) <- paste0("plot_lidar_", names(res.lid.raw2))

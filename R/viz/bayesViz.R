@@ -35,7 +35,7 @@ clean_response = case_when(
       #Diversity
       response %in% c("species_per_plot", "species_per_site", "species_per_reserve") ~ "Plant Species Richness",
       response %in% c("shannon_plot", "shannon_site", "shannon_reserve") ~ "Shannon Diversity",
-      response %in% c("reserve_mean_beta_divq1", "site_mean_beta_divq1") ~ "Beta Diversity",
+      response %in% c("reserve_sor_beta_div", "site_sor_beta_div") ~ "Beta Diversity",
       
       #Life Form Specific Diversity
       response %in% c("forbs_per_plot", "forbs_per_site", "forbs_per_reserve") ~ "Forb Richness",
@@ -46,6 +46,7 @@ clean_response = case_when(
       response %in% c("plot_plant_evenness_pielou", "site_plant_evenness_pielou", "reserve_plant_evenness_pielou") ~ "Plant Evenness",
       response %in% c("plot_plant_fun_div_distq1", "site_plant_fun_div_distq1", "reserve_plant_fun_div_distq1") ~ "Plant Functional Diversity",
       response %in% c("plot_plant_fun_red", "site_plant_fun_red", "reserve_plant_fun_red") ~ "Plant Functional Redundancy",
+      response %in% c("reserve_mean_beta_divq1", "site_mean_beta_divq1") ~ "Functional Beta Diversity",
       
       #Structure
       response %in% c("plot_lidar_adjusted_mean_3d", "site_adj_mean_3d", "reserve_adj_mean_3d") ~ "LiDAR Mean Distance (adj.)",
@@ -181,7 +182,7 @@ p.resi <- ggplot() +
         strip.background = element_rect(color = "grey85"),
   ) 
 p.resi
-ggsave(plot = p.resi, "builds/plots/resilienceGridBayes.png", dpi = 600, height = 9, width = 12)
+ggsave(plot = p.resi, "builds/plots/resilienceGridBayes.png", dpi = 600, height = 12, width = 12)
 
 
 #### Structure

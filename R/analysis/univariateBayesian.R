@@ -108,7 +108,7 @@ responses.site <- c(
   ## Diversity
   "species_per_site",
   "shannon_site",
-  "site_mean_beta_divq1",
+  "site_sor_beta_div",
   
   ## Life form diversity 
   "graminoids_per_site",
@@ -119,6 +119,7 @@ responses.site <- c(
   "site_plant_fun_red",
   "site_plant_fun_div_distq1",
   "site_plant_evenness_pielou",
+  "site_mean_beta_divq1",
   
   ## Structure
   "site_adj_mean_3d",
@@ -146,8 +147,8 @@ guide.site <- CJ(vars = vars.site,
          # formula = paste0(response, "| weights(wei) ~ ", vars, " + (1 | reserve)"), 
          # intercept_only_formula = paste0(response, "| weights(wei) ~ 1 + (1 | reserve)"),   
          response_tier = case_when(
-           response %in% c("site_plant_fun_red","site_plant_fun_div_distq1", "site_plant_evenness_pielou") ~ "Resilience",
-           response %in% c("species_per_site", "shannon_site", "site_mean_beta_divq1") ~ "Diversity",
+           response %in% c("site_plant_fun_red","site_plant_fun_div_distq1", "site_plant_evenness_pielou", "site_mean_beta_divq1") ~ "Resilience",
+           response %in% c("species_per_site", "shannon_site", "site_sor_beta_div") ~ "Diversity",
            response %in% c( "graminoids_per_site","forbs_per_site", "woodies_per_site") ~ "Life Form Specific Diversity",
            response %in% c(  "site_adj_mean_3d",
                              "site_mean_return_fraction",
@@ -170,17 +171,19 @@ responses.reserve <- c(
   ## Diversity
   "species_per_reserve",
   "shannon_reserve",
-  "reserve_mean_beta_divq1",
+  "reserve_sor_beta_div",
   
   ## Life form diversity 
   "graminoids_per_reserve",
   "forbs_per_reserve",
   "woodies_per_reserve",
   
+  
   ## Resilience 
   "reserve_plant_fun_red",
   "reserve_plant_fun_div_distq1",
   "reserve_plant_evenness_pielou",
+  "reserve_mean_beta_divq1",
   
   ## Structure
   "reserve_adj_mean_3d",
@@ -207,8 +210,8 @@ guide.reserve <- CJ(vars = vars.reserve,
          formula = paste0(response, " | weights(wei) ~ ", vars), 
          intercept_only_formula = paste0(response, " | weights(wei) ~ 1"), 
          response_tier = case_when(
-           response %in% c("reserve_plant_fun_red","reserve_plant_fun_div_distq1", "reserve_plant_evenness_pielou") ~ "Resilience",
-           response %in% c("species_per_reserve", "shannon_reserve", "reserve_mean_beta_divq1") ~ "Diversity",
+           response %in% c("reserve_plant_fun_red","reserve_plant_fun_div_distq1", "reserve_plant_evenness_pielou", "reserve_mean_beta_divq1") ~ "Resilience",
+           response %in% c("species_per_reserve", "shannon_reserve", "reserve_sor_beta_div") ~ "Diversity",
            response %in% c( "graminoids_per_reserve","forbs_per_reserve", "woodies_per_reserve") ~ "Life Form Specific Diversity",
            response %in% c(  "reserve_adj_mean_3d",
                              "reserve_mean_return_fraction",
@@ -258,7 +261,7 @@ library(doSNOW)
 library(foreach)
 library(tictoc)
 # Number of cores to use
-num_cores <- 4 #detectCores() - 2
+num_cores <- 10 #detectCores() - 2
 
 # Create and register a cluster
 clust <- makeCluster(num_cores)
