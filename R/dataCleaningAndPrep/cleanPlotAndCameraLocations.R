@@ -59,6 +59,39 @@ st_write(plots, "data/spatialData/plotLocations/plot_locations_clean_waterberg20
 st_write(plots, "data/spatialData/plotLocations/plot_locations_clean_waterberg2024.kml", append = FALSE)
 
 
+
+
+### sites 
+
+sites <- plots %>% 
+  filter(grepl("P03", plot_ID)) %>% 
+  mutate(site_ID = gsub("_P03", "", plot_ID)) %>% 
+  st_buffer(100)
+
+mapview(sites) + mapview(cams)
+
+sitesAndCams <- sites %>% 
+  st_join(cams[, "plot_ID"] %>% rename(cameraID = plot_ID)) %>% 
+  dplyr::select(site_ID, cameraID, plot_ID) %>% 
+  as.data.table() %>% 
+  mutate(reserve = case_when(
+    grepl("LA", site_ID) ~ "Lapalala", 
+    grepl("JE", site_ID) ~ "Jembisa", 
+    grepl("WI", site_ID) ~ "Willowisp", 
+    grepl("SY", site_ID) ~ "Syringa Sands", 
+    grepl("SU", site_ID) ~ "Summerplace", 
+    grepl("DA", site_ID) ~ "Dabchick", 
+    grepl("AN", site_ID) ~ "Ant's Farm", 
+    grepl("KA", site_ID) ~ "Kaingo", 
+    grepl("SW", site_ID) ~ "Swebeswebe", 
+    grepl("MA", site_ID) ~ "Marakele", 
+  ), geometry = NULL,
+  cameraID = ifelse(plot_ID == "SY_S03_P03", "ECO_18", cameraID)
+  )
+table(sitesAndCams$cameraID)
+
+fwrite(sitesAndCams, "data/processedData/dataFragments/SitesAndCams.csv")
+
 # reserve cameras 
 
 cams.swebe <- sf %>%
