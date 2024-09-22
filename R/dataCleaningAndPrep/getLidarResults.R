@@ -10,12 +10,12 @@ library(rlas)
 
 
 ### adapt filepath! 
-files.raw <- as.data.table(list.files("O:/Nat_Ecoinformatics/C_Write/_User/JonasTrepel_au713983/Waterberg_LiDAR/exported files", pattern = ".laz", full.names = TRUE))
+files.raw <- as.data.table(list.files("O:/Nat_Ecoinformatics/C_Write/_User/JonasTrepel_au713983/DataAndResources/Waterberg_LiDAR/exported files", pattern = ".laz", full.names = TRUE))
 
 
 files <- files.raw %>% 
   rename(filepath = V1) %>% 
-  mutate(filename = gsub("O:/Nat_Ecoinformatics/C_Write/_User/JonasTrepel_au713983/Waterberg_LiDAR/exported files/", "", filepath), 
+  mutate(filename = gsub("O:/Nat_Ecoinformatics/C_Write/_User/JonasTrepel_au713983/DataAndResources/Waterberg_LiDAR/exported files/", "", filepath), 
          filename = gsub(".laz", "", filename)) %>% 
   filter(!filename %in% c("batch_script_e572las64.bat", "batch_script_e572las64.txt"))
 
@@ -34,7 +34,7 @@ res <- data.frame()
 
 possible.points <- 65000000
 
-#when deviding the mean by the fraction of points, we reach higher values at lower fraction of point returns - 
+#when dividing the mean by the fraction of points, we reach higher values at lower fraction of point returns - 
 ### consistent with higher means represent more open systems 
 
 
@@ -61,7 +61,7 @@ for(i in 1:nrow(files)){
              X < 0 & Y > 0 ~ 270 + abs(angle_raw),
            )) %>% 
     # filter out observations more than 25 m away horizontally
-    filter(distance_2d <= 25) %>% 
+    filter(distance_2d <= 20) %>% 
     dplyr::select(-angle_raw)
   
   (nrow(df)/possible.points)
@@ -88,7 +88,7 @@ for(i in 1:nrow(files)){
     ) %>% 
     mutate(name = file)
   
-  possible.points.understory <- possible.points*0.4
+  possible.points.understory <- possible.points*0.4 #.4 is the fraction of possible points below the scanner head
   
   tmp.understory <- df %>% 
     filter(Z < 0) %>% ## everything below 0
@@ -107,7 +107,7 @@ for(i in 1:nrow(files)){
       point_fraction_understory = (nrow(.)/possible.points.understory)) %>% 
     mutate(name = file)
   
-  possible.points.woody <- possible.points*0.6
+  possible.points.woody <- possible.points*0.6 #0.6 is fraction of possible points above the scanner head
   
   tmp.woody <- df %>% 
     filter(Z > 0) %>% ## everything above 0
@@ -151,18 +151,11 @@ for(i in 1:nrow(files)){
   for (j in 1:(length(breaks)-1)) {
     part.data <- df %>%
       filter(angle >= breaks[j] & angle < breaks[j+1])
+
+    partSummary <- part.data %>%
+      generate.summaries(part.num = j, pp = (possible.points/5))
     
-    below.zero <- part.data %>%
-      filter(Z < 0) %>%
-      generate.summaries(part.num = j * 2 - 1, pp = (possible.points/5)*0.4)
-    
-    above.zero <- part.data %>%
-      filter(Z >= 0) %>%
-      generate.summaries(part.num = j * 2, pp = (possible.points/8)*0.6)
-    
-    parts <- bind_rows(parts, below.zero, above.zero)
-    parts.woody <- bind_rows(parts.woody, above.zero)
-    parts.herb <- bind_rows(parts.herb, below.zero)
+    parts <- bind_rows(parts, partSummary)
     
   }
   
@@ -174,16 +167,7 @@ for(i in 1:nrow(files)){
               mean_fraction_points_partial = mean(fraction_points_partial, na.rm = T), 
               sd_fraction_points_partial = sd(fraction_points_partial, na.rm = T), 
     ) %>% 
-    mutate(name = file, 
-           sd_3d_partial_woody = sd(parts.woody$mean_3d_partial, na.rm = T),
-           sd_adjusted_3d_partial_woody = sd(parts.woody$adjusted_mean_3d_partial, na.rm = T),
-           sd_fraction_points_partial_woody = sd(parts.woody$fraction_points_partial, na.rm = T),
-           
-           sd_3d_partial_herb = sd(parts.herb$mean_3d_partial, na.rm = T),
-           sd_adjusted_3d_partial_herb = sd(parts.herb$adjusted_mean_3d_partial, na.rm = T),
-           
-           sd_Z_partial_woody = sd(parts.woody$mean_Z_partial, na.rm = T),
-           sd_Z_partial_herb = sd(parts.herb$mean_Z_partial, na.rm = T))
+    mutate(name = file)
   
   tmp <- tmp.full %>% 
     left_join(tmp.woody) %>% 
@@ -200,4 +184,4 @@ for(i in 1:nrow(files)){
 
 reserve_lidar <- res %>% unique()
 
-fwrite(reserve_lidar, "data/processed_data/lidar_results_waterberg_reserves_2024_25m_radius_july.csv")
+fwrite(reserve_lidar, "data/processedData/dataFragments/LidarResultsWaterberg2024Radius20m.csv")
