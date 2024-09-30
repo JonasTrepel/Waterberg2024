@@ -2,9 +2,9 @@ library(data.table)
 library(tidyverse)
 library("terra")
 
-dtFiles <- fread("C:/Users/au713983/Documents/CameraTraps/test/processed/results_files.csv")
-dtSummary <- fread("C:/Users/au713983/Documents/CameraTraps/test/processed/results_summary.csv")
-dtDetRaw <- fread("C:/Users/au713983/Documents/CameraTraps/test/processed/results_detections.csv")
+dtFiles <- fread("C:/Users/au713983/Documents/WaterbergCameraTrapsR12024All/ProcessedImages/results_files.csv")
+dtSummary <- fread("C:/Users/au713983/Documents/WaterbergCameraTrapsR12024All/ProcessedImages/results_summary.csv")
+dtDetRaw <- fread("C:/Users/au713983/Documents/WaterbergCameraTrapsR12024All/ProcessedImages/results_detections.csv")
 
 sitesAndCams <- fread("data/processedData/dataFragments/SitesAndCams.csv")
 
@@ -15,11 +15,12 @@ dtDet <- dtDetRaw %>%
          cameraIDRaw = NULL,
          processed = "no", 
          speciesAbbr = "NA",
+         extraordinary = "no",
          DateTime = dmy_hms(DateTime), ## fix this mess tomorrow
          roundDate = round_date(DateTime, unit = "minute"),
          dateOnly = date(DateTime), 
          blastID = paste0(cameraID, roundDate)) %>% 
-  left_join(sitesAndCams) %>% sample_n(20)
+  left_join(sitesAndCams) %>% filter(label == "animal") #%>% sample_n(20)
 
 dtDet$dateOnly
 
@@ -47,7 +48,7 @@ dtLeg <- data.table(
   speciesAbbr = c("a", "wa", "wi", "e", "k", "s",
                   "ro", "b", "h", "i", "u", "rh",
                   "p", "bi", "c", "ela", "bu", "g",
-                  "n", "wb")) %>% 
+                  "n", "wb", "x")) %>% 
   mutate(species = case_when(
     speciesAbbr == "a" ~ "small antelope", 
     speciesAbbr == "wa" ~ "warthog", 
@@ -68,7 +69,8 @@ dtLeg <- data.table(
     speciesAbbr == "bu" ~ "buffalo", 
     speciesAbbr == "g" ~ "giraffe", 
     speciesAbbr == "n" ~ "nyala", 
-    speciesAbbr == "wb" ~ "waterbuck", 
+    speciesAbbr == "wb" ~ "waterbuck",
+    speciesAbbr == "x" ~ "empty"
   ))
 
 
@@ -77,7 +79,7 @@ for(i in 1:nrow(dtDet)){
   
   if(dtDet[i,]$processed == "yes"){next}
 
-path <- paste0(dtDet[i,]$absolute_path, "/processed/",dtDet[i,]$relative_path)
+path <- paste0("C:/Users/au713983/Documents/WaterbergCameraTrapsR12024All/ProcessedImages/",dtDet[i,]$relative_path)
 
 img <- rast(path)
 
@@ -86,6 +88,13 @@ plot(img)
 spec <- readline("Type species on image here: ")
 
 dtDet[i,]$speciesAbbr <- spec
+
+extr <- readline("Is this an extraordinary image? ")
+
+if(!extr == ""){
+  dtDet[i,]$extraordinary <- "yes"
+}
+
 dtDet[i,]$processed <- "yes"
 
 print(paste0(i, "/", nrow(dtDet)))

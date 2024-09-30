@@ -3,15 +3,18 @@
 library(data.table)
 library(tidyverse)
 
-resDet <- fread("C:/Users/au713983/Documents/CameraTraps/ECO_37/ECO_37_Processed/results_detections.csv")
-resFiles <- fread("O:/Nat_Ecoinformatics/C_Write/_User/JonasTrepel_au713983/DataAndResources/CameraTrapsWaterberg2024/R1/ECO_01/results_files.csv")
+subfolders1 <- paste0("ECO_", 10:50)
 
+subfolders2 <- c("ECO_01", "ECO_02",  "ECO_03",  "ECO_04",  "ECO_05",  "ECO_06",  "ECO_07",  "ECO_08",  "ECO_09") 
 
-subfolders <- paste0("ECO_", 1:50)
+subfolders <- c(subfolders2, subfolders1)
+
+#subfolders <- c("ECO_03",  "ECO_06",  "ECO_07",  "ECO_08",  "ECO_09") 
+
 
 for(folder in unique(subfolders)){
   
-  genOrigPath <- "O:/Nat_Ecoinformatics/C_Write/_User/JonasTrepel_au713983/DataAndResources/CameraTrapsWaterberg2024/R1/"
+  genOrigPath <- "O:/Nat_Ecoinformatics/C_Write/_User/JonasTrepel_au713983/DataAndResources/CameraTrapsWaterberg2024/R1Raw/"
   
   specPath <- paste0(genOrigPath, folder, "/")
   
@@ -28,7 +31,7 @@ for(folder in unique(subfolders)){
   
   for(filename in unique(dt.files$filenames)){
     
-    genTargPath  <- "C:/Users/au713983/Documents/WaterbergCameraTrapsR12024All/RawImages/"
+    genTargPath  <- "C:/Users/au713983/Documents/WaterbergCameraTrapsR12024All/RawImages/MissedInRound1/"
     
     cleanName <- gsub(".JPG", "", filename)
     specTargPath <- paste0(genTargPath, cleanName, "_", folder, ".JPG")
@@ -39,5 +42,5 @@ for(folder in unique(subfolders)){
     
   }
   
-  print(folder, " done")
+  print(paste0(folder, " done"))
 }  
