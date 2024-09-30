@@ -4,6 +4,7 @@
 library(mFD)
 library(tidyverse)
 library(data.table)
+library(vegan)
 
 
 dt.p <- fread("data/processedData/dataFragments/species_numbers_per_plot_waterberg2024.csv") %>% 
@@ -1294,7 +1295,6 @@ dt.beta
 
 ## use vegan approach 
 library(vegan)
-test <- betadiver(weight.mat.site, method = "w")
 
 
 ########################## beta diversity within sites ##################################
@@ -1514,6 +1514,9 @@ reserve.lid <- plot.lid %>%
               reserve_sd_return_fraction = sd(plot_lidar_point_fraction, na.rm = T)) %>% 
       as.data.table()
 
+#load camera trap data: 
+cameraTrapData <- fread("data/processedData/dataFragments/cameraTrapObs.csv")
+
 
 dt.comb <- dt.fd.plot.level %>% 
   mutate(reserve = case_when(
@@ -1544,6 +1547,7 @@ dt.comb <- dt.fd.plot.level %>%
   left_join(dt.shan.plot) %>% 
   left_join(dt.shan.site) %>% 
   left_join(dt.shan.reserve) %>% 
+  left_join(cameraTrapData) %>% 
   left_join(dt.div.plot) %>% unique() %>% 
   rename(tree_cover_reserve = tree_cover_mean, 
          tree_cover_plot = tree_cover_mean_plot

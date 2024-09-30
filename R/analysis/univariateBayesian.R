@@ -26,7 +26,7 @@ dt.mod <- dt %>%
          
          herbi_biomass_ha_scaled = as.numeric(scale(herbi_biomass_ha)),
          herbi_fun_ent_scaled = as.numeric(scale(herbi_fun_ent)),
-         CW_mean_species_body_mass_scaled = as.numeric(scale(CW_mean_species_body_mass)),
+         meanBodyMassKg_scaled = as.numeric(scale(CW_mean_species_body_mass)),
          
          
          ## add half of mixed feeder biomass to grazers and half to browsers 
@@ -35,7 +35,11 @@ dt.mod <- dt %>%
          grazer_mf_biomass_ha_scaled = as.numeric(scale(grazer_mf_biomass_ha)),
          browser_mf_biomass_ha_scaled = as.numeric(scale(browser_mf_biomass_ha)),
          
-         wei = rnorm(nrow(.), mean=1, sd=0.1)
+         nEventsDay_scaled = as.numeric(scale(nEventsDay)), 
+         meanBodyMassKg_scaled = as.numeric(scale(meanBodyMassKg)), 
+         nEventsDayReserve_scaled = as.numeric(scale(nEventsDayReserve)), 
+         meanBodyMassKgReserve_scaled = as.numeric(scale(meanBodyMassKgReserve)), 
+         wei = 1
   ) %>% 
   rename(species_per_reserve = total_plant_species_richness_reserve, 
          species_per_site = total_plant_species_richness_site, 
@@ -72,7 +76,9 @@ vars.plot <- c(
   # "herbi_fun_ent_scaled*MAP_plot_scaled",
   "grazer_mf_biomass_ha_scaled",
   "browser_mf_biomass_ha_scaled",
-  "CW_mean_species_body_mass_scaled")
+  "meanBodyMassKg_scaled", 
+  "nEventsDay_scaled"
+  )
 
 ## build
 guide.plot <- CJ(vars = vars.plot, 
@@ -135,7 +141,8 @@ vars.site <- c(
   # "herbi_fun_ent_scaled*MAP_site_scaled",
   "grazer_mf_biomass_ha_scaled",
   "browser_mf_biomass_ha_scaled", 
-  "CW_mean_species_body_mass_scaled")
+  "meanBodyMassKg_scaled", 
+  "nEventsDay_scaled")
 
 ## build
 guide.site <- CJ(vars = vars.site, 
@@ -200,7 +207,8 @@ vars.reserve <- c(
   # "herbi_fun_ent_scaled*MAP_scaled",
   "grazer_mf_biomass_ha_scaled",
   "browser_mf_biomass_ha_scaled", 
-  "CW_mean_species_body_mass_scaled")
+  "meanBodyMassKgReserve_scaled", 
+  "nEventsDayReserve_scaled")
 
 ## build
 guide.reserve <- CJ(vars = vars.reserve, 
@@ -261,7 +269,7 @@ library(doSNOW)
 library(foreach)
 library(tictoc)
 # Number of cores to use
-num_cores <- 10 #detectCores() - 2
+num_cores <- 2 #detectCores() - 2
 
 # Create and register a cluster
 clust <- makeCluster(num_cores)

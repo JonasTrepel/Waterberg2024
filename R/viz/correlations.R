@@ -26,17 +26,20 @@ dtExp <- dt %>% dplyr::select("MAP",
                                 "herbi_fun_ent",
                                 "grazer_mf_biomass_ha",
                                 "browser_mf_biomass_ha",
-                                "CW_mean_species_body_mass") %>% 
+                                "meanBodyMassKgReserve", 
+                              "nEventsDayReserve") %>% 
   rename(
     `Herbivore Biomass (kg/ha)` = herbi_biomass_ha, 
     `Herbivore Functional Groups` = herbi_fun_ent, 
     `Grazer Biomass (kg/ha)` = grazer_mf_biomass_ha,
     `Browser Biomass (kg/ha)` = browser_mf_biomass_ha, 
-    `Body mass (kg; CWM)` = CW_mean_species_body_mass
+    `Mean Visitor Body Mass (kg)` = meanBodyMassKgReserve, 
+    `Visiting Frequency` = nEventsDayReserve,
   )
 
 p.exp <- ggpairs(dtExp)
 p.exp
+
 #### Plot scale responses
 
 dtVarsPlot <- dt %>% dplyr::select(  "species_per_plot",
@@ -174,7 +177,7 @@ p.reserveCorr <- ggcorrplot(reserveCorr, hc.order = TRUE, type = "lower",
 p.reserveCorr
 
 #save 
-ggsave(plot = p.exp, "builds/plots/supplement/corrExplanatories.png", dpi = 600, height = 10, width = 10)
+ggsave(plot = p.exp, "builds/plots/supplement/corrExplanatories.png", dpi = 600, height = 12, width = 12)
 ggsave(plot = p.plotCorr, "builds/plots/supplement/corrPlotVars.png", dpi = 600)
 ggsave(plot = p.siteCorr, "builds/plots/supplement/corrSiteVars.png", dpi = 600)
 ggsave(plot = p.reserveCorr, "builds/plots/supplement/corrReserveVars.png", dpi = 600)
