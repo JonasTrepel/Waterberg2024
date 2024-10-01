@@ -12,7 +12,7 @@ dt <- fread("data/processedData/cleanData/waterberg2024DataPrelim.csv") %>%
          species_per_site = total_plant_species_richness_site, 
          reserve_mean_beta_divq1 = mean_beta_divq1)
 
-foreach.results <- readRDS("builds/modelOutputs/univarBayesAug2024.Rds")
+foreach.results <- readRDS("builds/modelOutputs/univarBayesSept2024.Rds")
 
 res <- foreach.results$res %>% unique() %>% as.data.table()
 estimates <- foreach.results$estimates %>% unique() %>% as.data.table()

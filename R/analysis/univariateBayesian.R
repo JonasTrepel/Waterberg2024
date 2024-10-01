@@ -38,9 +38,8 @@ dt.mod <- dt %>%
          nEventsDay_scaled = as.numeric(scale(nEventsDay)), 
          meanBodyMassKg_scaled = as.numeric(scale(meanBodyMassKg)), 
          nEventsDayReserve_scaled = as.numeric(scale(nEventsDayReserve)), 
-         meanBodyMassKgReserve_scaled = as.numeric(scale(meanBodyMassKgReserve)), 
-         wei = 1
-  ) %>% 
+         meanBodyMassKgReserve_scaled = as.numeric(scale(meanBodyMassKgReserve))
+         ) %>% 
   rename(species_per_reserve = total_plant_species_richness_reserve, 
          species_per_site = total_plant_species_richness_site, 
          reserve_mean_beta_divq1 = mean_beta_divq1)
@@ -74,9 +73,9 @@ vars.plot <- c(
   "herbi_fun_ent_scaled",
   # "herbi_biomass_ha_scaled*MAP_plot_scaled",
   # "herbi_fun_ent_scaled*MAP_plot_scaled",
-  "grazer_mf_biomass_ha_scaled",
-  "browser_mf_biomass_ha_scaled",
-  "meanBodyMassKg_scaled", 
+  # "grazer_mf_biomass_ha_scaled",
+  # "browser_mf_biomass_ha_scaled",
+  # "meanBodyMassKg_scaled", 
   "nEventsDay_scaled"
   )
 
@@ -85,10 +84,10 @@ guide.plot <- CJ(vars = vars.plot,
                  response = responses.plot, 
                  scale = "Plot") %>% 
   mutate(formula_id = paste0("plot_formula_", 1:nrow(.)), 
-         formula = paste0(response, " | weights(wei) ~ ", vars), 
-         intercept_only_formula = paste0(response, " | weights(wei) ~ 1"), 
-         #formula = paste0(response, " | weights(wei) ~ ", vars, " + (1 | reserve/site_ID)"), 
-         #intercept_only_formula = paste0(response, " | weights(wei) ~ 1 + (1 | reserve/site_ID)"), 
+         formula = paste0(response, " ~ ", vars), 
+         intercept_only_formula = paste0(response, " ~ 1"), 
+         #formula = paste0(response, " ~ ", vars, " + (1 | reserve/site_ID)"), 
+         #intercept_only_formula = paste0(response, " ~ 1 + (1 | reserve/site_ID)"), 
          response_tier = case_when(
            response %in% c("plot_plant_fun_red","plot_plant_fun_div_distq1", "plot_plant_evenness_pielou") ~ "Resilience",
            response %in% c("species_per_plot", "shannon_plot") ~ "Diversity",
@@ -139,9 +138,9 @@ vars.site <- c(
   "herbi_fun_ent_scaled",
   # "herbi_biomass_ha_scaled*MAP_site_scaled",
   # "herbi_fun_ent_scaled*MAP_site_scaled",
-  "grazer_mf_biomass_ha_scaled",
-  "browser_mf_biomass_ha_scaled", 
-  "meanBodyMassKg_scaled", 
+  # "grazer_mf_biomass_ha_scaled",
+  # "browser_mf_biomass_ha_scaled", 
+  # "meanBodyMassKg_scaled", 
   "nEventsDay_scaled")
 
 ## build
@@ -149,10 +148,10 @@ guide.site <- CJ(vars = vars.site,
                  response = responses.site, 
                  scale = "Site") %>% 
   mutate(formula_id = paste0("site_formula_", 1:nrow(.)), 
-         formula = paste0(response, " | weights(wei) ~ ", vars), 
-         intercept_only_formula = paste0(response, " | weights(wei) ~ 1"), 
-         # formula = paste0(response, "| weights(wei) ~ ", vars, " + (1 | reserve)"), 
-         # intercept_only_formula = paste0(response, "| weights(wei) ~ 1 + (1 | reserve)"),   
+         formula = paste0(response, " ~ ", vars), 
+         intercept_only_formula = paste0(response, " ~ 1"), 
+         # formula = paste0(response, " ~ ", vars, " + (1 | reserve)"), 
+         # intercept_only_formula = paste0(response, " ~ 1 + (1 | reserve)"),   
          response_tier = case_when(
            response %in% c("site_plant_fun_red","site_plant_fun_div_distq1", "site_plant_evenness_pielou", "site_mean_beta_divq1") ~ "Resilience",
            response %in% c("species_per_site", "shannon_site", "site_sor_beta_div") ~ "Diversity",
@@ -205,9 +204,9 @@ vars.reserve <- c(
   "herbi_fun_ent_scaled",
   # "herbi_biomass_ha_scaled*MAP_scaled",
   # "herbi_fun_ent_scaled*MAP_scaled",
-  "grazer_mf_biomass_ha_scaled",
-  "browser_mf_biomass_ha_scaled", 
-  "meanBodyMassKgReserve_scaled", 
+  # "grazer_mf_biomass_ha_scaled",
+  # "browser_mf_biomass_ha_scaled", 
+  #"meanBodyMassKgReserve_scaled", 
   "nEventsDayReserve_scaled")
 
 ## build
@@ -215,8 +214,8 @@ guide.reserve <- CJ(vars = vars.reserve,
                     response = responses.reserve, 
                     scale = "Reserve") %>% 
   mutate(formula_id = paste0("reserve_formula_", 1:nrow(.)), 
-         formula = paste0(response, " | weights(wei) ~ ", vars), 
-         intercept_only_formula = paste0(response, " | weights(wei) ~ 1"), 
+         formula = paste0(response, " ~ ", vars), 
+         intercept_only_formula = paste0(response, " ~ 1"), 
          response_tier = case_when(
            response %in% c("reserve_plant_fun_red","reserve_plant_fun_div_distq1", "reserve_plant_evenness_pielou", "reserve_mean_beta_divq1") ~ "Resilience",
            response %in% c("species_per_reserve", "shannon_reserve", "reserve_sor_beta_div") ~ "Diversity",
@@ -269,7 +268,7 @@ library(doSNOW)
 library(foreach)
 library(tictoc)
 # Number of cores to use
-num_cores <- 2 #detectCores() - 2
+num_cores <- 5 #detectCores() - 2
 
 # Create and register a cluster
 clust <- makeCluster(num_cores)
@@ -322,19 +321,19 @@ foreach.results <- foreach(i = 1:nrow(guide),
                              #subset data 
                              if(scale == "Plot"){
                                dt.sub <- dt.mod %>% 
-                                 dplyr::select(all_of(var), plot_ID, site_ID, reserve, wei, all_of(filter.resp)) %>% 
+                                 dplyr::select(all_of(var), plot_ID, site_ID, reserve, all_of(filter.resp)) %>% 
                                  unique()
                              }
                              
                              if(scale == "Site"){
                                dt.sub <- dt.mod %>% 
-                                 dplyr::select(all_of(var), site_ID, reserve, wei, all_of(filter.resp)) %>% 
+                                 dplyr::select(all_of(var), site_ID, reserve, all_of(filter.resp)) %>% 
                                  unique()
                              }
                 
                              if(scale == "Reserve"){
                                dt.sub <- dt.mod %>% 
-                                 dplyr::select(all_of(var), reserve, wei, all_of(filter.resp)) %>% 
+                                 dplyr::select(all_of(var), reserve, all_of(filter.resp)) %>% 
                                  unique()
                              }
                              
@@ -346,7 +345,7 @@ foreach.results <- foreach(i = 1:nrow(guide),
                              
                              m <- tryCatch(
                                {brm(formula, data = dt.sub, 
-                                    prior = set_prior("normal(0, 5)", class = "b"))},
+                                    prior = set_prior("normal(0, 10)", class = "b"))},
                                error = function(e) {cat("Model", i, "failed: ", e$message, "\n") 
                                  return(NULL) })
                              
@@ -486,7 +485,7 @@ print("loop done")
 
 stopCluster(clust)
 
-saveRDS(foreach.results, "builds/modelOutputs/univarBayesAug2024.Rds")
+saveRDS(foreach.results, "builds/modelOutputs/univarBayesSept2024.Rds")
 
 toc()
 stop(pb)

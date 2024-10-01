@@ -32,6 +32,14 @@ metaDTRaw2 <- metaDTRaw %>%
   left_join(sitesAndCams)  %>% 
   dplyr::select(-c(DateTimeRaw, cameraIDRaw, roundDateID)) 
 
+fwrite(metaDTRaw2, "data/processedData/dataFragments/cameraTrapMetaDataR1.csv")
+
+nicePics <- metaDTRaw2 %>% 
+  filter(Subject %in% c("ParticularlyBeautiful"))
+
+fwrite(nicePics, "data/processedData/dataFragments/cameraTrapR1NicePics.csv")
+
+
 unique(metaDTRaw2$cameraID)
 unique(metaDTRaw2$Subject)
 
