@@ -11,7 +11,7 @@ dt.files <- data.table(filenames = unique(nicePics$FileName))
 filename <- "05120512_ECO_28"
   for(filename in unique(dt.files$filenames)){
     
-    genTargetPath <- "O:/Nat_Ecoinformatics/C_Write/_User/JonasTrepel_au713983/DataAndResources/CameraTrapsWaterberg2024/nicePicturesR1/"
+    genTargetPath <- "O:/Nat_Ecoinformatics/C_Write/_User/JonasTrepel_au713983/DataAndResources/CameraTrapsWaterberg2024/NicePictures/R1/"
     
     
     if(grepl("_01", filename) | grepl("_02", filename) |
