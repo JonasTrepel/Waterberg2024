@@ -25,12 +25,12 @@ dt.est <- estimates %>%
   mutate(clean_term = case_when(
     term %in% c("MAP_plot_scaled", "MAP_site_scaled", "MAP_scaled") ~ "MAP",
     term %in% c("herbi_biomass_ha_scaled") ~ "Herbivore Biomass",
-    term %in% c("herbi_fun_ent_scaled") ~ "Herbi Functional Groups",
+    term %in% c("herbi_fun_ent_scaled") ~ "Herbivore Functional Groups",
     term %in% c("grazer_mf_biomass_ha_scaled") ~ "Grazer Biomass",
     term %in% c("browser_mf_biomass_ha_scaled") ~ "Browser Biomass",
     term %in% c("CW_mean_species_body_mass_scaled") ~ "Body Size (CWM)", 
     term %in% c("meanBodyMassKgReserve_scaled", "meanBodyMassKg_scaled") ~ "Mean Visitor Body Mass", 
-term %in% c("nEventsDayReserve_scaled", "nEventsDay_scaled") ~ "Visitor Frequency"), 
+term %in% c("nEventsDayReserve_scaled", "nEventsDay_scaled") ~ "Herbivore Visitor Frequency"), 
 
     
 clean_response = case_when(
@@ -82,7 +82,7 @@ as.character(met.brewer("Archambault", n = 12))
 
 #### Diversity 
 dt.est.div <- dt.est[response_tier == "Diversity"] %>% 
-  filter(clean_term %in% c("MAP", "Herbi Functional Groups", "Herbivore Biomass", "Visitor Frequency")) %>% filter(interaction == FALSE)  %>% 
+  filter(clean_term %in% c("MAP", "Herbivore Functional Groups", "Herbivore Biomass", "Herbivore Visitor Frequency")) %>% filter(interaction == FALSE)  %>% 
   mutate(scale = factor(scale, levels = c("Plot", "Site", "Reserve")), 
          scale_n = factor(scale_n, levels = c("Plot\nn=250", "Site\nn=50", "Reserve\nn=10"))
   )
@@ -95,7 +95,7 @@ p.div <- ggplot() +
   geom_text(data = dt.est.div, aes(x = 2 ,y = clean_term, label = rsq_label), position = position_nudge(y = 0.4), size = 3.5 ) +
   scale_alpha_manual(values = c("Better than Null-Model" = 1, "Similar to Null-Model" = .5, "Worse than Null-Model" =  .2)) +
   scale_color_manual(values=c("Non Significant" = "#88A0DC","Significantly Negative" = "#63396C","Significantly Positive"= "#ED9D34")) +
-  facet_grid(cols = vars(scale_n), rows = vars(clean_response), scales = "free") +
+  facet_grid(cols = vars(scale_n), rows = vars(clean_response), scales = "free_x") +
   labs(y = "", x = "Estimate", title = "Diversity Responses", alpha = "Quality:", color = "Significance:") +
   theme_bw() +
   theme(legend.position = "bottom", 
@@ -151,7 +151,8 @@ ggsave(plot = p.lfd, "builds/plots/lifeFormDivGridBayes.png", dpi = 600, height 
 #### Resilience 
 
 dt.est.resi <- dt.est[response_tier == "Resilience"] %>% 
-  filter(clean_term %in% c("MAP", "Herbi Functional Groups", "Herbivore Biomass", "Visitor Frequency")) %>% filter(interaction == FALSE)  %>% 
+  filter(clean_term %in% c("MAP", "Herbivore Functional Groups", "Herbivore Biomass", "Herbivore Visitor Frequency") &
+           clean_response != "Functional Beta Diversity") %>% filter(interaction == FALSE)  %>% 
   mutate(scale = factor(scale, levels = c("Plot", "Site", "Reserve")), 
          scale_n = factor(scale_n, levels = c("Plot\nn=250", "Site\nn=50", "Reserve\nn=10")), 
          clean_response = case_when(
@@ -185,14 +186,14 @@ p.resi <- ggplot() +
         strip.background = element_rect(color = "grey85"),
   ) 
 p.resi
-ggsave(plot = p.resi, "builds/plots/resilienceGridBayes.png", dpi = 600, height = 12, width = 12)
+ggsave(plot = p.resi, "builds/plots/resilienceGridBayes.png", dpi = 600, height = 9, width = 12)
 
 #### Structure
 
 unique(dt.est$clean_response)
 
 dt.est.str <- dt.est[response_tier == "Structure"] %>% 
-  filter(clean_term %in% c("MAP", "Herbi Functional Groups", "Herbivore Biomass")) %>% filter(interaction == FALSE)  %>% 
+  filter(clean_term %in% c("MAP", "Herbivore Functional Groups", "Herbivore Biomass")) %>% filter(interaction == FALSE)  %>% 
   mutate(scale = factor(scale, levels = c("Plot", "Site", "Reserve")), 
          scale_n = factor(scale_n, levels = c("Plot\nn=250", "Site\nn=50", "Reserve\nn=10")), 
          clean_response = case_when(
@@ -227,5 +228,5 @@ p.str <- ggplot() +
   ) 
 p.str
 
-ggsave(plot = p.str, "builds/plots/structureGridBayes.png", dpi = 600, height = 8, width = 12)
+ggsave(plot = p.str, "builds/plots/structureGridBayes.png", dpi = 600, height = 9, width = 12)
 
