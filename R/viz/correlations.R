@@ -44,7 +44,7 @@ p.exp
 
 dtVarsPlot <- dt %>% dplyr::select(  "species_per_plot",
                                      "shannon_plot",
-                                     
+
                                      ## Life form diversity 
                                      "graminoids_per_plot",
                                      "forbs_per_plot",
@@ -89,10 +89,13 @@ p.plotCorr
 
 dtVarsSite <- dt %>% dplyr::select(  "species_per_site",
                                      "shannon_site",
+                                     "site_sor_beta_div", 
+                                
                                      
                                      ## Life form diversity 
                                      "graminoids_per_site",
                                      "forbs_per_site",
+                                     "woodies_per_site",
                                      
                                      ## Resilience 
                                      "site_plant_fun_red",
@@ -106,9 +109,12 @@ dtVarsSite <- dt %>% dplyr::select(  "species_per_site",
   filter(complete.cases(.)) %>% 
   rename("Plant Species Richness" = "species_per_site", 
          "Plant Shannon Diversity" = "shannon_site",
+         "Beta Diversity" = "site_sor_beta_div", 
+         
          ## Life form diversity 
          "Graminoid Richness" =  "graminoids_per_site",
          "Forb Richness" =   "forbs_per_site",
+         "Woody Sp. Richness" = "woodies_per_site", 
          
          ## Resilience 
          "Plant Functional Redundancy" = "site_plant_fun_red",
@@ -135,10 +141,12 @@ p.siteCorr
 
 dtVarsReserve <- dt %>% dplyr::select(  "species_per_reserve",
                                      "shannon_reserve",
+                                     "reserve_sor_beta_div",
                                      
                                      ## Life form diversity 
                                      "graminoids_per_reserve",
                                      "forbs_per_reserve",
+                                     "woodies_per_reserve",
                                      
                                      ## Resilience 
                                      "reserve_plant_fun_red",
@@ -152,10 +160,11 @@ dtVarsReserve <- dt %>% dplyr::select(  "species_per_reserve",
   filter(complete.cases(.)) %>% 
   rename("Plant Species Richness" = "species_per_reserve", 
          "Plant Shannon Diversity" = "shannon_reserve",
+         "Beta Diversity" = "reserve_sor_beta_div", 
          ## Life form diversity 
          "Graminoid Richness" =  "graminoids_per_reserve",
          "Forb Richness" =   "forbs_per_reserve",
-         
+         "Woody Sp. Richness" = "woodies_per_reserve",
          ## Resilience 
          "Plant Functional Redundancy" = "reserve_plant_fun_red",
          "Plant Functional Diversity" = "reserve_plant_fun_div_distq1",
