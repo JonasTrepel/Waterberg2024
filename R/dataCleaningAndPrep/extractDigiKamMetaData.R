@@ -33,15 +33,17 @@ metaDTRaw2 <- metaDTRaw %>%
   dplyr::select(-c(DateTimeRaw, cameraIDRaw, roundDateID)) 
 
 fwrite(metaDTRaw2, "data/processedData/dataFragments/cameraTrapMetaDataR1.csv")
+metaDTRaw2 <- fread("data/processedData/dataFragments/cameraTrapMetaDataR1.csv")
+
 
 nicePics <- metaDTRaw2 %>% 
   filter(Subject %in% c("ParticularlyBeautiful"))
 
-fwrite(nicePics, "data/processedData/dataFragments/cameraTrapR1NicePics.csv")
+#fwrite(nicePics, "data/processedData/dataFragments/cameraTrapR1NicePics.csv")
 
 
 unique(metaDTRaw2$cameraID)
-unique(metaDTRaw2$Subject)
+table(metaDTRaw2$Subject)
 
 
 siteTimes <- metaDTRaw2 %>% 
@@ -131,6 +133,9 @@ eventsPerSite <- metaDT %>%
   unique() %>% 
   left_join(sitesAndCams) %>% 
   dplyr::select(-plot_ID)
+
+
+sum(eventsPerSite$nEvents)
 
 eventsPerReserve <- eventsPerSite %>% 
   group_by(reserve) %>% 
