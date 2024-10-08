@@ -15,9 +15,9 @@ files.raw <- as.data.table(list.files("O:/Nat_Ecoinformatics/C_Write/_User/Jonas
 
 files <- files.raw %>% 
   rename(filepath = V1) %>% 
-  mutate(filename = gsub("O:/Nat_Ecoinformatics/C_Write/_User/JonasTrepel_au713983/DataAndResources/Waterberg_LiDAR/exported files/Greenstuff e57/", "", filepath), 
+  mutate(filename = gsub("O:/Nat_Ecoinformatics/C_Write/_User/JonasTrepel_au713983/DataAndResources/Waterberg_LiDAR/exported files/Lele e57/", "", filepath), 
          filename = gsub(".laz", "", filename)) %>% 
-  filter(!filename %in% c("batch_script_e572las64_laz_greenstuff.bat", "batch_script_e572las64_greenstuff.bat"))
+  filter(!filename %in% c("batch_script_e572las64_lele.bat", "batch_script_e572las64_lele.txt"))
 
 unique(files$filename)
 
