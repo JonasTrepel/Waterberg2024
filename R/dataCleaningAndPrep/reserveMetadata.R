@@ -47,9 +47,16 @@ dt.sf2 <- dt.sf %>%
 
 unique(dt.int[dt.int$species == "Ceratotherium simum", ]$Population_Size)
 
+n_distinct(dt.int$species)
+n_distinct(dt.int[dt.int$mass_kg > 10 & !dt.int$feeding_type == "Predator", ]$species)
+n_distinct(dt.int[dt.int$mass_kg > 45 & !dt.int$feeding_type == "Predator", ]$species)
+
+unique(dt.int$species_common)
+
 dt.int2 <- dt.int %>% 
   left_join(dt.sf2) %>% 
-  filter(mass_kg > 45) %>% 
+  filter(!species_common == "Baboon troops") %>% 
+  filter(mass_kg >= 45) %>% 
   mutate(Population_Size = ifelse(is.na(Population_Size), 0, Population_Size), 
          density_ha = Population_Size/area_ha, 
          biomass_ha = density_ha*mass_kg,
@@ -499,24 +506,24 @@ grid1000 <- grid1000 %>%
 ### Canopy heigth (meta) -------------------------------
 library(terra) 
 
-ch <- rast("../../../../resources/spatial/meta_canopy_height/canopy_height_10m_waterberg.tif")
-res(ch)
+# ch <- rast("../../../../resources/spatial/meta_canopy_height/canopy_height_10m_waterberg.tif")
+# res(ch)
+# 
+# g.1000 <- get.heterogeneity(vector = dt.sf, grid = grid1000, id.col = "reserve", raster = ch)
+# setnames(g.1000, c("id.col", "grid.cv", "grid.sd", "grid.mean", "mean"), 
+#          c("reserve", "canopy_height_cv_1000", "canopy_height_sd_1000", "canopy_height_mean_1000", "canopy_height_mean"))
+# g.1000$geometry <- NULL
+# g.1000$x <- NULL
+# 
+# 
+# 
+# dt.sf.cov1 <- dt.sf %>% 
+#   left_join(g.1000, by = "reserve") %>%  
+#   as.data.table() %>% 
+#   mutate(geometry = NULL, x = NULL) %>%
+#   unique() 
 
-g.1000 <- get.heterogeneity(vector = dt.sf, grid = grid1000, id.col = "reserve", raster = ch)
-setnames(g.1000, c("id.col", "grid.cv", "grid.sd", "grid.mean", "mean"), 
-         c("reserve", "canopy_height_cv_1000", "canopy_height_sd_1000", "canopy_height_mean_1000", "canopy_height_mean"))
-g.1000$geometry <- NULL
-g.1000$x <- NULL
-
-
-
-dt.sf.cov1 <- dt.sf %>% 
-  left_join(g.1000, by = "reserve") %>%  
-  as.data.table() %>% 
-  mutate(geometry = NULL, x = NULL) %>%
-  unique() 
-
-
+dt.sf.cov1 <- dt.sf
 
 ## elevation --------
 
@@ -560,29 +567,30 @@ setnames(map.extr, c("mean"),
 dt.sf.cov4 <- dt.sf.cov3 %>% 
   left_join(map.extr, by = "reserve") 
 
-## Tree cover ---------------
-tc <- rast("../../../../resources/spatial/meta_canopy_height/woody_cover_10m_waterberg.tif") 
+# ## Tree cover ---------------
+# tc <- rast("../../../../resources/spatial/meta_canopy_height/woody_cover_10m_waterberg.tif") 
+# 
+# tc.g.1000 <- get.heterogeneity(vector = dt.sf, grid = grid1000, id.col = "reserve", raster = tc)
+# setnames(tc.g.1000, c("id.col", "grid.cv", "grid.sd", "grid.mean", "mean"), 
+#          c("reserve", "tree_cover_cv_1000", "tree_cover_sd_1000", "tree_cover_mean_1000", "tree_cover_mean"))
+# tc.g.1000$x <- NULL
+# 
+# 
+# ## Tree cover reiner ---------
+# tc.r <- rast("../../../../resources/spatial/Africa_Tree_Cover_Reiner_et_al_2023/South_Africa_treecover_2019_v1_10m.tif") 
+# plot(tc.r)
+# 
+# tc.r.ext <- get.heterogeneity(vector = dt.sf, grid = NULL, id.col = "reserve", raster = tc.r)
+# setnames(tc.r.ext, c("mean"), 
+#          c("reiner_tree_cover_reserve"))
+# 
+# 
+# dt.sf.cov5 <- dt.sf.cov4 %>% 
+#   left_join(tc.g.1000, by = "reserve") %>% 
+#   left_join(tc.r.ext)
+# 
 
-tc.g.1000 <- get.heterogeneity(vector = dt.sf, grid = grid1000, id.col = "reserve", raster = tc)
-setnames(tc.g.1000, c("id.col", "grid.cv", "grid.sd", "grid.mean", "mean"), 
-         c("reserve", "tree_cover_cv_1000", "tree_cover_sd_1000", "tree_cover_mean_1000", "tree_cover_mean"))
-tc.g.1000$x <- NULL
-
-
-## Tree cover reiner ---------
-tc.r <- rast("../../../../resources/spatial/Africa_Tree_Cover_Reiner_et_al_2023/South_Africa_treecover_2019_v1_10m.tif") 
-plot(tc.r)
-
-tc.r.ext <- get.heterogeneity(vector = dt.sf, grid = NULL, id.col = "reserve", raster = tc.r)
-setnames(tc.r.ext, c("mean"), 
-         c("reiner_tree_cover_reserve"))
-
-
-dt.sf.cov5 <- dt.sf.cov4 %>% 
-  left_join(tc.g.1000, by = "reserve") %>% 
-  left_join(tc.r.ext)
-
-
+dt.sf.cov5 <- dt.sf.cov4
 ## Fire frequency ---------------
 fir <- rast("../../../../resources/spatial/Fire/FireEventsBetween2001And2024_SA.tif")
 #plot(fir)
@@ -609,6 +617,7 @@ dt.sf.cov7 <- dt.sf.cov6 %>%
 
 dt.final <- as.data.table(dt.sf.cov7)
 dt.final$x <- NULL
+dt.final$geometry <- NULL
 
 
 fwrite(x = dt.final, file = "data/processedData/dataFragments/reserve_meta_waterberg2024.csv")

@@ -1548,10 +1548,10 @@ dt.comb <- dt.fd.plot.level %>%
   left_join(dt.shan.site) %>% 
   left_join(dt.shan.reserve) %>% 
   left_join(cameraTrapData) %>% 
-  left_join(dt.div.plot) %>% unique() %>% 
-  rename(tree_cover_reserve = tree_cover_mean, 
-         tree_cover_plot = tree_cover_mean_plot
-         )
+  left_join(dt.div.plot) %>% unique() 
+  # rename(tree_cover_reserve = tree_cover_mean, 
+  #        tree_cover_plot = tree_cover_mean_plot
+  #        )
 
 fwrite(dt.comb, "data/processedData/cleanData/waterberg2024DataPrelim.csv")
 names(dt.comb)
