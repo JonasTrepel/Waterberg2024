@@ -12,6 +12,8 @@ library(sf)
 library(ggspatial)
 library(mapview)
 library(rnaturalearth)
+library(scico)
+?scico
 
 reserves <- read_sf("data/spatialData/reserveLocations/waterberg2024_reserves.gpkg")
 mapview(reserves)
@@ -23,8 +25,9 @@ as.character(met.brewer("Archambault", n = 10))
 p.loc <- ggplot() +
   geom_sf(data = reserves,  aes(fill = reserve)) +
   annotation_scale( location = "bl",bar_cols = c("grey75", "grey25")) +
-  scale_fill_manual(values = c("#88A0DC", "#52468A", "#4E2A67", "#7C4B73","#C77D83", "#D6746A", "#AB3329", "#D36929", "#ED9D34", "#F9D14A")) +
-  scale_color_met_d(name = "Cassatt2") +
+  scale_fill_manual(values = c("#011959", "#FACCFA", "#828231", "#226061", "#F19D6B", "#114360" ,"#FDB4B4", "#4D734D", "#C09036", "#677B3E")) +
+ # scale_fill_scico_d(palette = "nuuk") +
+ # scale_color_met_d(name = "Cassatt2") +
   theme_void() +
   labs(x = "Longitude", y = "Latitude", fill = "Reserve") +
   theme(legend.position = c(0.15, 0.4))

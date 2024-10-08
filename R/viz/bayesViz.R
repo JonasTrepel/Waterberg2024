@@ -90,13 +90,15 @@ dt.est.div <- dt.est[response_tier == "Diversity"] %>%
 p.div <- ggplot() +
   geom_vline(xintercept = 0, linetype = "dashed", color = "grey25", alpha = 0.75, linewidth = .5) +
   geom_pointrange(data = dt.est.div, aes(x = estimate, xmin = ci.lb, xmax = ci.ub, y = clean_term,
-                                         color = sig_pn, alpha = better_than_intercept),
-                  linewidth = 1.3) +
+                                         color = sig_pn, fill = sig_pn,  alpha = better_than_intercept, shape = better_than_intercept),
+                  linewidth = 1.3, size = 1.1) +
   geom_text(data = dt.est.div, aes(x = 2 ,y = clean_term, label = rsq_label), position = position_nudge(y = 0.4), size = 3.5 ) +
   scale_alpha_manual(values = c("Better than Null-Model" = 1, "Similar to Null-Model" = .5, "Worse than Null-Model" =  .2)) +
+  scale_shape_manual(values = c("Better than Null-Model" = 23, "Similar to Null-Model" = 22, "Worse than Null-Model" =  21)) +
   scale_color_manual(values=c("Non Significant" = "#88A0DC","Significantly Negative" = "#63396C","Significantly Positive"= "#ED9D34")) +
+  scale_fill_manual(values=c("Non Significant" = "#88A0DC","Significantly Negative" = "#63396C","Significantly Positive"= "#ED9D34"), guide = "none") +
   facet_grid(cols = vars(scale_n), rows = vars(clean_response), scales = "free_x") +
-  labs(y = "", x = "Estimate", title = "Diversity Responses", alpha = "Quality:", color = "Significance:") +
+  labs(y = "", x = "Estimate", title = "Diversity Responses", alpha = "Quality:", color = "Significance:", shape = "Quality:") +
   theme_bw() +
   theme(legend.position = "bottom", 
         legend.box="vertical",
@@ -122,13 +124,15 @@ dt.est.lfd <- dt.est[response_tier == "Life Form Specific Diversity" & clean_ter
 p.lfd <- ggplot() +
   geom_vline(xintercept = 0, linetype = "dashed", color = "grey25", alpha = 0.75, linewidth = .5) +
   geom_pointrange(data = dt.est.lfd, aes(x = estimate, xmin = ci.lb, xmax = ci.ub, y = clean_term,
-                                         color = sig_pn, alpha = better_than_intercept),
-                  linewidth = 1.3) +
-  geom_text(data = dt.est.lfd, aes(x = 1.4 ,y = clean_term, label = rsq_label), position = position_nudge(y = 0.4), size = 3.5 ) +
+                                         color = sig_pn, fill = sig_pn,  alpha = better_than_intercept, shape = better_than_intercept),
+                  linewidth = 1.3, size = 1.1) +
+  geom_text(data = dt.est.lfd, aes(x = 1 ,y = clean_term, label = rsq_label), position = position_nudge(y = 0.4), size = 3.5 ) +
   scale_alpha_manual(values = c("Better than Null-Model" = 1, "Similar to Null-Model" = .5, "Worse than Null-Model" =  .2)) +
+  scale_shape_manual(values = c("Better than Null-Model" = 23, "Similar to Null-Model" = 22, "Worse than Null-Model" =  21)) +
   scale_color_manual(values=c("Non Significant" = "#88A0DC","Significantly Negative" = "#63396C","Significantly Positive"= "#ED9D34")) +
+  scale_fill_manual(values=c("Non Significant" = "#88A0DC","Significantly Negative" = "#63396C","Significantly Positive"= "#ED9D34"), guide = "none") +
   facet_grid(cols = vars(scale_n), rows = vars(clean_response), scales = "free") +
-  labs(y = "", x = "Estimate", title = "Life Form Specific Diversity Responses", alpha = "Quality:", color = "Significance:") +
+  labs(y = "", x = "Estimate", title = "Life Form Specific Diversity Responses", alpha = "Quality:", color = "Significance:", shape = "Quality:") +
   theme_bw() +
   theme(legend.position = "bottom", 
         legend.box="vertical",
@@ -164,13 +168,15 @@ dt.est.resi <- dt.est[response_tier == "Resilience"] %>%
 p.resi <- ggplot() +
   geom_vline(xintercept = 0, linetype = "dashed", color = "grey25", alpha = 0.75, linewidth = .5) +
   geom_pointrange(data = dt.est.resi, aes(x = estimate, xmin = ci.lb, xmax = ci.ub, y = clean_term,
-                                         color = sig_pn, alpha = better_than_intercept),
-                  linewidth = 1.3) +
-  geom_text(data = dt.est.resi, aes(x = -0.2 ,y = clean_term, label = rsq_label), position = position_nudge(y = 0.4), size = 3.5 ) +
+                                         color = sig_pn, fill = sig_pn,  alpha = better_than_intercept, shape = better_than_intercept),
+                  linewidth = 1.3, size = 1.1) +
+  geom_text(data = dt.est.resi, aes(x = 0.25 ,y = clean_term, label = rsq_label), position = position_nudge(y = 0.4), size = 3.5 ) +
   scale_alpha_manual(values = c("Better than Null-Model" = 1, "Similar to Null-Model" = .5, "Worse than Null-Model" =  .2)) +
+  scale_shape_manual(values = c("Better than Null-Model" = 23, "Similar to Null-Model" = 22, "Worse than Null-Model" =  21)) +
   scale_color_manual(values=c("Non Significant" = "#88A0DC","Significantly Negative" = "#63396C","Significantly Positive"= "#ED9D34")) +
+  scale_fill_manual(values=c("Non Significant" = "#88A0DC","Significantly Negative" = "#63396C","Significantly Positive"= "#ED9D34"), guide = "none") +
   facet_grid(cols = vars(scale_n), rows = vars(clean_response), scales = "free") +
-  labs(y = "", x = "Estimate", title = "Resilience Related Responses", alpha = "Quality:", color = "Significance:") +
+  labs(y = "", x = "Estimate", title = "Resilience Related Responses", alpha = "Quality:", color = "Significance:", shape = "Quality:") +
   theme_bw() +
   theme(legend.position = "bottom", 
         legend.box="vertical",
@@ -205,13 +211,15 @@ dt.est.str <- dt.est[response_tier == "Structure"] %>%
 p.str <- ggplot() +
   geom_vline(xintercept = 0, linetype = "dashed", color = "grey25", alpha = 0.75, linewidth = .5) +
   geom_pointrange(data = dt.est.str, aes(x = estimate, xmin = ci.lb, xmax = ci.ub, y = clean_term,
-                                          color = sig_pn, alpha = better_than_intercept),
-                  linewidth = 1.3) +
-  geom_text(data = dt.est.str, aes(x = -0.2 ,y = clean_term, label = rsq_label), position = position_nudge(y = 0.4), size = 3.5 ) +
+                                          color = sig_pn, fill = sig_pn,  alpha = better_than_intercept, shape = better_than_intercept),
+                  linewidth = 1.3, size = 1.1) +
+  geom_text(data = dt.est.str, aes(x = 0.01 ,y = clean_term, label = rsq_label), position = position_nudge(y = 0.4), size = 3.5 ) +
   scale_alpha_manual(values = c("Better than Null-Model" = 1, "Similar to Null-Model" = .5, "Worse than Null-Model" =  .2)) +
+  scale_shape_manual(values = c("Better than Null-Model" = 23, "Similar to Null-Model" = 22, "Worse than Null-Model" =  21)) +
   scale_color_manual(values=c("Non Significant" = "#88A0DC","Significantly Negative" = "#63396C","Significantly Positive"= "#ED9D34")) +
+  scale_fill_manual(values=c("Non Significant" = "#88A0DC","Significantly Negative" = "#63396C","Significantly Positive"= "#ED9D34"), guide = "none") +
   facet_grid(cols = vars(scale_n), rows = vars(clean_response), scales = "free") +
-  labs(y = "", x = "Estimate", title = "Ecosystem Structure", alpha = "Quality:", color = "Significance:") +
+  labs(y = "", x = "Estimate", title = "Ecosystem Structure", alpha = "Quality:", color = "Significance:", shape = "Quality:") +
   theme_bw() +
   theme(legend.position = "bottom", 
         legend.box="vertical",
