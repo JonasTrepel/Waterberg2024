@@ -184,4 +184,63 @@ for(i in 1:nrow(files)){
 
 reserve_lidar <- res %>% unique()
 
+## Get actual plot names 
+
+## load fishnet ------
+
+fn.raw <- read_sf("data/spatialData/Lele/LELE_10m_Fishnet/Join2.shp")
+fn.raw
+fn <- fn.raw %>% 
+  rename(block_number = LELE_Block, 
+         plot = PlotNumber, 
+         quadrat = Quadrat, 
+         location_id = Coding) %>% 
+  dplyr::select(-GlobalID,- Block, -Plot) %>% 
+  mutate(surveyed = ifelse(location_id %in% c(surv), "yes", "no"))
+
+## load lidar locs -----
+
+lid.raw <- read_sf("data/lele_raw/lele_lidar_2024_backup.gpkg")
+lid <- st_transform(lid.raw, crs = st_crs(fn))
+
+mapview::mapview(fn, zcol = "surveyed") + mapview::mapview(lid)
+
+fn.sampled <- fn %>% filter(surveyed == "yes") %>% as.data.table %>% mutate(geometry = NULL)
+lid.join.raw <- lid %>% st_join(fn)
+
+table(lid.join.raw$surveyed) #must do 18 manually 
+
+mapview::mapview(fn, zcol = "surveyed") + mapview::mapview(lid.join.raw, zcol = "surveyed")
+
+
+#fix the weird locs manually. 
+lid.join <- lid.join.raw %>%
+  mutate(
+    location_id = case_when(
+      .default = location_id, 
+      plot_ID == "LA_B7_3_FE_3" ~ "B7_3_B2", 
+      plot_ID == "LA_B7_3_FE_4" ~ "B7_3_E5", 
+      plot_ID == "LA_B7_4_PF_2" ~ "B7_4_D8", 
+      plot_ID == "LA_B7_6_UF_3" ~ "B7_6_D4", 
+      plot_ID == "LA_B7_5_PF_3" ~ "B7_5_C7", 
+      plot_ID == "LA_B5_1_PF_2" ~ "B5_1_D2", 
+      plot_ID == "LA_B5_2_PF_3" ~ "B5_2_D7", 
+      plot_ID == "LA_B5_6_FE_2" ~ "B5_6_G2", 
+      plot_ID == "LA_B5_6_FE_1" ~ "B5_6_D6", 
+      plot_ID == "LA_B5_5_FE_4" ~ "B5_5_C8", 
+      plot_ID == "LA_B5_4_UF_1" ~ "B5_4_F7", 
+      plot_ID == "LA_B4_3_PF_1" ~ "B4_3_G7", 
+      plot_ID == "LA_B2_1_FE_3" ~ "B2_1_G4", 
+      plot_ID == "LA_B2_3_UF_4" ~ "B2_3_H8", 
+      plot_ID == "LA_B1_1_UF_3" ~ "B1_1_B5", 
+      plot_ID == "LA_B1_2_PF_1" ~ "B1_2_G6", 
+      plot_ID == "LA_B1_4_FE_2" ~ "B1_4_H5", 
+      plot_ID == "LA_B1_6_UF_2" ~ "B1_6_F4")
+  ) %>% dplyr::select(plot_ID, notes., date_time, geom, location_id) %>% 
+  left_join(fn.sampled)
+
+mapview(lid.join, zcol = "surveyed")
+
+
+
 fwrite(reserve_lidar, "data/processedData/dataFragments/LeleLidarResultsWaterberg2024Radius20m.csv")
