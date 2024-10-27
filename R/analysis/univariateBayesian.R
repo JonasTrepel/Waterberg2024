@@ -12,7 +12,6 @@ library(tidybayes)
 dt <- fread("data/processedData/cleanData/waterberg2024DataPrelim.csv")
 names(dt)
 
-
 ## to dos: 
 
 #### Compare each model to the respective intercept only model using AICc and BIC. 
@@ -86,8 +85,8 @@ guide.plot <- CJ(vars = vars.plot,
   mutate(formula_id = paste0("plot_formula_", 1:nrow(.)), 
          formula = paste0(response, " ~ ", vars), 
          intercept_only_formula = paste0(response, " ~ 1"), 
-         #formula = paste0(response, " ~ ", vars, " + (1 | reserve/site_ID)"), 
-         #intercept_only_formula = paste0(response, " ~ 1 + (1 | reserve/site_ID)"), 
+         formula = paste0(response, " ~ ", vars, " + (1 | reserve/site_ID)"), 
+         intercept_only_formula = paste0(response, " ~ 1 + (1 | reserve/site_ID)"), 
          response_tier = case_when(
            response %in% c("plot_plant_fun_red","plot_plant_fun_div_distq1", "plot_plant_evenness_pielou") ~ "Resilience",
            response %in% c("species_per_plot", "shannon_plot") ~ "Diversity",
@@ -150,8 +149,8 @@ guide.site <- CJ(vars = vars.site,
   mutate(formula_id = paste0("site_formula_", 1:nrow(.)), 
          formula = paste0(response, " ~ ", vars), 
          intercept_only_formula = paste0(response, " ~ 1"), 
-         # formula = paste0(response, " ~ ", vars, " + (1 | reserve)"), 
-         # intercept_only_formula = paste0(response, " ~ 1 + (1 | reserve)"),   
+         formula = paste0(response, " ~ ", vars, " + (1 | reserve)"), 
+         intercept_only_formula = paste0(response, " ~ 1 + (1 | reserve)"),   
          response_tier = case_when(
            response %in% c("site_plant_fun_red","site_plant_fun_div_distq1", "site_plant_evenness_pielou", "site_mean_beta_divq1") ~ "Resilience",
            response %in% c("species_per_site", "shannon_site", "site_sor_beta_div") ~ "Diversity",
