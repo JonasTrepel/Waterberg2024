@@ -93,7 +93,7 @@ partialPred <- function(newdata, var, data, response, model,
     ## get clean variable name 
     clean.var.scaled <- gsub("log_", "", var)
     clean.var <- gsub("_scaled", "", clean.var.scaled)
-    dt.pred <- newdata.pred %>% dplyr::select(all_of(clean.var), fit, ci.ub, ci.lb)
+    dt.pred <- newdata.pred %>% dplyr::select(all_of(clean.var), fit, ci.ub, ci.lb, se.fit)
     
     
     ## interaction = T -------------

@@ -26,10 +26,43 @@ dt.p <- fread("data/processedData/dataFragments/species_numbers_per_plot_waterbe
     grepl("KA", site_ID) ~ "Kaingo", 
     grepl("SW", site_ID) ~ "Swebeswebe", 
     grepl("MA", site_ID) ~ "Marakele", 
-    
   ))
 
+dt.plot <- dt.p
+quantile(dt.plot$cover_percent, na.rm = T)
 dt.p$site_ID
+
+### calc max cover #######
+
+
+max.cover.plot <- dt.plot %>% 
+  dplyr::select(plot_ID, site_ID, reserve, cover_percent) %>% 
+  group_by(plot_ID) %>% 
+  slice_max(cover_percent) %>% unique() %>% 
+  rename(plot_max_cover = cover_percent)
+
+max.cover.site <- dt.plot %>% 
+  dplyr::select(site_ID, species, cover_percent, site_ID, reserve) %>% 
+  group_by(reserve, site_ID, species) %>% 
+  summarize(cover_percent = sum(cover_percent, na.rm = T)) %>% 
+  dplyr::select(-species) %>% 
+  slice_max(cover_percent) %>% unique()  %>% 
+  rename(site_max_cover = cover_percent) %>% 
+  mutate(site_max_cover = site_max_cover/5)
+
+max.cover.reserve <- dt.plot %>% 
+  dplyr::select(site_ID, species, cover_percent, site_ID, reserve) %>% 
+  group_by(reserve, species) %>% 
+  summarize(cover_percent = sum(cover_percent, na.rm = T)) %>% 
+  slice_max(cover_percent) %>% unique()  %>% 
+  rename(reserve_max_cover = cover_percent) %>% 
+  mutate(reserve_max_cover = reserve_max_cover/25)
+
+dt.max.cover <- max.cover.plot %>% 
+  left_join(max.cover.site) %>% 
+  left_join(max.cover.reserve)
+
+hist(max.cover.site$site_max_cover)
 
 ###### calculate FD -----------------------------------
 
@@ -114,6 +147,28 @@ fspaces_quality <- mFD::quality.fspaces(
 
 sp_faxes_coord <- fspaces_quality$"details_fspaces"$"sp_pc_coord"
 
+#### Load Data again ####
+
+dt.p <- fread("data/processedData/dataFragments/species_numbers_per_plot_waterberg2024.csv") %>% 
+  mutate(
+    site_ID = gsub("_P01", "", plot_ID),
+    site_ID = gsub("_P02", "", site_ID),
+    site_ID = gsub("_P03", "", site_ID),
+    site_ID = gsub("_P04", "", site_ID),
+    site_ID = gsub("_P05", "", site_ID)
+  ) %>% 
+  mutate(reserve = case_when(
+    grepl("LA", site_ID) ~ "Lapalala", 
+    grepl("JE", site_ID) ~ "Jembisa", 
+    grepl("WI", site_ID) ~ "Willowisp", 
+    grepl("SY", site_ID) ~ "Syringa Sands", 
+    grepl("SU", site_ID) ~ "Summerplace", 
+    grepl("DA", site_ID) ~ "Dabchick", 
+    grepl("AN", site_ID) ~ "Ant's Farm", 
+    grepl("KA", site_ID) ~ "Kaingo", 
+    grepl("SW", site_ID) ~ "Swebeswebe", 
+    grepl("MA", site_ID) ~ "Marakele", 
+  ))
 
 ##################### alpha diversity ########################
 
@@ -201,7 +256,7 @@ alpha_fd_indices <- mFD::alpha.fd.multidim(
   details_returned = TRUE)
 
 
-alpha_fd_indices$functional_diversity_indices
+#alpha_fd_indices$functional_diversity_indices
 
 ## extract functional diversity metrics 
 d.afdi <- alpha_fd_indices$functional_diversity_indices %>% 
@@ -293,7 +348,7 @@ alpha_fd_indices_herbs <- mFD::alpha.fd.multidim(
   details_returned = TRUE)
 
 
-alpha_fd_indices_herbs$functional_diversity_indices
+#alpha_fd_indices_herbs$functional_diversity_indices
 
 ## extract functional diversity metrics 
 d.afdi.herbs <- alpha_fd_indices_herbs$functional_diversity_indices %>% 
@@ -372,7 +427,7 @@ alpha_fd_indices_graminoids <- mFD::alpha.fd.multidim(
   details_returned = TRUE)
 
 
-alpha_fd_indices_graminoids$functional_diversity_indices
+#alpha_fd_indices_graminoids$functional_diversity_indices
 
 ## extract functional diversity metrics 
 d.afdi.graminoids <- alpha_fd_indices_graminoids$functional_diversity_indices %>% 
@@ -451,7 +506,7 @@ alpha_fd_indices_forbs <- mFD::alpha.fd.multidim(
   details_returned = TRUE)
 
 
-alpha_fd_indices_forbs$functional_diversity_indices
+#alpha_fd_indices_forbs$functional_diversity_indices
 
 ## extract functional diversity metrics 
 d.afdi.forbs <- alpha_fd_indices_forbs$functional_diversity_indices %>% 
@@ -492,6 +547,28 @@ dt.fd.plot.level <- dt.fd.plot.level.raw %>%
   left_join(dt.sfd.herbs[,.(plot_ID, plot_herb_nb_fe, plot_herb_fred, plot_herb_fored, plot_herb_fvuln)]) %>% 
   left_join(dt.sfd.graminoids[,.(plot_ID, plot_graminoid_nb_fe, plot_graminoid_fred, plot_graminoid_fored, plot_graminoid_fvuln)]) 
   
+#### Load Data again ####
+dt.p <- fread("data/processedData/dataFragments/species_numbers_per_plot_waterberg2024.csv") %>% 
+  mutate(
+    site_ID = gsub("_P01", "", plot_ID),
+    site_ID = gsub("_P02", "", site_ID),
+    site_ID = gsub("_P03", "", site_ID),
+    site_ID = gsub("_P04", "", site_ID),
+    site_ID = gsub("_P05", "", site_ID)
+  ) %>% 
+  mutate(reserve = case_when(
+    grepl("LA", site_ID) ~ "Lapalala", 
+    grepl("JE", site_ID) ~ "Jembisa", 
+    grepl("WI", site_ID) ~ "Willowisp", 
+    grepl("SY", site_ID) ~ "Syringa Sands", 
+    grepl("SU", site_ID) ~ "Summerplace", 
+    grepl("DA", site_ID) ~ "Dabchick", 
+    grepl("AN", site_ID) ~ "Ant's Farm", 
+    grepl("KA", site_ID) ~ "Kaingo", 
+    grepl("SW", site_ID) ~ "Swebeswebe", 
+    grepl("MA", site_ID) ~ "Marakele", 
+  ))
+
 
 ##################### alpha diversity ########################
 ######------------------ site level --------------------######
@@ -576,7 +653,7 @@ alpha_fd_indices.site <- mFD::alpha.fd.multidim(
   details_returned = TRUE)
 
 
-alpha_fd_indices.site$functional_diversity_indices
+#alpha_fd_indices.site$functional_diversity_indices
 
 ## extract functional diversity metrics 
 d.afdi.site <- alpha_fd_indices.site$functional_diversity_indices %>% 
@@ -859,6 +936,30 @@ dt.fd.site.level <- dt.fd.site.level.raw %>%
   left_join(dt.dbfd.site.forb[, .(site_ID, site_forb_FD_q1)]) %>% 
   left_join(dt.dbfd.site.graminoid[, .(site_ID, site_graminoid_FD_q1)]) 
   
+#### Load data again ####
+
+dt.p <- fread("data/processedData/dataFragments/species_numbers_per_plot_waterberg2024.csv") %>% 
+  mutate(
+    site_ID = gsub("_P01", "", plot_ID),
+    site_ID = gsub("_P02", "", site_ID),
+    site_ID = gsub("_P03", "", site_ID),
+    site_ID = gsub("_P04", "", site_ID),
+    site_ID = gsub("_P05", "", site_ID)
+  ) %>% 
+  mutate(reserve = case_when(
+    grepl("LA", site_ID) ~ "Lapalala", 
+    grepl("JE", site_ID) ~ "Jembisa", 
+    grepl("WI", site_ID) ~ "Willowisp", 
+    grepl("SY", site_ID) ~ "Syringa Sands", 
+    grepl("SU", site_ID) ~ "Summerplace", 
+    grepl("DA", site_ID) ~ "Dabchick", 
+    grepl("AN", site_ID) ~ "Ant's Farm", 
+    grepl("KA", site_ID) ~ "Kaingo", 
+    grepl("SW", site_ID) ~ "Swebeswebe", 
+    grepl("MA", site_ID) ~ "Marakele", 
+  ))
+
+
 ##################### alpha diversity ########################
 ######------------------ reserve level -------------------#####
 
@@ -1446,6 +1547,7 @@ dt.div.plot <- fread("data/processedData/dataFragments/plot_traits_and_div_water
   )
 
 
+
 #### load lidar
 res.lid.raw <- fread("data/processedData/dataFragments/LidarResultsWaterberg2024Radius20m.csv")
 names(res.lid.raw)
@@ -1548,6 +1650,7 @@ dt.comb <- dt.fd.plot.level %>%
   left_join(dt.shan.site) %>% 
   left_join(dt.shan.reserve) %>% 
   left_join(cameraTrapData) %>% 
+  left_join(dt.max.cover) %>% 
   left_join(dt.div.plot) %>% unique() 
   # rename(tree_cover_reserve = tree_cover_mean, 
   #        tree_cover_plot = tree_cover_mean_plot

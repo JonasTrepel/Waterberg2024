@@ -9,6 +9,8 @@ library(broom)
 library(brms)
 library(tidybayes)
 library(glmmTMB)
+library("sjPlot")
+
 
 dt <- fread("data/processedData/cleanData/waterberg2024DataPrelim.csv")
 names(dt)
@@ -39,6 +41,7 @@ dt.mod <- dt %>%
          meanBodyMassKg_scaled = as.numeric(scale(meanBodyMassKg)), 
          nEventsDayReserve_scaled = as.numeric(scale(nEventsDayReserve)), 
          meanBodyMassKgReserve_scaled = as.numeric(scale(meanBodyMassKgReserve))
+         
   ) %>% 
   rename(species_per_reserve = total_plant_species_richness_reserve, 
          species_per_site = total_plant_species_richness_site, 
@@ -59,7 +62,7 @@ responses.plot <- c(
   ## Resilience 
   "plot_plant_fun_red",
   "plot_plant_fun_div_distq1",
-  "plot_plant_evenness_pielou",
+  "plot_max_cover",
   
   ## Structure
   "plot_lidar_adjusted_mean_3d",
@@ -89,7 +92,7 @@ guide.plot <- CJ(vars = vars.plot,
          formula = paste0(response, " ~ ", vars, " + (1 | reserve/site_ID)"), 
          intercept_only_formula = paste0(response, " ~ 1 + (1 | reserve/site_ID)"), 
          response_tier = case_when(
-           response %in% c("plot_plant_fun_red","plot_plant_fun_div_distq1", "plot_plant_evenness_pielou") ~ "Resilience",
+           response %in% c("plot_plant_fun_red","plot_plant_fun_div_distq1", "plot_max_cover") ~ "Resilience",
            response %in% c("species_per_plot", "shannon_plot") ~ "Diversity",
            response %in% c( "graminoids_per_plot","forbs_per_plot") ~ "Life Form Specific Diversity",
            response %in% c(  "plot_lidar_adjusted_mean_3d",
@@ -123,7 +126,7 @@ responses.site <- c(
   ## Resilience 
   "site_plant_fun_red",
   "site_plant_fun_div_distq1",
-  "site_plant_evenness_pielou",
+  "site_max_cover",
   "site_mean_beta_divq1",
   
   ## Structure
@@ -153,7 +156,7 @@ guide.site <- CJ(vars = vars.site,
          formula = paste0(response, " ~ ", vars, " + (1 | reserve)"), 
          intercept_only_formula = paste0(response, " ~ 1 + (1 | reserve)"),   
          response_tier = case_when(
-           response %in% c("site_plant_fun_red","site_plant_fun_div_distq1", "site_plant_evenness_pielou", "site_mean_beta_divq1") ~ "Resilience",
+           response %in% c("site_plant_fun_red","site_plant_fun_div_distq1", "site_max_cover", "site_mean_beta_divq1") ~ "Resilience",
            response %in% c("species_per_site", "shannon_site", "site_sor_beta_div") ~ "Diversity",
            response %in% c( "graminoids_per_site","forbs_per_site", "woodies_per_site") ~ "Life Form Specific Diversity",
            response %in% c(  "site_adj_mean_3d",
@@ -188,7 +191,7 @@ responses.reserve <- c(
   ## Resilience 
   "reserve_plant_fun_red",
   "reserve_plant_fun_div_distq1",
-  "reserve_plant_evenness_pielou",
+  "reserve_max_cover",
   "reserve_mean_beta_divq1",
   
   ## Structure
@@ -217,7 +220,7 @@ guide.reserve <- CJ(vars = vars.reserve,
          formula = paste0(response, " ~ ", vars), 
          intercept_only_formula = paste0(response, " ~ 1"), 
          response_tier = case_when(
-           response %in% c("reserve_plant_fun_red","reserve_plant_fun_div_distq1", "reserve_plant_evenness_pielou", "reserve_mean_beta_divq1") ~ "Resilience",
+           response %in% c("reserve_plant_fun_red","reserve_plant_fun_div_distq1", "reserve_max_cover", "reserve_mean_beta_divq1") ~ "Resilience",
            response %in% c("species_per_reserve", "shannon_reserve", "reserve_sor_beta_div") ~ "Diversity",
            response %in% c( "graminoids_per_reserve","forbs_per_reserve", "woodies_per_reserve") ~ "Life Form Specific Diversity",
            response %in% c(  "reserve_adj_mean_3d",
@@ -297,7 +300,7 @@ tic()
 foreach.results <- foreach(i = 1:nrow(guide),
                            .packages = c('dplyr', 'brms', 'mgcv', 'broom',
                                          'ggplot2', 'tidyr', 'data.table', 'Metrics',
-                                         'tidyverse', 'MuMIn' ,"MetBrewer",
+                                         'tidyverse', 'MuMIn' ,"MetBrewer", 'sjPlot',
                                          'grid', 'gridExtra','loo', 'glmmTMB'),
                            .options.snow = opts,
                            .inorder = FALSE,
@@ -422,13 +425,40 @@ foreach.results <- foreach(i = 1:nrow(guide),
                                    
                                    var <- var.names[j,] %>% pull()
                                    
-                                   marg.tmp <- partialPred(model = m, response = filter.resp, var = var,
-                                                                data = dt.sub, newdata = dt.sub %>% dplyr::select(-c(all_of(filter.resp)))) 
+        
                                    
-                                   marg.tmp <- marg.tmp %>% rename(var_value = paste0(gsub("_scaled", "", var))) %>% mutate(term = var,
-                                                                                                                            clean_var = gsub("log_", "", term),
-                                                                                                                            clean_var = gsub("_scaled", "", clean_var), 
-                                                                                                                            response_value = dt.sub %>% dplyr::select(c(all_of(filter.resp)))%>% pull())
+                                   clean.var = paste0(gsub("_scaled", "", var))
+                                   
+                                   p <- plot_model(m, term = var, type = "pred")
+                                   
+                                   marg.tmp <- p$data %>% 
+                                     as.data.table() %>% 
+                                     rename(var_value = x) %>% 
+                                     mutate(term = var,
+                                            clean_var = gsub("log_", "", term),
+                                            clean_var = gsub("_scaled", "", clean_var)) %>% 
+                                     dplyr::select(-group, -group_col) 
+                                   
+                                   if(n_distinct(dt[[clean.var]]) > 10){
+                                     marg.tmp <- marg.tmp %>% 
+                                       mutate(clean_var_value = seq(min(dt[[clean.var]], na.rm = T),
+                                                                    max(dt[[clean.var]], na.rm = T), 
+                                                                    length.out = nrow(.)))
+                                   }else{
+                                     marg.tmp <- marg.tmp %>% 
+                                       mutate(clean_var_value = sort(unique(dt[[clean.var]])))
+                                   }
+                                   
+                                   # marg.tmp <- partialPred(model = m, response = filter.resp, var = var,
+                                   #                         data = dt.sub,
+                                   #                         newdata = dt.sub %>%
+                                   #                           dplyr::select(-c(all_of(filter.resp))) %>% 
+                                   #                           mutate(reserve = NA, 
+                                   #                                  site = NA)) 
+                                   # marg.tmp <- marg.tmp %>% rename(var_value = paste0(gsub("_scaled", "", var))) %>% mutate(term = var,
+                                   #                                                                                          clean_var = gsub("log_", "", term),
+                                   #                                                                                          clean_var = gsub("_scaled", "", clean_var), 
+                                   #                                                                                          response_value = dt.sub %>% dplyr::select(c(all_of(filter.resp)))%>% pull())
                                    if(j==1){
                                      marg <- marg.tmp}else{
                                        marg <- rbind(marg, marg.tmp)}
