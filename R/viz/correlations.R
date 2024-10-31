@@ -23,17 +23,11 @@ dt <- fread("data/processedData/cleanData/waterberg2024DataPrelim.csv") %>%
 
 dtExp <- dt %>% dplyr::select("MAP",
                                 "herbi_biomass_ha",
-                                "herbi_fun_ent",
-                                "grazer_mf_biomass_ha",
-                                "browser_mf_biomass_ha",
-                                "meanBodyMassKgReserve", 
+                                "n_herbi_sp_reserve",
                               "nEventsDayReserve") %>% 
   rename(
     `Herbivore Biomass (kg/ha)` = herbi_biomass_ha, 
-    `Herbivore Functional Groups` = herbi_fun_ent, 
-    `Grazer Biomass (kg/ha)` = grazer_mf_biomass_ha,
-    `Browser Biomass (kg/ha)` = browser_mf_biomass_ha, 
-    `Mean Visitor Body Mass (kg)` = meanBodyMassKgReserve, 
+    `Herbivore Species Richness` = n_herbi_sp_reserve, 
     `Visiting Frequency` = nEventsDayReserve,
   )
 
@@ -52,7 +46,7 @@ dtVarsPlot <- dt %>% dplyr::select(  "species_per_plot",
                                      ## Resilience 
                                      "plot_plant_fun_red",
                                      "plot_plant_fun_div_distq1",
-                                     "plot_plant_evenness_pielou",
+                                     "plot_berger_parker",
                                      
                                      ## Structure
                                      "plot_lidar_adjusted_mean_3d",
@@ -68,7 +62,7 @@ dtVarsPlot <- dt %>% dplyr::select(  "species_per_plot",
     ## Resilience 
    "Plant Functional Redundancy" = "plot_plant_fun_red",
    "Plant Functional Diversity" = "plot_plant_fun_div_distq1",
-   "Plant evenness" = "plot_plant_evenness_pielou",
+   "Plant Dominance" = "plot_berger_parker",
     
     ## Structure
    "LiDAR Mean Distance (adj.)" = "plot_lidar_adjusted_mean_3d",
@@ -100,7 +94,7 @@ dtVarsSite <- dt %>% dplyr::select(  "species_per_site",
                                      ## Resilience 
                                      "site_plant_fun_red",
                                      "site_plant_fun_div_distq1",
-                                     "site_plant_evenness_pielou",
+                                     "site_berger_parker",
                                      
                                      ## Structure
                                      "site_adj_mean_3d",
@@ -119,7 +113,7 @@ dtVarsSite <- dt %>% dplyr::select(  "species_per_site",
          ## Resilience 
          "Plant Functional Redundancy" = "site_plant_fun_red",
          "Plant Functional Diversity" = "site_plant_fun_div_distq1",
-         "Plant evenness" = "site_plant_evenness_pielou",
+         "Plant Dominance" = "site_berger_parker",
          
          ## Structure
          "LiDAR Mean Distance (adj.)" = "site_adj_mean_3d",
@@ -151,7 +145,7 @@ dtVarsReserve <- dt %>% dplyr::select(  "species_per_reserve",
                                      ## Resilience 
                                      "reserve_plant_fun_red",
                                      "reserve_plant_fun_div_distq1",
-                                     "reserve_plant_evenness_pielou",
+                                     "reserve_berger_parker",
                                      
                                      ## Structure
                                      "reserve_adj_mean_3d",
@@ -168,7 +162,7 @@ dtVarsReserve <- dt %>% dplyr::select(  "species_per_reserve",
          ## Resilience 
          "Plant Functional Redundancy" = "reserve_plant_fun_red",
          "Plant Functional Diversity" = "reserve_plant_fun_div_distq1",
-         "Plant evenness" = "reserve_plant_evenness_pielou",
+         "Plant Dominance" = "reserve_berger_parker",
          
          ## Structure
          "LiDAR Mean Distance (adj.)" = "reserve_adj_mean_3d",
@@ -185,8 +179,40 @@ p.reserveCorr <- ggcorrplot(reserveCorr, hc.order = TRUE, type = "lower",
 
 p.reserveCorr
 
+
+### correlation herbivore variables 
+
+
+dtHerbi <- dt %>% 
+  dplyr::select(
+    n_herbi_sp_reserve, mean_species_body_mass, CW_mean_species_body_mass, 
+    herbi_fun_div_distq1, browser_biomass_ha, grazer_biomass_ha, 
+    mixed_feeder_biomass_ha, herbi_biomass_ha, MAP
+  ) %>%
+  rename(
+    `Herbivore Species Richness` = n_herbi_sp_reserve,
+    `Mean Body Mass` = mean_species_body_mass,
+    `Mean Body Mass (CWM)`= CW_mean_species_body_mass,
+    `Herbivore Functional Diversity` = herbi_fun_div_distq1,
+    `Browser Biomass` = browser_biomass_ha,
+    `Grazer Biomass` = grazer_biomass_ha,
+    `Mixed Feeder Biomass` = mixed_feeder_biomass_ha,
+    `Total Herbivore Biomass` = herbi_biomass_ha
+  ) %>% unique()
+
+herbiCorr <- round(cor(dtHerbi), 1)
+
+p.herbiCorr <- ggcorrplot(herbiCorr, hc.order = TRUE, type = "lower",
+                            lab = TRUE) +
+  labs(title = "Herbivore Variables") +
+  theme(plot.title = element_text(hjust = 0.5, size = 14, face = "bold"))
+
+p.herbiCorr
+
+
 #save 
 ggsave(plot = p.exp, "builds/plots/supplement/corrExplanatories.png", dpi = 600, height = 12, width = 12)
 ggsave(plot = p.plotCorr, "builds/plots/supplement/corrPlotVars.png", dpi = 600)
 ggsave(plot = p.siteCorr, "builds/plots/supplement/corrSiteVars.png", dpi = 600)
 ggsave(plot = p.reserveCorr, "builds/plots/supplement/corrReserveVars.png", dpi = 600)
+ggsave(plot = p.herbiCorr, "builds/plots/supplement/corrHerbiVars.png", dpi = 600)

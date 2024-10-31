@@ -27,7 +27,7 @@ dt.mod <- dt %>%
          MAP_scaled = as.numeric(scale(MAP)), 
          
          herbi_biomass_ha_scaled = as.numeric(scale(herbi_biomass_ha)),
-         herbi_fun_ent_scaled = as.numeric(scale(herbi_fun_ent)),
+         n_herbi_sp_reserve_scaled = as.numeric(scale(n_herbi_sp_reserve)),
          meanBodyMassKg_scaled = as.numeric(scale(CW_mean_species_body_mass)),
          
          
@@ -40,13 +40,13 @@ dt.mod <- dt %>%
          nEventsDay_scaled = as.numeric(scale(nEventsDay)), 
          meanBodyMassKg_scaled = as.numeric(scale(meanBodyMassKg)), 
          nEventsDayReserve_scaled = as.numeric(scale(nEventsDayReserve)), 
-         meanBodyMassKgReserve_scaled = as.numeric(scale(meanBodyMassKgReserve))
+         meanBodyMassKgReserve_scaled = as.numeric(scale(meanBodyMassKgReserve)),
+         
          
   ) %>% 
   rename(species_per_reserve = total_plant_species_richness_reserve, 
          species_per_site = total_plant_species_richness_site, 
          reserve_mean_beta_divq1 = mean_beta_divq1)
-
 
 ########################### Plot scale ####################################
 
@@ -62,7 +62,7 @@ responses.plot <- c(
   ## Resilience 
   "plot_plant_fun_red",
   "plot_plant_fun_div_distq1",
-  "plot_max_cover",
+  "plot_berger_parker",
   
   ## Structure
   "plot_lidar_adjusted_mean_3d",
@@ -73,9 +73,9 @@ responses.plot <- c(
 vars.plot <- c(
   "MAP_plot_scaled",
   "herbi_biomass_ha_scaled",
-  "herbi_fun_ent_scaled",
+  "n_herbi_sp_reserve_scaled",
   # "herbi_biomass_ha_scaled*MAP_plot_scaled",
-  # "herbi_fun_ent_scaled*MAP_plot_scaled",
+  # "n_herbi_sp_reserve_scaled*MAP_plot_scaled",
   # "grazer_mf_biomass_ha_scaled",
   # "browser_mf_biomass_ha_scaled",
   # "meanBodyMassKg_scaled", 
@@ -92,7 +92,7 @@ guide.plot <- CJ(vars = vars.plot,
          formula = paste0(response, " ~ ", vars, " + (1 | reserve/site_ID)"), 
          intercept_only_formula = paste0(response, " ~ 1 + (1 | reserve/site_ID)"), 
          response_tier = case_when(
-           response %in% c("plot_plant_fun_red","plot_plant_fun_div_distq1", "plot_max_cover") ~ "Resilience",
+           response %in% c("plot_plant_fun_red","plot_plant_fun_div_distq1", "plot_berger_parker") ~ "Resilience",
            response %in% c("species_per_plot", "shannon_plot") ~ "Diversity",
            response %in% c( "graminoids_per_plot","forbs_per_plot") ~ "Life Form Specific Diversity",
            response %in% c(  "plot_lidar_adjusted_mean_3d",
@@ -126,7 +126,7 @@ responses.site <- c(
   ## Resilience 
   "site_plant_fun_red",
   "site_plant_fun_div_distq1",
-  "site_max_cover",
+  "site_berger_parker",
   "site_mean_beta_divq1",
   
   ## Structure
@@ -138,9 +138,9 @@ responses.site <- c(
 vars.site <- c(
   "MAP_site_scaled",
   "herbi_biomass_ha_scaled",
-  "herbi_fun_ent_scaled",
+  "n_herbi_sp_reserve_scaled",
   # "herbi_biomass_ha_scaled*MAP_site_scaled",
-  # "herbi_fun_ent_scaled*MAP_site_scaled",
+  # "n_herbi_sp_reserve_scaled*MAP_site_scaled",
   # "grazer_mf_biomass_ha_scaled",
   # "browser_mf_biomass_ha_scaled", 
   # "meanBodyMassKg_scaled", 
@@ -156,7 +156,7 @@ guide.site <- CJ(vars = vars.site,
          formula = paste0(response, " ~ ", vars, " + (1 | reserve)"), 
          intercept_only_formula = paste0(response, " ~ 1 + (1 | reserve)"),   
          response_tier = case_when(
-           response %in% c("site_plant_fun_red","site_plant_fun_div_distq1", "site_max_cover", "site_mean_beta_divq1") ~ "Resilience",
+           response %in% c("site_plant_fun_red","site_plant_fun_div_distq1", "site_berger_parker", "site_mean_beta_divq1") ~ "Resilience",
            response %in% c("species_per_site", "shannon_site", "site_sor_beta_div") ~ "Diversity",
            response %in% c( "graminoids_per_site","forbs_per_site", "woodies_per_site") ~ "Life Form Specific Diversity",
            response %in% c(  "site_adj_mean_3d",
@@ -191,7 +191,7 @@ responses.reserve <- c(
   ## Resilience 
   "reserve_plant_fun_red",
   "reserve_plant_fun_div_distq1",
-  "reserve_max_cover",
+  "reserve_berger_parker",
   "reserve_mean_beta_divq1",
   
   ## Structure
@@ -204,9 +204,9 @@ responses.reserve <- c(
 vars.reserve <- c(
   "MAP_scaled",
   "herbi_biomass_ha_scaled",
-  "herbi_fun_ent_scaled",
+  "n_herbi_sp_reserve_scaled",
   # "herbi_biomass_ha_scaled*MAP_scaled",
-  # "herbi_fun_ent_scaled*MAP_scaled",
+  # "n_herbi_sp_reserve_scaled*MAP_scaled",
   # "grazer_mf_biomass_ha_scaled",
   # "browser_mf_biomass_ha_scaled", 
   #"meanBodyMassKgReserve_scaled", 
@@ -220,7 +220,7 @@ guide.reserve <- CJ(vars = vars.reserve,
          formula = paste0(response, " ~ ", vars), 
          intercept_only_formula = paste0(response, " ~ 1"), 
          response_tier = case_when(
-           response %in% c("reserve_plant_fun_red","reserve_plant_fun_div_distq1", "reserve_max_cover", "reserve_mean_beta_divq1") ~ "Resilience",
+           response %in% c("reserve_plant_fun_red","reserve_plant_fun_div_distq1", "reserve_berger_parker", "reserve_mean_beta_divq1") ~ "Resilience",
            response %in% c("species_per_reserve", "shannon_reserve", "reserve_sor_beta_div") ~ "Diversity",
            response %in% c( "graminoids_per_reserve","forbs_per_reserve", "woodies_per_reserve") ~ "Life Form Specific Diversity",
            response %in% c(  "reserve_adj_mean_3d",

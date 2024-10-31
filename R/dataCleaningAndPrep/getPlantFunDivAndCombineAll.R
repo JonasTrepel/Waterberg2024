@@ -33,36 +33,45 @@ quantile(dt.plot$cover_percent, na.rm = T)
 dt.p$site_ID
 
 ### calc max cover #######
+library("abdiv")
+x <- c(15, 6, 4, 0, 3, 0)
+max(x)/sum(x)
+berger_parker_d(x) # 15 / 28
 
+simpson(x)
+vegan::diversity(x, index = "simpson")
 
 max.cover.plot <- dt.plot %>% 
   dplyr::select(plot_ID, site_ID, reserve, cover_percent) %>% 
-  group_by(plot_ID) %>% 
-  slice_max(cover_percent) %>% unique() %>% 
-  rename(plot_max_cover = cover_percent)
+  group_by(reserve, site_ID, plot_ID) %>% 
+  summarize(plot_max_cover = max(cover_percent, na.rm = T), 
+            plot_berger_parker = max(cover_percent, na.rm = T)/sum(cover_percent, na.rm = T), 
+            plot_simpson_dominance = vegan::diversity(cover_percent, index = "simpson"))
 
 max.cover.site <- dt.plot %>% 
   dplyr::select(site_ID, species, cover_percent, site_ID, reserve) %>% 
   group_by(reserve, site_ID, species) %>% 
   summarize(cover_percent = sum(cover_percent, na.rm = T)) %>% 
   dplyr::select(-species) %>% 
-  slice_max(cover_percent) %>% unique()  %>% 
-  rename(site_max_cover = cover_percent) %>% 
-  mutate(site_max_cover = site_max_cover/5)
+  group_by(reserve, site_ID) %>% 
+  summarize(site_max_cover = max(cover_percent, na.rm = T)/5, 
+          site_berger_parker = max(cover_percent, na.rm = T)/sum(cover_percent, na.rm = T), 
+          site_simpson_dominance = vegan::diversity(cover_percent, index = "simpson"))
 
 max.cover.reserve <- dt.plot %>% 
   dplyr::select(site_ID, species, cover_percent, site_ID, reserve) %>% 
   group_by(reserve, species) %>% 
   summarize(cover_percent = sum(cover_percent, na.rm = T)) %>% 
-  slice_max(cover_percent) %>% unique()  %>% 
-  rename(reserve_max_cover = cover_percent) %>% 
-  mutate(reserve_max_cover = reserve_max_cover/25)
+  group_by(reserve)  %>% 
+  summarize(reserve_max_cover = max(cover_percent, na.rm = T)/25, 
+            reserve_berger_parker = max(cover_percent, na.rm = T)/sum(cover_percent, na.rm = T), 
+            reserve_simpson_dominance = vegan::diversity(cover_percent, index = "simpson"))
+
 
 dt.max.cover <- max.cover.plot %>% 
   left_join(max.cover.site) %>% 
   left_join(max.cover.reserve)
 
-hist(max.cover.site$site_max_cover)
 
 ###### calculate FD -----------------------------------
 
@@ -1488,7 +1497,8 @@ site_IDs <- weight.mat.site %>%
 evenness <- cbind(evenness.raw, site_IDs) %>% 
   rename(site_plant_evenness_pielou = PielouEven)
 
-shannon.site <- diversity(weight.mat.site)
+shannon.site <- vegan::diversity(weight.mat.site)
+
 dt.shan.site <- data.table(
   site_ID = names(shannon.site),
   shannon_site = unname(shannon.site)
@@ -1641,7 +1651,7 @@ dt.comb <- dt.fd.plot.level %>%
   left_join(plot.lid) %>% 
   left_join(site.lid) %>% 
   left_join(reserve.lid) %>% 
-  left_join(plot.met) %>% 
+  left_join(plot.met %>% dplyr::select(-reserve)) %>% 
   left_join(dt.div) %>% 
   left_join(evenness) %>% 
   left_join(evenness.plot) %>% 
@@ -1651,14 +1661,16 @@ dt.comb <- dt.fd.plot.level %>%
   left_join(dt.shan.reserve) %>% 
   left_join(cameraTrapData) %>% 
   left_join(dt.max.cover) %>% 
-  left_join(dt.div.plot) %>% unique() 
+  left_join(dt.div.plot) %>% unique() %>%
+  mutate(across(where(is.numeric), ~ ifelse(is.infinite(.), NA, .)))
   # rename(tree_cover_reserve = tree_cover_mean, 
   #        tree_cover_plot = tree_cover_mean_plot
   #        )
 
 fwrite(dt.comb, "data/processedData/cleanData/waterberg2024DataPrelim.csv")
-names(dt.comb)
+summary(dt.comb)
 n_distinct(dt.comb$tree_cover_site)
-
-
-
+sum(is.na(plot.met$MAP_plot))
+plot.met[grepl("SY", plot_ID)]$reserve
+dt.comb[grepl("SY", plot_ID)]$reserve
+setdiff(dt.comb[grepl("SY", plot_ID)]$site_ID, plot.met[grepl("SY", plot_ID)]$site_ID)
