@@ -47,6 +47,7 @@ dtVarsPlot <- dt %>% dplyr::select(  "species_per_plot",
                                      "plot_plant_fun_red",
                                      "plot_plant_fun_div_distq1",
                                      "plot_berger_parker",
+                                     "plot_max_cover_ms",
                                      
                                      ## Structure
                                      "plot_lidar_adjusted_mean_3d",
@@ -62,7 +63,8 @@ dtVarsPlot <- dt %>% dplyr::select(  "species_per_plot",
     ## Resilience 
    "Plant Functional Redundancy" = "plot_plant_fun_red",
    "Plant Functional Diversity" = "plot_plant_fun_div_distq1",
-   "Plant Dominance" = "plot_berger_parker",
+   "Plant Dominance\n(Berger-Parker)" = "plot_berger_parker",
+   "Plant Dominance\n(3 most abundant sp.)" = "plot_max_cover_ms",
     
     ## Structure
    "LiDAR Mean Distance (adj.)" = "plot_lidar_adjusted_mean_3d",
@@ -95,6 +97,7 @@ dtVarsSite <- dt %>% dplyr::select(  "species_per_site",
                                      "site_plant_fun_red",
                                      "site_plant_fun_div_distq1",
                                      "site_berger_parker",
+                                     "site_max_cover_ms",
                                      
                                      ## Structure
                                      "site_adj_mean_3d",
@@ -113,7 +116,8 @@ dtVarsSite <- dt %>% dplyr::select(  "species_per_site",
          ## Resilience 
          "Plant Functional Redundancy" = "site_plant_fun_red",
          "Plant Functional Diversity" = "site_plant_fun_div_distq1",
-         "Plant Dominance" = "site_berger_parker",
+         "Plant Dominance\n(Berger-Parker)" = "site_berger_parker",
+         "Plant Dominance\n(3 most abundant sp.)" = "site_max_cover_ms",
          
          ## Structure
          "LiDAR Mean Distance (adj.)" = "site_adj_mean_3d",
@@ -146,6 +150,7 @@ dtVarsReserve <- dt %>% dplyr::select(  "species_per_reserve",
                                      "reserve_plant_fun_red",
                                      "reserve_plant_fun_div_distq1",
                                      "reserve_berger_parker",
+                                     "reserve_max_cover_ms",
                                      
                                      ## Structure
                                      "reserve_adj_mean_3d",
@@ -162,7 +167,8 @@ dtVarsReserve <- dt %>% dplyr::select(  "species_per_reserve",
          ## Resilience 
          "Plant Functional Redundancy" = "reserve_plant_fun_red",
          "Plant Functional Diversity" = "reserve_plant_fun_div_distq1",
-         "Plant Dominance" = "reserve_berger_parker",
+         "Plant Dominance\n(Berger-Parker)" = "reserve_berger_parker",
+         "Plant Dominance\n(3 most abundant sp.)" = "reserve_max_cover_ms",
          
          ## Structure
          "LiDAR Mean Distance (adj.)" = "reserve_adj_mean_3d",
@@ -212,7 +218,7 @@ p.herbiCorr
 
 #save 
 ggsave(plot = p.exp, "builds/plots/supplement/corrExplanatories.png", dpi = 600, height = 12, width = 12)
-ggsave(plot = p.plotCorr, "builds/plots/supplement/corrPlotVars.png", dpi = 600)
-ggsave(plot = p.siteCorr, "builds/plots/supplement/corrSiteVars.png", dpi = 600)
-ggsave(plot = p.reserveCorr, "builds/plots/supplement/corrReserveVars.png", dpi = 600)
+ggsave(plot = p.plotCorr, "builds/plots/supplement/corrPlotVars.png", dpi = 600, height = 10, width = 10)
+ggsave(plot = p.siteCorr, "builds/plots/supplement/corrSiteVars.png", dpi = 600,  height = 10, width = 10)
+ggsave(plot = p.reserveCorr, "builds/plots/supplement/corrReserveVars.png", dpi = 600,  height = 10, width = 10)
 ggsave(plot = p.herbiCorr, "builds/plots/supplement/corrHerbiVars.png", dpi = 600)

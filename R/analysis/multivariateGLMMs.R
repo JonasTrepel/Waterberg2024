@@ -1,6 +1,26 @@
 ######## 
 source("R/functions/partialPred.R")
 
+cleanVars <- function(variable) {
+  cleaned <- unlist(strsplit(variable, "\\+"))
+  cleaned <- gsub("s\\(([^)]+)\\)", "\\1", cleaned)
+  cleaned <- gsub(", bs = 're'", "", cleaned)
+  cleaned <- gsub("\\s+", " ", cleaned)
+  cleaned <- gsub("\\+", ",", cleaned)
+  cleaned <- gsub(" \\,", ",", cleaned)
+  
+  cleaned <- data.table(
+    vars.clean = cleaned) %>%
+    filter(!grepl("Country", vars.clean)) %>%
+    pull() %>% unique()
+  
+  cleaned <- trimws(cleaned)
+  cleaned <- unique(cleaned)
+  
+  
+  return(cleaned)
+}
+
 library(data.table)
 library(tidyverse)
 library(MuMIn)
@@ -62,7 +82,6 @@ responses.plot <- c(
   ## Resilience 
   "plot_plant_fun_red",
   "plot_plant_fun_div_distq1",
-  "plot_max_cover_ms",
   "plot_berger_parker",
   
   ## Structure
@@ -72,15 +91,15 @@ responses.plot <- c(
 )
 
 vars.plot <- c(
-  "MAP_plot_scaled",
-  "herbi_biomass_ha_scaled",
-  "n_herbi_sp_reserve_scaled",
+  "MAP_plot_scaled + herbi_biomass_ha_scaled + n_herbi_sp_reserve_scaled + nEventsDay_scaled"
+  # "herbi_biomass_ha_scaled",
+  # "n_herbi_sp_reserve_scaled",
   # "herbi_biomass_ha_scaled*MAP_plot_scaled",
   # "n_herbi_sp_reserve_scaled*MAP_plot_scaled",
   # "grazer_mf_biomass_ha_scaled",
   # "browser_mf_biomass_ha_scaled",
   # "meanBodyMassKg_scaled", 
-  "nEventsDay_scaled"
+  # "nEventsDay_scaled"
 )
 
 ## build
@@ -93,7 +112,7 @@ guide.plot <- CJ(vars = vars.plot,
          formula = paste0(response, " ~ ", vars, " + (1 | reserve/site_ID)"), 
          intercept_only_formula = paste0(response, " ~ 1 + (1 | reserve/site_ID)"), 
          response_tier = case_when(
-           response %in% c("plot_plant_fun_red","plot_plant_fun_div_distq1", "plot_max_cover_ms", "plot_berger_parker") ~ "Resilience",
+           response %in% c("plot_plant_fun_red","plot_plant_fun_div_distq1", "plot_berger_parker") ~ "Resilience",
            response %in% c("species_per_plot", "shannon_plot") ~ "Diversity",
            response %in% c( "graminoids_per_plot","forbs_per_plot") ~ "Life Form Specific Diversity",
            response %in% c(  "plot_lidar_adjusted_mean_3d",
@@ -127,8 +146,8 @@ responses.site <- c(
   ## Resilience 
   "site_plant_fun_red",
   "site_plant_fun_div_distq1",
-  "site_max_cover_ms",
   "site_berger_parker",
+  "site_mean_beta_divq1",
   
   ## Structure
   "site_adj_mean_3d",
@@ -137,15 +156,16 @@ responses.site <- c(
 )
 
 vars.site <- c(
-  "MAP_site_scaled",
-  "herbi_biomass_ha_scaled",
-  "n_herbi_sp_reserve_scaled",
+  "MAP_site_scaled + herbi_biomass_ha_scaled + n_herbi_sp_reserve_scaled + nEventsDay_scaled"
+  # "herbi_biomass_ha_scaled",
+  # "n_herbi_sp_reserve_scaled",
   # "herbi_biomass_ha_scaled*MAP_site_scaled",
   # "n_herbi_sp_reserve_scaled*MAP_site_scaled",
   # "grazer_mf_biomass_ha_scaled",
   # "browser_mf_biomass_ha_scaled", 
   # "meanBodyMassKg_scaled", 
-  "nEventsDay_scaled")
+  # "nEventsDay_scaled"
+)
 
 ## build
 guide.site <- CJ(vars = vars.site, 
@@ -157,7 +177,7 @@ guide.site <- CJ(vars = vars.site,
          formula = paste0(response, " ~ ", vars, " + (1 | reserve)"), 
          intercept_only_formula = paste0(response, " ~ 1 + (1 | reserve)"),   
          response_tier = case_when(
-           response %in% c("site_plant_fun_red","site_plant_fun_div_distq1", "site_max_cover_ms", "site_berger_parker") ~ "Resilience",
+           response %in% c("site_plant_fun_red","site_plant_fun_div_distq1", "site_berger_parker", "site_mean_beta_divq1") ~ "Resilience",
            response %in% c("species_per_site", "shannon_site", "site_sor_beta_div") ~ "Diversity",
            response %in% c( "graminoids_per_site","forbs_per_site", "woodies_per_site") ~ "Life Form Specific Diversity",
            response %in% c(  "site_adj_mean_3d",
@@ -192,8 +212,8 @@ responses.reserve <- c(
   ## Resilience 
   "reserve_plant_fun_red",
   "reserve_plant_fun_div_distq1",
-  "reserve_max_cover_ms",
   "reserve_berger_parker",
+  "reserve_mean_beta_divq1",
   
   ## Structure
   "reserve_adj_mean_3d",
@@ -221,7 +241,7 @@ guide.reserve <- CJ(vars = vars.reserve,
          formula = paste0(response, " ~ ", vars), 
          intercept_only_formula = paste0(response, " ~ 1"), 
          response_tier = case_when(
-           response %in% c("reserve_plant_fun_red","reserve_plant_fun_div_distq1", "reserve_max_cover_ms", "reserve_berger_parker") ~ "Resilience",
+           response %in% c("reserve_plant_fun_red","reserve_plant_fun_div_distq1", "reserve_berger_parker", "reserve_mean_beta_divq1") ~ "Resilience",
            response %in% c("species_per_reserve", "shannon_reserve", "reserve_sor_beta_div") ~ "Diversity",
            response %in% c( "graminoids_per_reserve","forbs_per_reserve", "woodies_per_reserve") ~ "Life Form Specific Diversity",
            response %in% c(  "reserve_adj_mean_3d",
@@ -243,7 +263,7 @@ guide <- rbind(guide.plot, guide.site, guide.reserve) %>% filter(exclude == "kee
 
 ## test 
 
-vars <- unique(guide$vars)
+vars <- unique(guide$vars) %>% cleanVars()
 responses <- unique(guide$response)
 
 cols <- c(vars, responses)
@@ -309,55 +329,61 @@ foreach.results <- foreach(i = 1:nrow(guide),
 
                              
 #for(i in 1:nrow(guide)){                                                     
-                             tier <- guide[i,]$response_tier
-                             scale <- guide[i,]$scale
-                             formula.id <- guide[i,]$formula_id
-                             var <- guide[i,]$var
-                             
-                             clean.var <- gsub("_scaled", "", var)
-                             
-                             print(paste0(i," tier: ", tier," at scale: ", scale))
-                             
-                             guide <- guide %>% data.table() %>% as_tibble() %>% as.data.table() 
-                             
-                             filter.resp <- unique(guide[i, ]$response)
-                             
-                             #get formulas 
-                             formula <- as.formula(guide[i,]$formula)
-                             
-                             intercept_only_formula <- as.formula(guide[i,]$intercept_only_formula)
-                             
-                             #subset data 
-                             if(scale == "Plot"){
-                               dt.sub <- dt.mod %>% 
-                                 dplyr::select(all_of(var), all_of(clean.var), plot_ID, site_ID, reserve, all_of(filter.resp)) %>% 
-                                 unique() %>% filter(complete.cases(.))
-                             }
-                             
-                             if(scale == "Site"){
-                               dt.sub <- dt.mod %>% 
-                                 dplyr::select(all_of(var), all_of(clean.var), site_ID, reserve, all_of(filter.resp)) %>% 
-                                 unique() %>% filter(complete.cases(.))
-                             }
-                             
-                             if(scale == "Reserve"){
-                               dt.sub <- dt.mod %>% 
-                                 dplyr::select(all_of(var), all_of(clean.var), reserve, all_of(filter.resp)) %>% 
-                                 unique() %>% filter(complete.cases(.))
-                             }
-                             
-                             #models
-                             m0 <- tryCatch(
-                               {glmmTMB(intercept_only_formula, data = dt.sub)},
-                               error = function(e) {cat("Model", i, "failed: ", e$message, "\n") 
-                                 return(NULL) })
-                             
-                             m <- tryCatch(
-                               {glmmTMB(formula, data = dt.sub)},
-                               error = function(e) {cat("Model", i, "failed: ", e$message, "\n") 
-                                 return(NULL) })
-                             
-                             if(is.null(m)){next}
+                               tier <- guide[i,]$response_tier
+                               scale <- guide[i,]$scale
+                               formula.id <- guide[i,]$formula_id
+                               
+                               vars <- guide[i,]$var
+                               
+                               clean.vars <- gsub("_scaled", "", vars)
+                               
+                               clean.var <- cleanVars(clean.vars)
+                               vars <- cleanVars(vars)
+                               
+                               
+                               
+                               print(paste0(i," tier: ", tier," at scale: ", scale))
+                               
+                               guide <- guide %>% data.table() %>% as_tibble() %>% as.data.table() 
+                               
+                               filter.resp <- unique(guide[i, ]$response)
+                               
+                               #get formulas 
+                               formula <- as.formula(guide[i,]$formula)
+                               
+                               intercept_only_formula <- as.formula(guide[i,]$intercept_only_formula)
+                               
+                               #subset data 
+                               if(scale == "Plot"){
+                                 dt.sub <- dt.mod %>% 
+                                   dplyr::select(all_of(vars), all_of(clean.var), plot_ID, site_ID, reserve, all_of(filter.resp)) %>% 
+                                   unique() %>% filter(complete.cases(.))
+                               }
+                               
+                               if(scale == "Site"){
+                                 dt.sub <- dt.mod %>% 
+                                   dplyr::select(all_of(vars), all_of(clean.var), site_ID, reserve, all_of(filter.resp)) %>% 
+                                   unique() %>% filter(complete.cases(.))
+                               }
+                               
+                               if(scale == "Reserve"){
+                                 dt.sub <- dt.mod %>% 
+                                   dplyr::select(all_of(vars), all_of(clean.var), reserve, all_of(filter.resp)) %>% 
+                                   unique() %>% filter(complete.cases(.))
+                               }
+                               
+                               #models
+                               m0 <- tryCatch(
+                                 {glmmTMB(intercept_only_formula, data = dt.sub)},
+                                 error = function(e) {cat("Model", i, "failed: ", e$message, "\n") 
+                                   return(NULL) })
+                               
+                               m <- tryCatch(
+                                 {glmmTMB(formula, data = dt.sub)},
+                                 error = function(e) {cat("Model", i, "failed: ", e$message, "\n") 
+                                   return(NULL) })
+                               
+                               if(is.null(m)){next}
                                
                                m.sum <- summary(m)
                                
@@ -391,7 +417,7 @@ foreach.results <- foreach(i = 1:nrow(guide),
                                    deltaAicc = deltaAicc, 
                                    deltaAic = deltaAic, 
                                    deltaBIC = deltaBIC
-                                
+                                   
                                  )
                                
                                
@@ -414,7 +440,7 @@ foreach.results <- foreach(i = 1:nrow(guide),
                                  filter(!grepl("ntercept", term)) %>% 
                                  mutate(group = NULL)
                                
-                                estimates <- rbind(estimates, tmp.est)
+                               estimates <- rbind(estimates, tmp.est)
                                
                                var.names <- tidy.m %>% dplyr::select(term) %>% filter(!grepl("ntercept", term) & term != "sd__Observation") %>% filter(!grepl("\\:", term))
                                
@@ -426,7 +452,7 @@ foreach.results <- foreach(i = 1:nrow(guide),
                                    
                                    var <- var.names[j,] %>% pull()
                                    
-        
+                                   
                                    
                                    clean.var = paste0(gsub("_scaled", "", var))
                                    
@@ -488,8 +514,8 @@ foreach.results <- foreach(i = 1:nrow(guide),
                                    
                                    
                                    marg.tmp <- partialPred(model = m, response = filter.resp, var = var,
-                                                                interaction = TRUE, moderator = moderator,
-                                                                data = dt.mod, newdata = dt.mod %>% dplyr::select(-c(all_of(filter.resp))))
+                                                           interaction = TRUE, moderator = moderator,
+                                                           data = dt.mod, newdata = dt.mod %>% dplyr::select(-c(all_of(filter.resp))))
                                    
                                    moderator.clean = case_when(
                                      scale == "Plot" ~ "MAP_plot", 
@@ -513,25 +539,26 @@ foreach.results <- foreach(i = 1:nrow(guide),
                                           response = filter.resp,
                                           formula_id = formula.id)
                                  
-               pred.int <- rbind(tmp.pred.int, pred.int)
+                                 pred.int <- rbind(tmp.pred.int, pred.int)
                                  
-          }
+                               }
                                
                                
-          res.list <- list(res = res, estimates = estimates, pred = pred, pred.int = pred.int)
-          return(res.list)
-}
-
-print("loop done")
-
-stopCluster(clust)
-
-saveRDS(foreach.results, "builds/modelOutputs/univarGLMMsOct2024.Rds")
-
-toc()
-stop(pb)
-
-res <- foreach.results$res %>% unique() %>% as.data.table()
-estimates <- foreach.results$estimates %>% unique() %>% as.data.table()
-pred <- foreach.results$pred %>% unique() %>% as.data.table()
-pred.int <- foreach.results$pred.int %>% unique() %>% as.data.table()
+                               res.list <- list(res = res, estimates = estimates, pred = pred, pred.int = pred.int)
+                               return(res.list)
+ }
+                             
+                             print("loop done")
+                             
+                             stopCluster(clust)
+                             
+                             saveRDS(foreach.results, "builds/modelOutputs/multivarGLMMsOct2024.Rds")
+                             
+                             toc()
+                             stop(pb)
+                             
+                             res <- foreach.results$res %>% unique() %>% as.data.table()
+                             estimates <- foreach.results$estimates %>% unique() %>% as.data.table()
+                             pred <- foreach.results$pred %>% unique() %>% as.data.table()
+                             pred.int <- foreach.results$pred.int %>% unique() %>% as.data.table()
+                             

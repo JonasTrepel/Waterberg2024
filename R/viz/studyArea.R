@@ -86,7 +86,7 @@ library(ggridges)
 
 p1 <- dt %>% 
   ggplot() +
-  geom_point(aes(x = herbi_biomass_ha, y = herbi_fun_div_distq1, color = reserve), size = 4) +
+  geom_point(aes(x = herbi_biomass_ha, y = n_herbi_sp_reserve, color = reserve), size = 5) +
   scale_color_manual(values = c("Ant's Farm" = "#011959",
                                "Dabchick" = "#FACCFA",
                                "Jembisa" = "#828231",
@@ -97,7 +97,7 @@ p1 <- dt %>%
                                "Swebeswebe" = "#4D734D",
                                "Syringa Sands" = "#C09036",
                                "Willowisp" = "#677B3E")) +
-  labs(x = "Herbivore Biomass (kg/ha)", y = "Herbivore Functional Diversity") +
+  labs(x = "Herbivore Biomass (kg/ha)", y = "Herbivore Species Richness") +
   theme_classic() +
   theme(legend.position = "none")
 p1
@@ -145,7 +145,7 @@ p2 <- dt %>%
 p2
 
 library(gridExtra)
-p3 <- grid.arrange(p2, p1, widths = c(4, 1))
+p3 <- grid.arrange(p2, p1, widths = c(4, 1.3))
 
 ggsave(plot = p3, "builds/plots/inkscape/mapAddOns.png", dpi = 600, height = 3, width = 12)
 

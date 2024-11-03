@@ -41,29 +41,63 @@ berger_parker_d(x) # 15 / 28
 simpson(x)
 vegan::diversity(x, index = "simpson")
 
+max3plot <- dt.plot %>%
+  dplyr::select(plot_ID, site_ID, reserve, cover_percent) %>%
+  arrange(reserve, site_ID, plot_ID, desc(cover_percent)) %>%  
+  group_by(reserve, site_ID, plot_ID) %>%
+  slice_max(cover_percent, n = 3) %>% 
+  summarise(sum_cover_percent = sum(cover_percent, na.rm = TRUE))
+
 max.cover.plot <- dt.plot %>% 
   dplyr::select(plot_ID, site_ID, reserve, cover_percent) %>% 
+  left_join(max3plot) %>% 
   group_by(reserve, site_ID, plot_ID) %>% 
   summarize(plot_max_cover = max(cover_percent, na.rm = T), 
+            plot_max_cover_ms = max(sum_cover_percent)/sum(cover_percent, na.rm = T), 
             plot_berger_parker = max(cover_percent, na.rm = T)/sum(cover_percent, na.rm = T), 
             plot_simpson_dominance = vegan::diversity(cover_percent, index = "simpson"))
+
+max3site <- dt.plot %>%
+  dplyr::select(site_ID, reserve,species, cover_percent) %>%
+  group_by(reserve, site_ID, species) %>% 
+  summarize(cover_percent = sum(cover_percent, na.rm = T)) %>% 
+  ungroup() %>% 
+  arrange(reserve, site_ID, desc(cover_percent)) %>%  
+  group_by(reserve, site_ID) %>%
+  slice_max(cover_percent, n = 3) %>% 
+  summarise(sum_cover_percent = sum(cover_percent, na.rm = TRUE))
+
 
 max.cover.site <- dt.plot %>% 
   dplyr::select(site_ID, species, cover_percent, site_ID, reserve) %>% 
   group_by(reserve, site_ID, species) %>% 
   summarize(cover_percent = sum(cover_percent, na.rm = T)) %>% 
   dplyr::select(-species) %>% 
+  left_join(max3site) %>%
   group_by(reserve, site_ID) %>% 
   summarize(site_max_cover = max(cover_percent, na.rm = T)/5, 
+            site_max_cover_ms = max(sum_cover_percent)/sum(cover_percent, na.rm = T), 
           site_berger_parker = max(cover_percent, na.rm = T)/sum(cover_percent, na.rm = T), 
           site_simpson_dominance = vegan::diversity(cover_percent, index = "simpson"))
+
+max3reserve <- dt.plot %>%
+  dplyr::select(reserve, species, cover_percent) %>%
+  group_by(reserve, species) %>% 
+  summarize(cover_percent = sum(cover_percent, na.rm = T)) %>% 
+  ungroup() %>% 
+  arrange(reserve, desc(cover_percent)) %>%  
+  group_by(reserve) %>%
+  slice_max(cover_percent, n = 3) %>% 
+  summarise(sum_cover_percent = sum(cover_percent, na.rm = TRUE))
 
 max.cover.reserve <- dt.plot %>% 
   dplyr::select(site_ID, species, cover_percent, site_ID, reserve) %>% 
   group_by(reserve, species) %>% 
   summarize(cover_percent = sum(cover_percent, na.rm = T)) %>% 
+  left_join(max3reserve) %>%
   group_by(reserve)  %>% 
   summarize(reserve_max_cover = max(cover_percent, na.rm = T)/25, 
+            reserve_max_cover_ms = max(sum_cover_percent)/sum(cover_percent, na.rm = T), 
             reserve_berger_parker = max(cover_percent, na.rm = T)/sum(cover_percent, na.rm = T), 
             reserve_simpson_dominance = vegan::diversity(cover_percent, index = "simpson"))
 
