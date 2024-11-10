@@ -67,7 +67,7 @@ responses.plot <- c(
   
   ## Structure
   "plot_lidar_adjusted_mean_3d",
-  "plot_lidar_point_fraction",
+  "plot_adj_mean_3d_woody",
   "plot_lidar_sd_adjusted_3d_partial"
 )
 
@@ -97,7 +97,7 @@ guide.plot <- CJ(vars = vars.plot,
            response %in% c("species_per_plot", "shannon_plot") ~ "Diversity",
            response %in% c( "graminoids_per_plot","forbs_per_plot") ~ "Life Form Specific Diversity",
            response %in% c(  "plot_lidar_adjusted_mean_3d",
-                             "plot_lidar_point_fraction",
+                             "plot_adj_mean_3d_woody",
                              "plot_lidar_sd_adjusted_3d_partial") ~ "Structure"
          ),
          interaction = ifelse(grepl("\\*", vars), TRUE, FALSE),
@@ -132,7 +132,7 @@ responses.site <- c(
   
   ## Structure
   "site_adj_mean_3d",
-  "site_mean_return_fraction",
+  "site_adj_mean_3d_woody",
   "site_sd_adj_mean_3d"
 )
 
@@ -161,7 +161,7 @@ guide.site <- CJ(vars = vars.site,
            response %in% c("species_per_site", "shannon_site", "site_sor_beta_div") ~ "Diversity",
            response %in% c( "graminoids_per_site","forbs_per_site", "woodies_per_site") ~ "Life Form Specific Diversity",
            response %in% c(  "site_adj_mean_3d",
-                             "site_mean_return_fraction",
+                             "site_adj_mean_3d_woody",
                              "site_sd_adj_mean_3d") ~ "Structure"
          ),
          interaction = ifelse(grepl("\\*", vars), TRUE, FALSE),
@@ -197,7 +197,7 @@ responses.reserve <- c(
   
   ## Structure
   "reserve_adj_mean_3d",
-  "reserve_mean_return_fraction",
+  "reserve_adj_mean_3d_woody",
   "reserve_sd_adj_mean_3d"
   
 )
@@ -225,7 +225,7 @@ guide.reserve <- CJ(vars = vars.reserve,
            response %in% c("species_per_reserve", "shannon_reserve", "reserve_sor_beta_div") ~ "Diversity",
            response %in% c( "graminoids_per_reserve","forbs_per_reserve", "woodies_per_reserve") ~ "Life Form Specific Diversity",
            response %in% c(  "reserve_adj_mean_3d",
-                             "reserve_mean_return_fraction",
+                             "reserve_adj_mean_3d_woody",
                              "reserve_sd_adj_mean_3d") ~ "Structure"
          ),
          interaction = ifelse(grepl("\\*", vars), TRUE, FALSE),

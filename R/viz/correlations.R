@@ -215,6 +215,26 @@ p.herbiCorr <- ggcorrplot(herbiCorr, hc.order = TRUE, type = "lower",
 
 p.herbiCorr
 
+##### structure ~ Div 
+
+dtcorrStr <- dt %>%
+  dplyr::select(
+    `Species Richness` = species_per_plot,
+    `Graminoid Richness` = graminoids_per_plot,
+    `Forb Richness` = forbs_per_plot,
+    `Shannon Diversity` = shannon_plot,
+    `LiDAR Veg Density (Woody)` = plot_lidar_adjusted_mean_3d_woody,
+    `LiDAR Point Return Fraction (Woody)` = plot_lidar_fraction_points_woody,
+    `LiDAR Veg Density` = plot_lidar_adjusted_mean_3d,
+    `LiDAR Point Return Fraction` = plot_lidar_point_fraction, 
+    `LiDAR SD` = plot_lidar_sd_adjusted_3d_partial
+  ) %>%
+  filter(complete.cases(.))
+
+corrStr <- round(cor(dtcorrStr), 1)
+pCorrStr <- ggcorrplot(corrStr, hc.order = TRUE, type = "lower",
+                    lab = TRUE)
+
 
 #save 
 ggsave(plot = p.exp, "builds/plots/supplement/corrExplanatories.png", dpi = 600, height = 12, width = 12)
@@ -222,3 +242,5 @@ ggsave(plot = p.plotCorr, "builds/plots/supplement/corrPlotVars.png", dpi = 600,
 ggsave(plot = p.siteCorr, "builds/plots/supplement/corrSiteVars.png", dpi = 600,  height = 10, width = 10)
 ggsave(plot = p.reserveCorr, "builds/plots/supplement/corrReserveVars.png", dpi = 600,  height = 10, width = 10)
 ggsave(plot = p.herbiCorr, "builds/plots/supplement/corrHerbiVars.png", dpi = 600)
+ggsave(plot= pCorrStr, "builds/plots/supplement/StructureDivCorr.png", height = 10, width = 10, dpi = 600)
+

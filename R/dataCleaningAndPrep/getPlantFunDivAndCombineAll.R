@@ -1625,7 +1625,8 @@ plot.lid <- res.lid.raw2 %>%
       grepl("KA", site_ID) ~ "Kaingo", 
       grepl("SW", site_ID) ~ "Swebeswebe", 
       grepl("MA", site_ID) ~ "Marakele")
-  ) %>% as.data.table()
+  ) %>% as.data.table() %>% 
+  rename(plot_adj_mean_3d_woody = plot_lidar_adjusted_mean_3d_woody)
   
 
 site.lid <- plot.lid %>% 
@@ -1633,8 +1634,8 @@ site.lid <- plot.lid %>%
   summarize(site_adj_mean_3d = mean(plot_lidar_adjusted_mean_3d, na.rm = T),
             site_sd_adj_mean_3d = sd(plot_lidar_adjusted_mean_3d, na.rm = T), 
             
-            site_adj_mean_3d_woody = mean(plot_lidar_adjusted_mean_3d_woody, na.rm = T),
-            site_sd_adj_mean_3d_woody = sd(plot_lidar_adjusted_mean_3d_woody, na.rm = T),
+            site_adj_mean_3d_woody = mean(plot_adj_mean_3d_woody, na.rm = T),
+            site_sd_adj_mean_3d_woody = sd(plot_adj_mean_3d_woody, na.rm = T),
             site_adj_mean_3d_herb = mean(plot_lidar_adjusted_mean_3d_herb, na.rm = T),
             site_sd_adj_mean_3d_herb = sd(plot_lidar_adjusted_mean_3d_herb, na.rm = T),
             
@@ -1649,8 +1650,8 @@ reserve.lid <- plot.lid %>%
     summarize(reserve_adj_mean_3d = mean(plot_lidar_adjusted_mean_3d, na.rm = T),
               reserve_sd_adj_mean_3d = sd(plot_lidar_adjusted_mean_3d, na.rm = T), 
               
-              reserve_adj_mean_3d_woody = mean(plot_lidar_adjusted_mean_3d_woody, na.rm = T),
-              reserve_sd_adj_mean_3d_woody = sd(plot_lidar_adjusted_mean_3d_woody, na.rm = T),
+              reserve_adj_mean_3d_woody = mean(plot_adj_mean_3d_woody, na.rm = T),
+              reserve_sd_adj_mean_3d_woody = sd(plot_adj_mean_3d_woody, na.rm = T),
               reserve_adj_mean_3d_herb = mean(plot_lidar_adjusted_mean_3d_herb, na.rm = T),
               reserve_sd_adj_mean_3d_herb = sd(plot_lidar_adjusted_mean_3d_herb, na.rm = T),
               
