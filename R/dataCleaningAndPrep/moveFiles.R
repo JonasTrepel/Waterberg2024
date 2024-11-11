@@ -31,7 +31,7 @@ for(folder in unique(subfolders)){
   
   for(filename in unique(dt.files$filenames)){
     
-    genTargPath  <- "C:/Users/au713983/Documents/WaterbergCameraTrapsR12024All/RawImages/MissedInRound1/"
+    genTargPath  <- "C:/Users/au713983/Documents/WaterbergCameraTrapsR12024All/RawImages/"
     
     cleanName <- gsub(".JPG", "", filename)
     specTargPath <- paste0(genTargPath, cleanName, "_", folder, ".JPG")
