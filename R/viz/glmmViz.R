@@ -59,8 +59,8 @@ dt.est <- estimates %>%
       response %in% c("reserve_berger_parker", "site_berger_parker", "plot_berger_parker") ~ "Plant Dominance\n(Berger-Parker)",
       
       #Structure
-      response %in% c("plot_lidar_adjusted_mean_3d", "site_adj_mean_3d", "reserve_adj_mean_3d") ~ "Vegetation Density",
-      response %in% c("plot_adj_mean_3d_woody", "site_adj_mean_3d_woody", "reserve_adj_mean_3d_woody") ~ "Canopy Density",
+      response %in% c("plot_lidar_adjusted_mean_3d", "site_adj_mean_3d", "reserve_adj_mean_3d") ~ "Vegetation Openness",
+      response %in% c("plot_adj_mean_3d_woody", "site_adj_mean_3d_woody", "reserve_adj_mean_3d_woody") ~ "Canopy Openness",
       response %in% c("plot_lidar_sd_adjusted_3d_partial", "site_sd_adj_mean_3d", "reserve_sd_adj_mean_3d") ~ "LiDAR SD"), 
     scale_n = case_when(
       scale == "Plot" ~ "Plot\nn=250",
@@ -761,7 +761,7 @@ dt.est.str <- dt.est.str %>%
 
 # Plot 1
 p.str1 <- dt.est.str %>%
-  filter(clean_response == "Vegetation Density") %>%  
+  filter(clean_response == "Vegetation Openness") %>%  
   ggplot() +
   geom_vline(xintercept = 0, linetype = "dashed", color = "grey25", alpha = 0.75, linewidth = .5) +
   geom_pointrange(aes(x = estimate, xmin = ci.lb, xmax = ci.ub, y = clean_term,
@@ -802,7 +802,7 @@ p.str1
 
 # Plot 2
 p.str2 <- dt.est.str %>%
-  filter(clean_response == "Canopy Density") %>%  
+  filter(clean_response == "Canopy Openness") %>%  
   ggplot() +
   geom_vline(xintercept = 0, linetype = "dashed", color = "grey25", alpha = 0.75, linewidth = .5) +
   geom_pointrange(aes(x = estimate, xmin = ci.lb, xmax = ci.ub, y = clean_term,

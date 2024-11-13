@@ -95,6 +95,8 @@ metaDT <- metaDTRaw2 %>%
 unique(metaDT$Subject)
 unique(metaDT[is.na(metaDT$ScientificName), ]$Subject)
 
+mean(metaDT$deploymentTime) 
+sd(metaDT$deploymentTime) 
 
 unique(metaDT$Subject)
 table(metaDT$blastID)
