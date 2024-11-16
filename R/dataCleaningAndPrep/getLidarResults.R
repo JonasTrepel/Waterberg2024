@@ -61,7 +61,7 @@ for(i in 1:nrow(files)){
              X < 0 & Y > 0 ~ 270 + abs(angle_raw),
            )) %>% 
     # filter out observations more than 10 m away 
-    filter(distance_3d <= 10) %>% 
+    filter(distance_3d <= 20) %>% 
     dplyr::select(-angle_raw)
   
   (nrow(df)/possible.points)
