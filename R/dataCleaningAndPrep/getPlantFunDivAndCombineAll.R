@@ -1592,8 +1592,8 @@ dt.div.plot <- fread("data/processedData/dataFragments/plot_traits_and_div_water
 
 
 
-#### load lidar
-res.lid.raw <- fread("data/processedData/dataFragments/LidarResultsWaterberg2024Radius20m.csv")
+#### load lidar #####
+res.lid.raw <- fread("data/processedData/dataFragments/LidarResultsWaterberg2024Radius10m.csv")
 names(res.lid.raw)
 res.lid.raw2 <- res.lid.raw %>% 
   dplyr::select(
