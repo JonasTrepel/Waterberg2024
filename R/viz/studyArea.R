@@ -13,6 +13,8 @@ library(ggspatial)
 library(mapview)
 library(rnaturalearth)
 library(scico)
+library(RColorBrewer)
+
 
 reserves <- read_sf("data/spatialData/reserveLocations/waterberg2024_reserves.gpkg")
 wbr <- read_sf("data/spatialData/randomShapefiles/WaterbergBiosphereReserve/WDPA_WDOECM_Oct2024_Public_900554_shp-polygons.shp")
@@ -21,22 +23,23 @@ mapview(wbr) +mapview(reserves)
 
 
 as.character(met.brewer("Archambault", n = 10))
-#[1] "#88A0DC" "#5C5698" "#3E1E62" "#63396C" "#905877" "#CE8185" "#DB7B71" "#B6443A" "#C05029" "#E17C29" "#EFA738" "#F9D14A"
+brewer.pal(n = 10, "Paired")
+# "#A6CEE3" "#1F78B4" "#B2DF8A" "#33A02C" "#FB9A99" "#E31A1C" "#FDBF6F" "#FF7F00" "#CAB2D6" "#6A3D9A"
 
 p.loc <- ggplot() +
-  geom_sf(data = wbr, color = NA) +
-  geom_sf(data = reserves,  aes(fill = reserve)) +
-  annotation_scale(location = "bl",bar_cols = c("grey75", "grey25")) +
-  scale_fill_manual(values = c("Ants Farm" = "#011959",
-                               "Dabchick" = "#FACCFA",
-                               "Jembisa" = "#828231",
-                               "Kaingo" = "#226061",
-                               "Lapalala" = "#F19D6B",
-                               "Marakele" = "#114360" ,
-                               "Summerplace" = "#FDB4B4",
-                               "Swebeswebe" = "#4D734D",
-                               "Syringa Sands" = "#C09036",
-                               "Willowisp" = "#677B3E")) +
+  geom_sf(data = wbr %>% st_transform(crs = "EPSG:32735"), color = NA) +
+  geom_sf(data = reserves %>% st_transform(crs = "EPSG:32735"),  aes(fill = reserve)) +
+  annotation_scale(location = "bl", bar_cols = c("grey95", "grey25")) +
+  scale_fill_manual(values = c("Ants Farm" = "#33A02C",
+                               "Dabchick" = "#B2DF8A",
+                               "Jembisa" = "#FF7F00",
+                               "Kaingo" = "#CAB2D6",
+                               "Lapalala" = "#6A3D9A",
+                               "Marakele" = "#FB9A99" ,
+                               "Summerplace" = "#A6CEE3",
+                               "Swebeswebe" = "#1F78B4",
+                               "Syringa Sands" = "#FDBF6F",
+                               "Willowisp" = "#E31A1C")) +
  # scale_fill_scico_d(palette = "nuuk") +
  # scale_color_met_d(name = "Cassatt2") +
   theme_void() +
@@ -60,7 +63,7 @@ p.africa
 ggsave(plot = p.africa, "builds/plots/inkscape/africa.png", dpi = 600)
 
 
-south.africa <- ne_countries(scale = 10, country = "South Africa") %>% st_transform(crs = 4326)
+south.africa <- ne_countries(scale = 50, country = "South Africa") %>% st_transform(crs = 4326)
 mapview::mapview(south.africa)
 
 p.south.africa <- ggplot() +
@@ -87,16 +90,16 @@ library(ggridges)
 p1 <- dt %>% 
   ggplot() +
   geom_point(aes(x = herbi_biomass_ha, y = n_herbi_sp_reserve, color = reserve), size = 5) +
-  scale_color_manual(values = c("Ant's Farm" = "#011959",
-                               "Dabchick" = "#FACCFA",
-                               "Jembisa" = "#828231",
-                               "Kaingo" = "#226061",
-                               "Lapalala" = "#F19D6B",
-                               "Marakele" = "#114360" ,
-                               "Summerplace" = "#FDB4B4",
-                               "Swebeswebe" = "#4D734D",
-                               "Syringa Sands" = "#C09036",
-                               "Willowisp" = "#677B3E")) +
+  scale_color_manual(values = c("Ant's Farm" = "#33A02C",
+                               "Dabchick" = "#B2DF8A",
+                               "Jembisa" = "#FF7F00",
+                               "Kaingo" = "#CAB2D6",
+                               "Lapalala" = "#6A3D9A",
+                               "Marakele" = "#FB9A99" ,
+                               "Summerplace" = "#A6CEE3",
+                               "Swebeswebe" = "#1F78B4",
+                               "Syringa Sands" = "#FDBF6F",
+                               "Willowisp" = "#E31A1C")) +
   labs(x = "Herbivore Biomass (kg/ha)", y = "Herbivore Species Richness") +
   theme_classic() +
   theme(legend.position = "none")
@@ -113,18 +116,18 @@ p2 <- dt %>%
     VarName == "woodies_per_site" ~ "Woody Species Richness"
   )) %>% 
   ggplot() +
-  geom_density_ridges(aes(x = VarValue, y = reserve, fill = reserve), alpha = 0.9) +
+  geom_density_ridges(aes(x = VarValue, y = fct_rev(reserve), fill = reserve), alpha = 0.9) +
   facet_wrap(~VarName, scales = "free_x", ncol = 4) +
-  scale_fill_manual(values = c("Ant's Farm" = "#011959",
-                                "Dabchick" = "#FACCFA",
-                                "Jembisa" = "#828231",
-                                "Kaingo" = "#226061",
-                                "Lapalala" = "#F19D6B",
-                                "Marakele" = "#114360" ,
-                                "Summerplace" = "#FDB4B4",
-                                "Swebeswebe" = "#4D734D",
-                                "Syringa Sands" = "#C09036",
-                                "Willowisp" = "#677B3E")) +
+  scale_fill_manual(values = c("Ant's Farm" = "#33A02C",
+                               "Dabchick" = "#B2DF8A",
+                               "Jembisa" = "#FF7F00",
+                               "Kaingo" = "#CAB2D6",
+                               "Lapalala" = "#6A3D9A",
+                               "Marakele" = "#FB9A99" ,
+                               "Summerplace" = "#A6CEE3",
+                               "Swebeswebe" = "#1F78B4",
+                               "Syringa Sands" = "#FDBF6F",
+                               "Willowisp" = "#E31A1C")) +
   labs(x = "", y = "") +
   theme_bw() + 
   theme(legend.position = "none", 

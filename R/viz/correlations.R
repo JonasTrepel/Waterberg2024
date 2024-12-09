@@ -237,7 +237,7 @@ pCorrStr <- ggcorrplot(corrStr, hc.order = TRUE, type = "lower",
 
 
 #save 
-ggsave(plot = p.exp, "builds/plots/supplement/corrExplanatories.png", dpi = 600, height = 12, width = 12)
+ggsave(plot = p.exp, "builds/plots/supplement/corrExplanatories.png", dpi = 600, height = 8, width = 8)
 ggsave(plot = p.plotCorr, "builds/plots/supplement/corrPlotVars.png", dpi = 600, height = 10, width = 10)
 ggsave(plot = p.siteCorr, "builds/plots/supplement/corrSiteVars.png", dpi = 600,  height = 10, width = 10)
 ggsave(plot = p.reserveCorr, "builds/plots/supplement/corrReserveVars.png", dpi = 600,  height = 10, width = 10)

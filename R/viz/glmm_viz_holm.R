@@ -72,7 +72,7 @@ dt.est <- estimates %>%
   left_join(res) %>% 
   group_by(response) %>% 
   mutate(
-    p.adj = p.adjust(p.value, method = "holm")) %>%
+    p.adj = p.adjust(p.value, method = "BH")) %>%
   ungroup() %>%
   mutate(
     sig = ifelse(p.adj < .05, "significant", "non-significant"),
@@ -316,7 +316,7 @@ as_ggplot(div.leg)
 p.div.raw <- gridExtra::grid.arrange(p.div1, p.div2, p.div3, heights = c(1.2, 1, 1, 0.4))
 p.div <- gridExtra::grid.arrange(p.div.raw, div.leg, widths = c(3, 1)) 
 
-ggsave(plot = p.div, "builds/plots/diversityGridGLMM.png", dpi = 600, height =9, width = 12)
+ggsave(plot = p.div, "builds/plots/diversityGridGLMM_bh.png", dpi = 600, height =9, width = 12)
 
 
 #### Life Form Specific Diversity -------------------------------------------------- 
@@ -498,7 +498,7 @@ p.lfd.raw <- gridExtra::grid.arrange(p.lfd1, p.lfd2, p.lfd3, heights = c(1.2, 1,
 p.lfd <- gridExtra::grid.arrange(p.lfd.raw, lfd.leg, widths = c(3, 1))
 
 
-ggsave(plot = p.lfd, "builds/plots/lifeFormDivGridGLMM.png", dpi = 600, height = 8, width = 12)
+ggsave(plot = p.lfd, "builds/plots/lifeFormDivGridGLMM_bh.png", dpi = 600, height = 8, width = 12)
 
 #### Resilience -------------------------------------------------- 
 
@@ -728,7 +728,7 @@ p.resi.raw <- gridExtra::grid.arrange(p.resi1, p.resi1.5, p.resi2, p.resi3, heig
 p.resi <- gridExtra::grid.arrange(p.resi.raw, resi.leg, widths = c(3, 1))
 
 
-ggsave(plot = p.resi, "builds/plots/resilienceGridGLMM.png", dpi = 600, height = 11, width = 12)
+ggsave(plot = p.resi, "builds/plots/resilienceGridGLMM_bh.png", dpi = 600, height = 11, width = 12)
 
 
 #### Structure ---------------------
@@ -919,7 +919,7 @@ as_ggplot(resi.leg)
 p.str.raw <- gridExtra::grid.arrange(p.str1, p.str2, p.str3, heights = c(1.2, 1, 1))
 p.str <- gridExtra::grid.arrange(p.str.raw, str.leg, widths = c(3, 1))
 
-ggsave(plot = p.str, "builds/plots/structureGridGLMM.png", dpi = 600, height = 9, width = 12)
+ggsave(plot = p.str, "builds/plots/structureGridGLMM_bh.png", dpi = 600, height = 9, width = 12)
 
 
 #### Trends ---------------------------
