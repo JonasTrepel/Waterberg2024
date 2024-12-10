@@ -536,7 +536,7 @@ p.resi1.5 <- dt.est.resi %>%
                               "Positive estimate;\nCI not overlapping 0" =  "#E17C29",
                               "Negative estimate;\nCI not overlapping 0" = "#3E1E62")) +
   facet_grid(cols = vars(scale_n), rows = vars(clean_response), scales = "free_x", drop = FALSE) +
-  labs(y = "", x = "Estimate", title = "Resilience Related Responses", 
+  labs(y = "", x = "Estimate", title = "Resilience-Related Responses", 
        alpha = "Quality:", color = "Significance:", shape = "Quality:") +
   scale_x_continuous(breaks = scales::breaks_pretty(n = 3))+
   theme_bw() +
