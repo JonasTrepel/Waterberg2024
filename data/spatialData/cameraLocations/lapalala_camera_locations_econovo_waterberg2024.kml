@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document id="root_doc">
+<Schema name="lapalala_camera_locations_econovo_waterberg2024" id="lapalala_camera_locations_econovo_waterberg2024">
+	<SimpleField name="plot_ID" type="string"></SimpleField>
+	<SimpleField name="photo" type="string"></SimpleField>
+	<SimpleField name="notes." type="string"></SimpleField>
+	<SimpleField name="date_time" type="string"></SimpleField>
+</Schema>
+<Folder><name>lapalala_camera_locations_econovo_waterberg2024</name>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#lapalala_camera_locations_econovo_waterberg2024">
+		<SimpleData name="plot_ID">ECO_02</SimpleData>
+		<SimpleData name="photo">DCIM/JPEG_20240220101117653.JPG</SimpleData>
+		<SimpleData name="date_time">2024/02/20 11:11:30.201+00</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>28.3621566666667,-23.8539116666667</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#lapalala_camera_locations_econovo_waterberg2024">
+		<SimpleData name="plot_ID">ECO_03</SimpleData>
+		<SimpleData name="photo">DCIM/JPEG_20240220134300505.JPG</SimpleData>
+		<SimpleData name="date_time">2024/02/20 14:43:19.927+00</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>28.3571766666667,-23.8367933333333</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#lapalala_camera_locations_econovo_waterberg2024">
+		<SimpleData name="plot_ID">ECO_05</SimpleData>
+		<SimpleData name="photo">DCIM/JPEG_20240220144718432.JPG</SimpleData>
+		<SimpleData name="notes.">Camera angled slightly away from plot</SimpleData>
+		<SimpleData name="date_time">2024/02/20 15:45:21.396+00</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>28.3718116666667,-23.7797066666667</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#lapalala_camera_locations_econovo_waterberg2024">
+		<SimpleData name="plot_ID">ECO_04</SimpleData>
+		<SimpleData name="photo">DCIM/JPEG_20240220151702020.JPG</SimpleData>
+		<SimpleData name="date_time">2024/02/20 16:14:33.363+00</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>28.3575333333333,-23.8156466666667</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#lapalala_camera_locations_econovo_waterberg2024">
+		<SimpleData name="plot_ID">ECO_01</SimpleData>
+		<SimpleData name="notes.">No picture. Cam is facing half the plot, half a more open areas</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>28.3592735195339,-23.8698944565165</coordinates></Point>
+  </Placemark>
+</Folder>
+</Document></kml>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document id="root_doc">
+<Schema name="summerplace_camera_locations_econovo_waterberg2024" id="summerplace_camera_locations_econovo_waterberg2024">
+	<SimpleField name="plot_ID" type="string"></SimpleField>
+	<SimpleField name="photo" type="string"></SimpleField>
+	<SimpleField name="notes." type="string"></SimpleField>
+	<SimpleField name="date_time" type="string"></SimpleField>
+</Schema>
+<Folder><name>summerplace_camera_locations_econovo_waterberg2024</name>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#summerplace_camera_locations_econovo_waterberg2024">
+		<SimpleData name="plot_ID">ECO_21</SimpleData>
+		<SimpleData name="photo">DCIM/JPEG_20240301141146003.JPG</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>28.223065,-24.1426716666667</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#summerplace_camera_locations_econovo_waterberg2024">
+		<SimpleData name="plot_ID">ECO_22</SimpleData>
+		<SimpleData name="photo">DCIM/JPEG_20240302095140936.JPG</SimpleData>
+		<SimpleData name="date_time">2024/03/02 10:51:32.784+00</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>28.2059733333333,-24.1419916666667</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#summerplace_camera_locations_econovo_waterberg2024">
+		<SimpleData name="plot_ID">ECO_23</SimpleData>
+		<SimpleData name="photo">DCIM/JPEG_20240302122731470.JPG</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>28.20995,-24.12108</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#summerplace_camera_locations_econovo_waterberg2024">
+		<SimpleData name="plot_ID">ECO_24</SimpleData>
+		<SimpleData name="photo">DCIM/JPEG_20240303070158759.JPG</SimpleData>
+		<SimpleData name="date_time">2024/03/03 08:01:48.318+00</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>28.1814516666667,-24.0953583333333</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#summerplace_camera_locations_econovo_waterberg2024">
+		<SimpleData name="plot_ID">ECO_25</SimpleData>
+		<SimpleData name="photo">DCIM/JPEG_20240303122153562.JPG</SimpleData>
+		<SimpleData name="date_time">2024/03/03 13:21:42.416+00</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>28.1657983333333,-24.11678</coordinates></Point>
+  </Placemark>
+</Folder>
+</Document></kml>
