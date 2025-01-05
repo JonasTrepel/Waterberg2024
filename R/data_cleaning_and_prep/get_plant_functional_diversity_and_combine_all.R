@@ -1702,7 +1702,7 @@ dt.comb <- dt.fd.plot.level %>%
   #        tree_cover_plot = tree_cover_mean_plot
   #        )
 
-fwrite(dt.comb, "data/processedData/cleanData/waterberg2024DataPrelim.csv")
+fwrite(dt.comb, "data/processedData/cleanData/waterberg_2024_main_dataset.csv")
 summary(dt.comb)
 n_distinct(dt.comb$tree_cover_site)
 sum(is.na(plot.met$MAP_plot))

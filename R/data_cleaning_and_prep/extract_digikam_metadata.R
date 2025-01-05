@@ -10,8 +10,6 @@ sitesAndCams <- fread("data/processedData/dataFragments/SitesAndCams.csv")
 filesRaw <- list.files("/Volumes/TOSHIBA EXT/WaterbergCameraTraps2024/R1Processed", pattern = "JPG", full.names = TRUE)
 files <- filesRaw
 
-## Optional: 
-#files <- data.table(files = filesRaw) %>% sample_n(100) %>% pull()
 
 metaDTRaw <- exifr::read_exif(files, quiet = TRUE, tags = c("Directory", "FileName", "DateTimeOriginal", "Subject", 
                                                          "TagsList", "Keywords"))
@@ -35,9 +33,6 @@ metaDTRaw2 <- metaDTRaw %>%
 fwrite(metaDTRaw2, "data/processedData/dataFragments/cameraTrapMetaDataR1.csv")
 metaDTRaw2 <- fread("data/processedData/dataFragments/cameraTrapMetaDataR1.csv")
 
-
-nicePics <- metaDTRaw2 %>% 
-  filter(Subject %in% c("ParticularlyBeautiful"))
 
 #fwrite(nicePics, "data/processedData/dataFragments/cameraTrapR1NicePics.csv")
 
@@ -163,5 +158,45 @@ n_distinct(metaDT$blastID)
 
 fwrite(cameraTrapResults, "data/processedData/dataFragments/cameraTrapObs.csv")
 
+###### explore if we can separate by feeding guilds 
 
-### loading more metadata from the ecoAssist output 
+browser_events_site <- metaDT %>% 
+  filter(GuildWithOmnivory == "Browser") %>% 
+  group_by(site_ID) %>% 
+  summarize(nEvents = n_distinct(blastID), 
+            n_events_day_browser = (nEvents/deploymentTime)) %>% 
+  unique() %>% 
+  left_join(sitesAndCams) %>% 
+  dplyr::select(-plot_ID, - nEvents)
+
+
+grazer_events_site <- metaDT %>% 
+  filter(GuildWithOmnivory == "Grazer") %>% 
+  group_by(site_ID) %>% 
+  summarize(nEvents = n_distinct(blastID), 
+            n_events_day_grazer = (nEvents/deploymentTime)) %>% 
+  unique() %>% 
+  left_join(sitesAndCams) %>% 
+  dplyr::select(-plot_ID, - nEvents)
+
+mixed_events_site <- metaDT %>% 
+  filter(GuildWithOmnivory == "Mixed Feeder") %>% 
+  group_by(site_ID) %>% 
+  summarize(nEvents = n_distinct(blastID), 
+            n_events_day_mixed = (nEvents/deploymentTime)) %>% 
+  unique() %>% 
+  left_join(sitesAndCams) %>% 
+  dplyr::select(-plot_ID, - nEvents)
+
+
+guild_events <- eventsPerSite %>% 
+  left_join(browser_events_site) %>% 
+  left_join(mixed_events_site) %>% 
+  left_join(grazer_events_site) %>% 
+  rename(n_events_day_total = nEventsDay) %>% 
+  ungroup() %>% 
+  dplyr::select(n_events_day_total, n_events_day_browser, n_events_day_grazer, n_events_day_mixed)
+
+library(GGally)
+
+ggpairs(guild_events) # dang, correlations of guild specific and total visitation rates are annoyingly high. 

@@ -12,7 +12,7 @@ library(glmmTMB)
 library("sjPlot")
 
 
-dt <- fread("data/processedData/cleanData/waterberg2024DataPrelim.csv")
+dt <- fread("data/processedData/cleanData/waterberg_2024_main_dataset.csv")
 names(dt)
 
 ## to dos: 

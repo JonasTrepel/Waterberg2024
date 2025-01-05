@@ -9,7 +9,7 @@ library(tidybayes)
 library(ggpubr)
 
 
-dt <- fread("data/processedData/cleanData/waterberg2024DataPrelim.csv") %>% 
+dt <- fread("data/processedData/cleanData/waterberg_2024_main_dataset.csv") %>% 
   rename(species_per_reserve = total_plant_species_richness_reserve, 
          species_per_site = total_plant_species_richness_site, 
          reserve_mean_beta_divq1 = mean_beta_divq1)

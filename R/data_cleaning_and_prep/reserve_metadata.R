@@ -591,6 +591,7 @@ dt.sf.cov4 <- dt.sf.cov3 %>%
 # 
 
 dt.sf.cov5 <- dt.sf.cov4
+
 ## Fire frequency ---------------
 fir <- rast("../../../../resources/spatial/Fire/FireEventsBetween2001And2024_SA.tif")
 #plot(fir)

@@ -61,7 +61,7 @@ for(i in 1:nrow(files)){
              X < 0 & Y > 0 ~ 270 + abs(angle_raw),
            )) %>% 
     # filter out observations more than 10 m away 
-    filter(distance_3d <= 20) %>% 
+    filter(distance_3d <= 10) %>% 
     dplyr::select(-angle_raw)
   
   (nrow(df)/possible.points)
@@ -184,4 +184,4 @@ for(i in 1:nrow(files)){
 
 reserve_lidar <- res %>% unique()
 
-fwrite(reserve_lidar, "data/processedData/dataFragments/LidarResultsWaterberg2024Radius20m.csv")
+fwrite(reserve_lidar, "data/processedData/dataFragments/LidarResultsWaterberg2024Radius10m.csv")

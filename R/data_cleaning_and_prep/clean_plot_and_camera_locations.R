@@ -59,8 +59,6 @@ st_write(plots, "data/spatialData/plotLocations/plot_locations_clean_waterberg20
 st_write(plots, "data/spatialData/plotLocations/plot_locations_clean_waterberg2024.kml", append = FALSE)
 
 
-
-
 ### sites 
 
 sites <- plots %>% 
