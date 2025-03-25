@@ -249,23 +249,23 @@ p_fd_none1 <- dt_fd_none %>%
   theme_first
 p_fd_none1
 
-p_fd_none2 <- dt_fd_none %>% 
-  filter(clean_response == "Plant Functional\nDiversity") %>% 
-  ggplot() +
-  geom_vline(xintercept = 0, linetype = "dashed", color = "grey25", alpha = 0.75, linewidth = .5) +
-  geom_pointrange(aes(x = estimate, xmin = ci_lb, xmax = ci_ub, y = clean_term,
-                      color = sig, fill = sig),
-                  linewidth = 1.5, size = 1.1, alpha = 0.85, shape = 23) +
-  scale_fill_manual(values=c("Non-Significant" = "gray50",
-                             "Significant" =  "darkorange"), guide = "none") + 
-  scale_color_manual(values=c("Non-Significant" = "gray50",
-                              "Significant" =  "darkorange")) +
-  facet_grid(cols = vars(scale_n), rows = vars(clean_response), scales = "free_x", drop = FALSE) +
-  labs(y = "", x = "Estimate", title = "Diversity Responses", alpha = "Quality:", color = "Significance:", shape = "Quality:") +
-  theme_bw() +
-  scale_x_continuous(breaks = scales::breaks_pretty(n = 3))+
-  theme_lower
-p_fd_none2
+# p_fd_none2 <- dt_fd_none %>% 
+#   filter(clean_response == "Plant Functional\nDiversity") %>% 
+#   ggplot() +
+#   geom_vline(xintercept = 0, linetype = "dashed", color = "grey25", alpha = 0.75, linewidth = .5) +
+#   geom_pointrange(aes(x = estimate, xmin = ci_lb, xmax = ci_ub, y = clean_term,
+#                       color = sig, fill = sig),
+#                   linewidth = 1.5, size = 1.1, alpha = 0.85, shape = 23) +
+#   scale_fill_manual(values=c("Non-Significant" = "gray50",
+#                              "Significant" =  "darkorange"), guide = "none") + 
+#   scale_color_manual(values=c("Non-Significant" = "gray50",
+#                               "Significant" =  "darkorange")) +
+#   facet_grid(cols = vars(scale_n), rows = vars(clean_response), scales = "free_x", drop = FALSE) +
+#   labs(y = "", x = "Estimate", title = "Diversity Responses", alpha = "Quality:", color = "Significance:", shape = "Quality:") +
+#   theme_bw() +
+#   scale_x_continuous(breaks = scales::breaks_pretty(n = 3))+
+#   theme_lower
+# p_fd_none2
 
 p_fd_none3 <- dt_fd_none %>% 
   filter(clean_response == "Plant Functional\nRedundancy") %>% 
@@ -287,7 +287,7 @@ p_fd_none3
 
 empty_plot <- ggplot() + theme_void()
 
-p_fd_none <- gridExtra::grid.arrange(p_fd_none1, p_fd_none2, p_fd_none3, empty_plot, heights = c(1.5, 1, 1, 1))
+p_fd_none <- gridExtra::grid.arrange(p_fd_none1, p_fd_none3, empty_plot, empty_plot, heights = c(1.5, 1, 1, 1))
 
 p_div_none <- gridExtra::grid.arrange(p_div_none1, p_div_none2, p_div_none3, p_div_none4, heights = c(1.5, 1, 1, 1))
 
@@ -422,23 +422,23 @@ p_fd_map1 <- dt_map_fd_map %>%
   theme_first
 p_fd_map1
 
-p_fd_map2 <- dt_map_fd_map %>% 
-  filter(clean_response == "Plant Functional\nDiversity") %>% 
-  ggplot() +
-  geom_vline(xintercept = 0, linetype = "dashed", color = "grey25", alpha = 0.75, linewidth = .5) +
-  geom_pointrange(aes(x = estimate, xmin = ci_lb, xmax = ci_ub, y = clean_term,
-                      color = sig, fill = sig),
-                  linewidth = 1.5, size = 1.1, alpha = 0.85, shape = 23) +
-  scale_fill_manual(values=c("Non-Significant" = "gray50",
-                             "Significant" =  "darkorange"), guide = "none") + 
-  scale_color_manual(values=c("Non-Significant" = "gray50",
-                              "Significant" =  "darkorange")) +
-  facet_grid(cols = vars(scale_n), rows = vars(clean_response), scales = "free_x", drop = FALSE) +
-  labs(y = "", x = "Estimate", title = "Diversity Responses", alpha = "Quality:", color = "Significance:", shape = "Quality:") +
-  theme_bw() +
-  scale_x_continuous(breaks = scales::breaks_pretty(n = 3))+
-  theme_lower
-p_fd_map2
+# p_fd_map2 <- dt_map_fd_map %>% 
+#   filter(clean_response == "Plant Functional\nDiversity") %>% 
+#   ggplot() +
+#   geom_vline(xintercept = 0, linetype = "dashed", color = "grey25", alpha = 0.75, linewidth = .5) +
+#   geom_pointrange(aes(x = estimate, xmin = ci_lb, xmax = ci_ub, y = clean_term,
+#                       color = sig, fill = sig),
+#                   linewidth = 1.5, size = 1.1, alpha = 0.85, shape = 23) +
+#   scale_fill_manual(values=c("Non-Significant" = "gray50",
+#                              "Significant" =  "darkorange"), guide = "none") + 
+#   scale_color_manual(values=c("Non-Significant" = "gray50",
+#                               "Significant" =  "darkorange")) +
+#   facet_grid(cols = vars(scale_n), rows = vars(clean_response), scales = "free_x", drop = FALSE) +
+#   labs(y = "", x = "Estimate", title = "Diversity Responses", alpha = "Quality:", color = "Significance:", shape = "Quality:") +
+#   theme_bw() +
+#   scale_x_continuous(breaks = scales::breaks_pretty(n = 3))+
+#   theme_lower
+# p_fd_map2
 
 p_fd_map3 <- dt_map_fd_map %>% 
   filter(clean_response == "Plant Functional\nRedundancy") %>% 
@@ -460,7 +460,7 @@ p_fd_map3
 
 empty_plot <- ggplot() + theme_void()
 
-p_fd_map <- gridExtra::grid.arrange(p_fd_map1, p_fd_map2, p_fd_map3, empty_plot, heights = c(1.5, 1, 1, 1))
+p_fd_map <- gridExtra::grid.arrange(p_fd_map1, p_fd_map3, empty_plot, empty_plot, heights = c(1.5, 1, 1, 1))
 
 p_div_map <- gridExtra::grid.arrange(p_div_map1, p_div_map2, p_div_map3, p_div_map4, heights = c(1.5, 1, 1, 1))
 
@@ -594,33 +594,33 @@ p_fd_mat1 <- dt_mat_fd_mat %>%
   theme_first
 p_fd_mat1
 
-p_fd_mat2 <- dt_mat_fd_mat %>% 
-  filter(clean_response == "Plant Functional\nDiversity") %>% 
-  ggplot() +
-  geom_vline(xintercept = 0, linetype = "dashed", color = "grey25", alpha = 0.75, linewidth = .5) +
-  geom_pointrange(aes(x = estimate, xmin = ci_lb, xmax = ci_ub, y = clean_term,
-                      color = sig, fill = sig),
-                  linewidth = 1.5, size = 1.1, alpha = 0.85, shape = 23) +
-  scale_fill_manual(values=c("Non-Significant" = "gray50",
-                             "Significant" =  "darkorange"), guide = "none") + 
-  scale_color_manual(values=c("Non-Significant" = "gray50",
-                              "Significant" =  "darkorange")) +
-  facet_grid(cols = vars(scale_n), rows = vars(clean_response), scales = "free_x", drop = FALSE) +
-  labs(y = "", x = "Estimate", title = "Diversity Responses", alpha = "Quality:", color = "Significance:", shape = "Quality:") +
-  theme_bw() +
-  scale_x_continuous(breaks = scales::breaks_pretty(n = 3))+
-  theme_lower
-p_fd_mat2
+# p_fd_mat2 <- dt_mat_fd_mat %>% 
+#   filter(clean_response == "Plant Functional\nDiversity") %>% 
+#   ggplot() +
+#   geom_vline(xintercept = 0, linetype = "dashed", color = "grey25", alpha = 0.75, linewidth = .5) +
+#   geom_pointrange(aes(x = estimate, xmin = ci_lb, xmax = ci_ub, y = clean_term,
+#                       color = sig, fill = sig),
+#                   linewidth = 1.5, size = 1.1, alpha = 0.85, shape = 23) +
+#   scale_fill_manual(values=c("Non-Significant" = "gray50",
+#                              "Significant" =  "darkorange"), guide = "none") + 
+#   scale_color_manual(values=c("Non-Significant" = "gray50",
+#                               "Significant" =  "darkorange")) +
+#   facet_grid(cols = vars(scale_n), rows = vars(clean_response), scales = "free_x", drop = FALSE) +
+#   labs(y = "", x = "Estimate", title = "Diversity Responses", alpha = "Quality:", color = "Significance:", shape = "Quality:") +
+#   theme_bw() +
+#   scale_x_continuous(breaks = scales::breaks_pretty(n = 3))+
+#   theme_lower
+# p_fd_mat2
 
-p_fd_mat3 <- dt_mat_fd_mat %>% 
-  filter(clean_response == "Plant Functional\nRedundancy") %>% 
+p_fd_mat3 <- dt_mat_fd_mat %>%
+  filter(clean_response == "Plant Functional\nRedundancy") %>%
   ggplot() +
   geom_vline(xintercept = 0, linetype = "dashed", color = "grey25", alpha = 0.75, linewidth = .5) +
   geom_pointrange(aes(x = estimate, xmin = ci_lb, xmax = ci_ub, y = clean_term,
                       color = sig, fill = sig),
                   linewidth = 1.5, size = 1.1, alpha = 0.85, shape = 23) +
   scale_fill_manual(values=c("Non-Significant" = "gray50",
-                             "Significant" =  "darkorange"), guide = "none") + 
+                             "Significant" =  "darkorange"), guide = "none") +
   scale_color_manual(values=c("Non-Significant" = "gray50",
                               "Significant" =  "darkorange")) +
   facet_grid(cols = vars(scale_n), rows = vars(clean_response), scales = "free_x", drop = FALSE) +
@@ -632,7 +632,7 @@ p_fd_mat3
 
 empty_plot <- ggplot() + theme_void()
 
-p_fd_mat <- gridExtra::grid.arrange(p_fd_mat1, p_fd_mat2, p_fd_mat3, empty_plot, heights = c(1.5, 1, 1, 1))
+p_fd_mat <- gridExtra::grid.arrange(p_fd_mat1, p_fd_mat3, empty_plot, empty_plot, heights = c(1.5, 1, 1, 1))
 
 p_div_mat <- gridExtra::grid.arrange(p_div_mat1, p_div_mat2, p_div_mat3, p_div_mat4, heights = c(1.5, 1, 1, 1))
 
@@ -767,23 +767,23 @@ p_fd_elevation1 <- dt_est_fd_elevation %>%
   theme_first
 p_fd_elevation1
 
-p_fd_elevation2 <- dt_est_fd_elevation %>% 
-  filter(clean_response == "Plant Functional\nDiversity") %>% 
-  ggplot() +
-  geom_vline(xintercept = 0, linetype = "dashed", color = "grey25", alpha = 0.75, linewidth = .5) +
-  geom_pointrange(aes(x = estimate, xmin = ci_lb, xmax = ci_ub, y = clean_term,
-                      color = sig, fill = sig),
-                  linewidth = 1.5, size = 1.1, alpha = 0.85, shape = 23) +
-  scale_fill_manual(values=c("Non-Significant" = "gray50",
-                             "Significant" =  "darkorange"), guide = "none") + 
-  scale_color_manual(values=c("Non-Significant" = "gray50",
-                              "Significant" =  "darkorange")) +
-  facet_grid(cols = vars(scale_n), rows = vars(clean_response), scales = "free_x", drop = FALSE) +
-  labs(y = "", x = "estimate", title = "Diversity Responses", alpha = "Quality:", color = "Significance:", shape = "Quality:") +
-  theme_bw() +
-  scale_x_continuous(breaks = scales::breaks_pretty(n = 3))+
-  theme_lower
-p_fd_elevation2
+# p_fd_elevation2 <- dt_est_fd_elevation %>% 
+#   filter(clean_response == "Plant Functional\nDiversity") %>% 
+#   ggplot() +
+#   geom_vline(xintercept = 0, linetype = "dashed", color = "grey25", alpha = 0.75, linewidth = .5) +
+#   geom_pointrange(aes(x = estimate, xmin = ci_lb, xmax = ci_ub, y = clean_term,
+#                       color = sig, fill = sig),
+#                   linewidth = 1.5, size = 1.1, alpha = 0.85, shape = 23) +
+#   scale_fill_manual(values=c("Non-Significant" = "gray50",
+#                              "Significant" =  "darkorange"), guide = "none") + 
+#   scale_color_manual(values=c("Non-Significant" = "gray50",
+#                               "Significant" =  "darkorange")) +
+#   facet_grid(cols = vars(scale_n), rows = vars(clean_response), scales = "free_x", drop = FALSE) +
+#   labs(y = "", x = "estimate", title = "Diversity Responses", alpha = "Quality:", color = "Significance:", shape = "Quality:") +
+#   theme_bw() +
+#   scale_x_continuous(breaks = scales::breaks_pretty(n = 3))+
+#   theme_lower
+# p_fd_elevation2
 
 p_fd_elevation3 <- dt_est_fd_elevation %>% 
   filter(clean_response == "Plant Functional\nRedundancy") %>% 
@@ -805,7 +805,7 @@ p_fd_elevation3
 
 empty_plot <- ggplot() + theme_void()
 
-p_fd_elevation <- gridExtra::grid.arrange(p_fd_elevation1, p_fd_elevation2, p_fd_elevation3, empty_plot, heights = c(1.5, 1, 1, 1))
+p_fd_elevation <- gridExtra::grid.arrange(p_fd_elevation1, p_fd_elevation3, empty_plot, empty_plot, heights = c(1.5, 1, 1, 1))
 
 p_div_elevation <- gridExtra::grid.arrange(p_div_elevation1, p_div_elevation2, p_div_elevation3, p_div_elevation4, heights = c(1.5, 1, 1, 1))
 

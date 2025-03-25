@@ -561,7 +561,7 @@ fig2 <- gridExtra::grid.arrange(p_div_raw, empty_plot,  p_div_trend_fig, widths 
 ggsave(plot = fig2, "builds/plots/fig2_new.png", height = 10, width = 12)
 
 ## Figure 3: 
-p_fd_raw <- gridExtra::grid.arrange(p_fd1, p_fd2, p_fd3, heights = c(1.3, 1, 1))
+p_fd_raw <- gridExtra::grid.arrange(p_fd1, p_fd2, heights = c(1.3, 1))
 empty_plot <- ggplot() + theme_void()
 p_fd_trend_fig <- gridExtra::grid.arrange(p_fd_trends[[1]], p_fd_trends[[2]],
                                           p_fd_trends[[3]], empty_plot,  ncol = 2, nrow = 2) 

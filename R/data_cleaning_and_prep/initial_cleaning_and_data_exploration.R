@@ -108,7 +108,9 @@ dt_p <-  pv %>%
                    "Dark green thin leaves",  
                    "Flat heart leaf", 
                    "Hairy leaf margin", 
-                   "Hairy underleaf") ~ "no",
+                   "Hairy underleaf", 
+                   "Corky bark", 
+                   "Obvious veins and hairs under") ~ "no",
     species %in% c("Acanthaceae sp", 
                    "Chlorophytum sp", 
                    "Sticky fabaceae",
@@ -285,8 +287,51 @@ pu_res <- unique(dt_p[, .(species, id_level, life_form, reserve)])
 tu_res <- unique(dt_t[, .(species, id_level, life_form, reserve)])
 
 su_res <- unique(rbind(pu_res, tu_res)) %>% mutate(year = 2024)
-
 openxlsx::write.xlsx(su_res, "builds/species_lists/species_list_waterberg2024.xlsx")
+
+unique_identified_species <- su_res %>%
+  filter(id_level == "species_level") %>%
+  dplyr::select(species) %>%
+  unique() 
+
+openxlsx::write.xlsx(unique_identified_species, "builds/species_lists/unique_identified_species_waterberg2024.xlsx")
+
+#submitted to: https://tnrs.biendata.org
+
+dt_fam_raw <- fread("data/processed_data/data_fragments/tnrs_result.csv") %>% 
+  dplyr::select(Name_submitted, Accepted_family) %>% 
+  unique() %>% 
+  group_by(Name_submitted) %>% 
+  mutate(n = n()) %>% 
+  ungroup() 
+
+
+dt_fam <- dt_fam_raw %>% 
+  filter(!Name_submitted %in% c("Corky bark", "Obvious veins and hairs under")) %>% 
+  mutate(Accepted_family = case_when(
+    .default = Accepted_family,
+    Name_submitted == "Bergia decumbescens" ~ "Elatinaceae", #Bergia decumbens
+    Name_submitted == "Boscia alba" ~ "Capparaceae", # Boscia albitrunca
+    Name_submitted == "Satara pumila" ~ "Poaceae", # Setaria pumila
+    Name_submitted == "Convolvulus sagittatus" ~ "Convolvulaceae",
+    Name_submitted == "Gisekia pharna" ~ "Gisekiaceae", #Gisekia pharnaceoides
+    Name_submitted == "Pappea capensis" ~ "Sapindaceae",
+    Name_submitted == "Sida cordifolia" ~ "Malvaceae",
+    Name_submitted == "Commiphora mollis" ~ "Burseraceae",
+    Name_submitted == "Strychnos pungens" ~ "Loganiaceae",
+    Name_submitted == "Turrea obtusifolia" ~ "Meliaceae",
+  )) %>% 
+  dplyr::select(species = Name_submitted, family = Accepted_family) %>% 
+  unique() %>% 
+  group_by(family) %>% 
+  mutate(n_family = n()) %>% 
+  ungroup()
+
+table(dt_fam$family)
+n_distinct(dt_fam[dt_fam$n_family >= 10, "family"])
+
+fwrite(dt_fam, "data/processed_data/data_fragments/species_families.csv")
+
 
 #### plot species 
 pu_res2 <- dt_p[, .(plot_ID, species, id_level, life_form, reserve)] %>% 
@@ -295,7 +340,29 @@ pu_res2 <- dt_p[, .(plot_ID, species, id_level, life_form, reserve)] %>%
 dt_p_all <- pu_res2 %>% mutate(year = 2024) %>% arrange(plot_ID)
 openxlsx::write.xlsx(dt_p_all, "builds/species_lists/plot_species_list_waterberg2024.xlsx")
 
-### subest 
+dt_enc <- dt_p[, .(plot_ID, species, reserve)] %>%
+  group_by(species) %>% 
+  mutate(n_encounters = n()) %>% 
+  ungroup() %>% 
+  dplyr::select(n_encounters, species) %>% 
+  unique()
+
+n_distinct(dt_enc[dt_enc$n_encounters > 0, ]$species) #435
+
+n_distinct(dt_enc[dt_enc$n_encounters > 1, ]$species) #287
+n_distinct(dt_enc[dt_enc$n_encounters > 2, ]$species) #220
+n_distinct(dt_enc[dt_enc$n_encounters > 3, ]$species) #173
+287/437 #66 % more than once --> measured on 6 individuals 
+220/437 #50 % more than twice --> measured at 9 individuals 
+173/437 #40 % more than three tomes --> measured at 12 individuals  
+
+p_enc <- dt_enc %>% 
+  ggplot() +
+  geom_histogram(aes(x = n_encounters)) +
+  labs(x = "Number of plots a species was found in") +
+  theme_classic()
+
+### subset 
 
 sp_la <- su_res %>% filter(reserve == "Lapalala")
 openxlsx::write.xlsx(sp_la, "builds/species_lists/lapalala_species_list.xlsx")

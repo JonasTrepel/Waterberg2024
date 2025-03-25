@@ -18,8 +18,23 @@ library(RColorBrewer)
 
 reserves <- read_sf("data/spatialData/reserveLocations/waterberg2024_reserves.gpkg")
 wbr <- read_sf("data/spatialData/randomShapefiles/WaterbergBiosphereReserve/WDPA_WDOECM_Oct2024_Public_900554_shp-polygons.shp")
-mapview(wbr) +mapview(reserves)
+mapview(wbr) + mapview(reserves)
 
+plots <- read_sf("data/spatial_data/plot_locations/plot_locations_clean_waterberg2024.gpkg") %>% 
+  dplyr::select(plot_ID, date_time, geom) %>% 
+  st_transform(crs = "EPSG:32735") %>% 
+  filter(grepl("DA_S01", plot_ID)) 
+
+mapview(plots)
+
+example_site <- plots %>% 
+  ggplot() +
+  geom_sf(fill = "black", shape = 22, size = 8) +
+  scale_y_continuous(limits = c(min(st_coordinates(plots)[,2])-10, 
+                                max(st_coordinates(plots)[,2])+10)) +
+  theme_void()
+example_site
+ggsave(plot = example_site, "builds/plots/example_site.png", dpi = 600, height = 1.5, width = 3)
 
 
 as.character(met.brewer("Archambault", n = 10))

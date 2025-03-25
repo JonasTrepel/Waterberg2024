@@ -102,6 +102,12 @@ k <- ceiling(log2(n) + 1)
 
 traits <- dt_sp %>% 
   dplyr::select(plot_ID, species, growth_form, height_cm, hairs, leaf_size, bulk_density, reproductive_height) %>% 
+  mutate(hairs = case_when(
+    .default = hairs, 
+    hairs %in% c("Absent", "absent") ~ "Absent", 
+    hairs %in% c("stems", "stems and branches") ~ "Stems", 
+    hairs %in% c("leaves") ~ "Leaves", 
+    hairs %in% c("both") ~ "Leaves and Stems")) %>% 
   mutate(growth_form = as.factor(growth_form), 
          height_cm = as.numeric(height_cm), 
          #  height_bins = as.factor(cut_number(height_cm, n = k)),
