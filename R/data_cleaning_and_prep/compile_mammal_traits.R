@@ -278,4 +278,4 @@ names(mam.traits)
 
 traits.final <- mam.traits %>% dplyr::select(-c(Terrestrial))
 
-fwrite(traits.final, "data/processedData/dataFragments/mammal_traits.csv")
+fwrite(traits.final, "data/processed_data/data_fragments/mammal_traits.csv")

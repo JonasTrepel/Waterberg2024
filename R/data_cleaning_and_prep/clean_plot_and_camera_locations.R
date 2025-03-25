@@ -3,7 +3,8 @@ library(data.table)
 library(mapview)
 library(tidyverse)
 
-sf <- st_read("data/spatialData/plotLocations/plotLocationsRaw.gpkg")
+sf <- st_read("data/spatial_data/plot_locations/plotLocationsRaw.gpkg") %>% 
+  st_transform(crs = 22235)
 mapview(sf)
 
 cams <- sf[grepl("ECO", sf$plot_ID), ]
@@ -13,12 +14,15 @@ cams <- sf %>%
   st_as_sf() %>%
   filter(grepl("ECO", plot_ID))
 
-mapview(cams)
+mapview(cams %>% filter(plot_ID %in% c("ECO_36", "ECO_40")))
 
 
-st_write(cams, "data/spatialData/cameraLocations/camera_locations_econovo_waterberg2024.gpkg", append =FALSE)
+st_write(cams, "data/spatial_data/camera_locations/camera_locations_econovo_waterberg2024.gpkg", append =FALSE)
 
-st_write(cams, "data/spatialData/cameraLocations/camera_locations_econovo_waterberg2024.kml", append =FALSE)
+st_write(cams, "data/spatial_data/camera_locations/camera_locations_econovo_waterberg2024.kml", append =FALSE)
+
+st_write(cams %>% filter(plot_ID %in% c("ECO_36", "ECO_40")), "data/spatial_data/camera_locations/camera_locations_econovo_kaingo_eastern_bypass.gpkg", append =FALSE)
+
 
 
 # plots
@@ -26,7 +30,7 @@ st_write(cams, "data/spatialData/cameraLocations/camera_locations_econovo_waterb
 
 la.li <- sf[grepl("LA_B", sf$plot_ID), ]
 
-st_write(la.li, "data/spatialData/plotLocations/lele_lidar_2024_backup.gpkg", append =FALSE)
+st_write(la.li, "data/spatial_data/plot_locations/lele_lidar_2024_backup.gpkg", append =FALSE)
 
 
 
@@ -47,7 +51,8 @@ plots[plots$plot_ID == "AN_S01_P02" & plots$photo == "DCIM/JPEG_2024031006165281
 plots[plots$plot_ID == "SW_S02_S05_ACTUAL", ]$plot_ID <- "SW_S02_P05"
 
 #removes the one duplicated point at SW_S02_P01 which was wrongly named SW_S01_P05
-plots <- plots[!plots$photo == "DCIM/JPEG_20240320083744034.JPG", ]
+plots <- plots[!plots$photo == "DCIM/JPEG_20240320083744034.JPG", ] %>% 
+  rename(plot_notes = notes.)
 
 
 n_distinct(plots$plot_ID)
@@ -55,8 +60,8 @@ names(plots)
 
 #should be fine now. 
 
-st_write(plots, "data/spatialData/plotLocations/plot_locations_clean_waterberg2024.gpkg", append = FALSE)
-st_write(plots, "data/spatialData/plotLocations/plot_locations_clean_waterberg2024.kml", append = FALSE)
+st_write(plots, "data/spatial_data/plot_locations/plot_locations_clean_waterberg2024.gpkg", append = FALSE)
+st_write(plots, "data/spatial_data/plot_locations/plot_locations_clean_waterberg2024.kml", append = FALSE)
 
 
 ### sites 
@@ -68,7 +73,7 @@ sites <- plots %>%
 
 mapview(sites) + mapview(cams)
 
-sitesAndCams <- sites %>% 
+sites_and_cams <- sites %>% 
   st_join(cams[, "plot_ID"] %>% rename(cameraID = plot_ID)) %>% 
   dplyr::select(site_ID, cameraID, plot_ID) %>% 
   as.data.table() %>% 
@@ -86,9 +91,9 @@ sitesAndCams <- sites %>%
   ), geometry = NULL,
   cameraID = ifelse(plot_ID == "SY_S03_P03", "ECO_18", cameraID)
   )
-table(sitesAndCams$cameraID)
+table(sites_and_cams$cameraID)
 
-fwrite(sitesAndCams, "data/processedData/dataFragments/SitesAndCams.csv")
+fwrite(sites_and_cams, "data/processed_data/data_fragments/sites_and_cams.csv")
 
 # reserve cameras 
 
@@ -98,8 +103,8 @@ cams.swebe <- sf %>%
 
 mapview(cams.swebe)
 
-st_write(cams.swebe, "data/spatialData/cameraLocations/swebeswebe_camera_locations_econovo_waterberg2024.gpkg", append=FALSE)
-st_write(cams.swebe, "data/spatialData/cameraLocations/swebeswebe_camera_locations_econovo_waterberg2024.kml", append=FALSE)
+st_write(cams.swebe, "data/spatial_data/camera_locations/swebeswebe_camera_locations_econovo_waterberg2024.gpkg", append=FALSE)
+st_write(cams.swebe, "data/spatial_data/camera_locations/swebeswebe_camera_locations_econovo_waterberg2024.kml", append=FALSE)
 
 
 cams.mara <- sf %>%
@@ -111,8 +116,8 @@ mapview(cams.mara)
 t <- st_coordinates(cams.mara) %>% as.data.frame() %>% cbind(cams.mara[, "plot_ID"]) %>% mutate(geometry = NULL)
 t
 
-st_write(cams.mara, "data/spatialData/cameraLocations/marakele_camera_locations_econovo_waterberg2024.gpkg", append=FALSE)
-st_write(cams.mara, "data/spatialData/cameraLocations/marakele_camera_locations_econovo_waterberg2024.kml", append=FALSE)
+st_write(cams.mara, "data/spatial_data/camera_locations/marakele_camera_locations_econovo_waterberg2024.gpkg", append=FALSE)
+st_write(cams.mara, "data/spatial_data/camera_locations/marakele_camera_locations_econovo_waterberg2024.kml", append=FALSE)
 
 
 cams.jemb <- sf %>%
@@ -121,8 +126,8 @@ cams.jemb <- sf %>%
 
 mapview(cams.jemb)
 
-st_write(cams.jemb, "data/spatialData/cameraLocations/jembisa_and_willowisp_camera_locations_econovo_waterberg2024.gpkg", append=FALSE)
-st_write(cams.jemb, "data/spatialData/cameraLocations/jembisa_and_willowisp_camera_locations_econovo_waterberg2024.kml", append=FALSE)
+st_write(cams.jemb, "data/spatial_data/camera_locations/jembisa_and_willowisp_camera_locations_econovo_waterberg2024.gpkg", append=FALSE)
+st_write(cams.jemb, "data/spatial_data/camera_locations/jembisa_and_willowisp_camera_locations_econovo_waterberg2024.kml", append=FALSE)
 
 
 cams.syr <- sf %>%
@@ -131,8 +136,8 @@ cams.syr <- sf %>%
 
 mapview(cams.syr)
 
-st_write(cams.syr, "data/spatialData/cameraLocations/syringa_sands_camera_locations_econovo_waterberg2024.gpkg", append=FALSE)
-st_write(cams.syr, "data/spatialData/cameraLocations/syringa_sands_camera_locations_econovo_waterberg2024.kml", append=FALSE)
+st_write(cams.syr, "data/spatial_data/camera_locations/syringa_sands_camera_locations_econovo_waterberg2024.gpkg", append=FALSE)
+st_write(cams.syr, "data/spatial_data/camera_locations/syringa_sands_camera_locations_econovo_waterberg2024.kml", append=FALSE)
 
 
 cams.summer <- sf %>%
@@ -141,8 +146,8 @@ cams.summer <- sf %>%
 
 mapview(cams.summer)
 
-st_write(cams.summer, "data/spatialData/cameraLocations/summerplace_camera_locations_econovo_waterberg2024.gpkg", append=FALSE)
-st_write(cams.summer, "data/spatialData/cameraLocations/summerplace_camera_locations_econovo_waterberg2024.kml", append=FALSE)
+st_write(cams.summer, "data/spatial_data/camera_locations/summerplace_camera_locations_econovo_waterberg2024.gpkg", append=FALSE)
+st_write(cams.summer, "data/spatial_data/camera_locations/summerplace_camera_locations_econovo_waterberg2024.kml", append=FALSE)
 
 
 cams.dabchick <- sf %>%
@@ -151,8 +156,8 @@ cams.dabchick <- sf %>%
 
 mapview(cams.dabchick)
 
-st_write(cams.dabchick, "data/spatialData/cameraLocations/dabchick_camera_locations_econovo_waterberg2024.gpkg", append=FALSE)
-st_write(cams.dabchick, "data/spatialData/cameraLocations/dabchick_camera_locations_econovo_waterberg2024.kml", append=FALSE)
+st_write(cams.dabchick, "data/spatial_data/camera_locations/dabchick_camera_locations_econovo_waterberg2024.gpkg", append=FALSE)
+st_write(cams.dabchick, "data/spatial_data/camera_locations/dabchick_camera_locations_econovo_waterberg2024.kml", append=FALSE)
 
 
 cams.ants <- sf %>%
@@ -161,8 +166,8 @@ cams.ants <- sf %>%
 
 mapview(cams.ants)
 
-st_write(cams.ants, "data/spatialData/cameraLocations/ants_farm_camera_locations_econovo_waterberg2024.gpkg", append=FALSE)
-st_write(cams.ants, "data/spatialData/cameraLocations/ants_farm_camera_locations_econovo_waterberg2024.kml", append=FALSE)
+st_write(cams.ants, "data/spatial_data/camera_locations/ants_farm_camera_locations_econovo_waterberg2024.gpkg", append=FALSE)
+st_write(cams.ants, "data/spatial_data/camera_locations/ants_farm_camera_locations_econovo_waterberg2024.kml", append=FALSE)
 
 
 cams.kaingo <- sf %>%
@@ -171,8 +176,8 @@ cams.kaingo <- sf %>%
 
 mapview(cams.kaingo)
 
-st_write(cams.kaingo, "data/spatialData/cameraLocations/kaingo_camera_locations_econovo_waterberg2024.gpkg", append=FALSE)
-st_write(cams.kaingo, "data/spatialData/cameraLocations/kaingo_camera_locations_econovo_waterberg2024.kml", append=FALSE)
+st_write(cams.kaingo, "data/spatial_data/camera_locations/kaingo_camera_locations_econovo_waterberg2024.gpkg", append=FALSE)
+st_write(cams.kaingo, "data/spatial_data/camera_locations/kaingo_camera_locations_econovo_waterberg2024.kml", append=FALSE)
 
 
 cams.lapalala <- sf %>%
@@ -181,7 +186,7 @@ cams.lapalala <- sf %>%
 
 mapview(cams.lapalala)
 
-st_write(cams.lapalala, "data/spatialData/cameraLocations/lapalala_camera_locations_econovo_waterberg2024.gpkg", append=FALSE)
-st_write(cams.lapalala, "data/spatialData/cameraLocations/lapalala_camera_locations_econovo_waterberg2024.kml", append=FALSE)
+st_write(cams.lapalala, "data/spatial_data/camera_locations/lapalala_camera_locations_econovo_waterberg2024.gpkg", append=FALSE)
+st_write(cams.lapalala, "data/spatial_data/camera_locations/lapalala_camera_locations_econovo_waterberg2024.kml", append=FALSE)
 
 

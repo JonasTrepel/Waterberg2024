@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document id="root_doc">
+<Schema name="plot_locations_swebeswebe" id="plot_locations_swebeswebe">
+	<SimpleField name="plot_ID" type="string"></SimpleField>
+	<SimpleField name="photo" type="string"></SimpleField>
+	<SimpleField name="notes." type="string"></SimpleField>
+	<SimpleField name="date_time" type="string"></SimpleField>
+</Schema>
+<Folder><name>plot_locations_swebeswebe</name>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#plot_locations_swebeswebe">
+		<SimpleData name="plot_ID">SW_S01_P01</SimpleData>
+		<SimpleData name="photo">DCIM/JPEG_20240318131447444.JPG</SimpleData>
+		<SimpleData name="date_time">2024/03/18 13:15:01.409+00</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>28.0648533333333,-23.7868933333333</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#plot_locations_swebeswebe">
+		<SimpleData name="plot_ID">SW_S01_P02</SimpleData>
+		<SimpleData name="photo">DCIM/JPEG_20240318134705141.JPG</SimpleData>
+		<SimpleData name="date_time">2024/03/18 13:47:12.212+00</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>28.0643866666667,-23.7868633333333</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#plot_locations_swebeswebe">
+		<SimpleData name="plot_ID">SW_S01_P03</SimpleData>
+		<SimpleData name="photo">DCIM/JPEG_20240318141933669.JPG</SimpleData>
+		<SimpleData name="date_time">2024/03/18 14:19:22.668+00</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>28.0639133333333,-23.7868366666667</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#plot_locations_swebeswebe">
+		<SimpleData name="plot_ID">SW_S01_P04</SimpleData>
+		<SimpleData name="photo">DCIM/JPEG_20240318150023632.JPG</SimpleData>
+		<SimpleData name="date_time">2024/03/18 15:00:29.997+00</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>28.063385,-23.7868016666667</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#plot_locations_swebeswebe">
+		<SimpleData name="plot_ID">SW_S01_P05</SimpleData>
+		<SimpleData name="photo">DCIM/JPEG_20240318152554762.JPG</SimpleData>
+		<SimpleData name="date_time">2024/03/18 15:25:44.052+00</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>28.062895,-23.786765</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#plot_locations_swebeswebe">
+		<SimpleData name="plot_ID">SW_S02_P01</SimpleData>
+		<SimpleData name="photo">DCIM/JPEG_20240320053417438.JPG</SimpleData>
+		<SimpleData name="date_time">2024/03/20 05:34:23.518+00</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>28.049435,-23.77943</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#plot_locations_swebeswebe">
+		<SimpleData name="plot_ID">SW_S02_P02</SimpleData>
+		<SimpleData name="photo">DCIM/JPEG_20240320060708436.JPG</SimpleData>
+		<SimpleData name="date_time">2024/03/20 06:07:15.124+00</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>28.0489233333333,-23.7793916666667</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#plot_locations_swebeswebe">
+		<SimpleData name="plot_ID">SW_S02_P03</SimpleData>
+		<SimpleData name="photo">DCIM/JPEG_20240320065349897.JPG</SimpleData>
+		<SimpleData name="date_time">2024/03/20 06:53:22.433+00</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>28.0484416666667,-23.77936</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#plot_locations_swebeswebe">
+		<SimpleData name="plot_ID">SW_S02_P04</SimpleData>
+		<SimpleData name="photo">DCIM/JPEG_20240320074109166.JPG</SimpleData>
+		<SimpleData name="date_time">2024/03/20 07:40:55.303+00</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>28.0479366666667,-23.7793183333333</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#plot_locations_swebeswebe">
+		<SimpleData name="plot_ID">SW_S02_P05</SimpleData>
+		<SimpleData name="photo">DCIM/JPEG_20240320083855064.JPG</SimpleData>
+		<SimpleData name="date_time">2024/03/20 08:39:00.877+00</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>28.0474807930205,-23.7793058089006</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#plot_locations_swebeswebe">
+		<SimpleData name="plot_ID">SW_S03_P01</SimpleData>
+		<SimpleData name="photo">DCIM/JPEG_20240320113728856.JPG</SimpleData>
+		<SimpleData name="date_time">2024/03/20 11:37:34.731+00</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>28.0919933333333,-23.770695</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#plot_locations_swebeswebe">
+		<SimpleData name="plot_ID">SW_S03_P02</SimpleData>
+		<SimpleData name="photo">DCIM/JPEG_20240320120110001.JPG</SimpleData>
+		<SimpleData name="date_time">2024/03/20 12:01:15.839+00</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>28.09166,-23.7710716666667</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#plot_locations_swebeswebe">
+		<SimpleData name="plot_ID">SW_S03_P03</SimpleData>
+		<SimpleData name="photo">DCIM/JPEG_20240320123457659.JPG</SimpleData>
+		<SimpleData name="date_time">2024/03/20 12:34:49+00</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>28.091365,-23.7713933333333</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#plot_locations_swebeswebe">
+		<SimpleData name="plot_ID">SW_S03_P04</SimpleData>
+		<SimpleData name="photo">DCIM/JPEG_20240320132306823.JPG</SimpleData>
+		<SimpleData name="date_time">2024/03/20 13:22:59.441+00</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>28.0910466666667,-23.7717316666667</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#plot_locations_swebeswebe">
+		<SimpleData name="plot_ID">SW_S03_P05</SimpleData>
+		<SimpleData name="photo">DCIM/JPEG_20240320135310980.JPG</SimpleData>
+		<SimpleData name="date_time">2024/03/20 13:53:09.569+00</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>28.0907033333333,-23.7720983333333</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#plot_locations_swebeswebe">
+		<SimpleData name="plot_ID">SW_S04_P01</SimpleData>
+		<SimpleData name="photo">DCIM/JPEG_20240321045230272.JPG</SimpleData>
+		<SimpleData name="date_time">2024/03/21 04:52:49.596+00</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>28.0517483333333,-23.7924333333333</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#plot_locations_swebeswebe">
+		<SimpleData name="plot_ID">SW_S04_P02</SimpleData>
+		<SimpleData name="photo">DCIM/JPEG_20240321050929785.JPG</SimpleData>
+		<SimpleData name="date_time">2024/03/21 05:09:37.289+00</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>28.0522219219632,-23.7923335082441</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#plot_locations_swebeswebe">
+		<SimpleData name="plot_ID">SW_S04_P03</SimpleData>
+		<SimpleData name="photo">DCIM/JPEG_20240321055357248.JPG</SimpleData>
+		<SimpleData name="notes.">Location adjusted to avoid slope
+</SimpleData>
+		<SimpleData name="date_time">2024/03/21 05:53:38.292+00</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>28.052725,-23.7924316666667</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#plot_locations_swebeswebe">
+		<SimpleData name="plot_ID">SW_S04_P04</SimpleData>
+		<SimpleData name="photo">DCIM/JPEG_20240321063952969.JPG</SimpleData>
+		<SimpleData name="date_time">2024/03/21 06:39:59.109+00</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>28.0532233333333,-23.79239</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#plot_locations_swebeswebe">
+		<SimpleData name="plot_ID">SW_S04_P05</SimpleData>
+		<SimpleData name="photo">DCIM/JPEG_20240321071721302.JPG</SimpleData>
+		<SimpleData name="date_time">2024/03/21 07:17:07.987+00</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>28.0536616666667,-23.792305</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#plot_locations_swebeswebe">
+		<SimpleData name="plot_ID">SW_S05_P01</SimpleData>
+		<SimpleData name="photo">DCIM/JPEG_20240321093049789.JPG</SimpleData>
+		<SimpleData name="date_time">2024/03/21 09:31:03.389+00</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>28.106945,-23.7738316666667</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#plot_locations_swebeswebe">
+		<SimpleData name="plot_ID">SW_S05_P02</SimpleData>
+		<SimpleData name="photo">DCIM/JPEG_20240321095409933.JPG</SimpleData>
+		<SimpleData name="date_time">2024/03/21 09:54:18.673+00</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>28.107275,-23.7734816666667</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#plot_locations_swebeswebe">
+		<SimpleData name="plot_ID">SW_S05_P03</SimpleData>
+		<SimpleData name="photo">DCIM/JPEG_20240321103450415.JPG</SimpleData>
+		<SimpleData name="date_time">2024/03/21 10:34:33.608+00</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>28.1075916666667,-23.7731516666667</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#plot_locations_swebeswebe">
+		<SimpleData name="plot_ID">SW_S05_P04</SimpleData>
+		<SimpleData name="photo">DCIM/JPEG_20240321112255210.JPG</SimpleData>
+		<SimpleData name="date_time">2024/03/21 11:23:01.745+00</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>28.1079283333333,-23.7728083333333</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#plot_locations_swebeswebe">
+		<SimpleData name="plot_ID">SW_S05_P05</SimpleData>
+		<SimpleData name="photo">DCIM/JPEG_20240321120026960.JPG</SimpleData>
+		<SimpleData name="date_time">2024/03/21 12:00:36.690+00</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>28.108265,-23.7724583333333</coordinates></Point>
+  </Placemark>
+</Folder>
+</Document></kml>

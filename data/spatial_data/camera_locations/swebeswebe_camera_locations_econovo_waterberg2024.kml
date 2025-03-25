@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document id="root_doc">
+<Schema name="swebeswebe_camera_locations_econovo_waterberg2024" id="swebeswebe_camera_locations_econovo_waterberg2024">
+	<SimpleField name="plot_ID" type="string"></SimpleField>
+	<SimpleField name="photo" type="string"></SimpleField>
+	<SimpleField name="notes." type="string"></SimpleField>
+	<SimpleField name="date_time" type="string"></SimpleField>
+</Schema>
+<Folder><name>swebeswebe_camera_locations_econovo_waterberg2024</name>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#swebeswebe_camera_locations_econovo_waterberg2024">
+		<SimpleData name="plot_ID">ECO_41</SimpleData>
+		<SimpleData name="photo">DCIM/JPEG_20240318144452411.JPG</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>28.0640533333333,-23.7868333333333</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#swebeswebe_camera_locations_econovo_waterberg2024">
+		<SimpleData name="plot_ID">ECO_42</SimpleData>
+		<SimpleData name="photo">DCIM/JPEG_20240320073500044.JPG</SimpleData>
+		<SimpleData name="date_time">2024/03/20 08:34:52.247+00</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>28.04841,-23.77938</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#swebeswebe_camera_locations_econovo_waterberg2024">
+		<SimpleData name="plot_ID">ECO_43</SimpleData>
+		<SimpleData name="photo">DCIM/JPEG_20240320125050364.JPG</SimpleData>
+		<SimpleData name="date_time">2024/03/20 13:51:14.312+00</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>28.0914616666667,-23.7713566666667</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#swebeswebe_camera_locations_econovo_waterberg2024">
+		<SimpleData name="plot_ID">ECO_44</SimpleData>
+		<SimpleData name="photo">DCIM/JPEG_20240321062555364.JPG</SimpleData>
+		<SimpleData name="date_time">2024/03/21 07:25:41.645+00</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>28.0527566666667,-23.792395</coordinates></Point>
+  </Placemark>
+  <Placemark>
+	<ExtendedData><SchemaData schemaUrl="#swebeswebe_camera_locations_econovo_waterberg2024">
+		<SimpleData name="plot_ID">ECO_45</SimpleData>
+		<SimpleData name="photo">DCIM/JPEG_20240321104645315.JPG</SimpleData>
+		<SimpleData name="date_time">2024/03/21 11:46:37.704+00</SimpleData>
+	</SchemaData></ExtendedData>
+      <Point><coordinates>28.1077816666667,-23.773125</coordinates></Point>
+  </Placemark>
+</Folder>
+</Document></kml>

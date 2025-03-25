@@ -1,0 +1,91 @@
+Response,Predictor,Scale,Estimate (Confidence Interval),p (uncorrected),p (benjamini-hochberg),p (bonferroni),Marginal R2,Conditional R2
+Plant Functional Diversity,Herbivore Biomass,plot,0.02 (-0.05-0.09),0.6124,0.6539,1,0.003,0
+Plant Functional Diversity,Herbivore Species Richness,plot,-0.03 (-0.1-0.04),0.4826,0.6539,1,0.006,0.01
+Plant Functional Diversity,Herbivore Visitation,plot,0.01 (-0.05-0.08),0.6539,0.6539,1,0.002,0
+Plant Functional Redundancy,Herbivore Biomass,plot,0.01 (0-0.01),0.1235,0.1844,0.3704,0.015,0.01
+Plant Functional Redundancy,Herbivore Species Richness,plot,0 (0-0.01),0.1844,0.1844,0.5533,0.012,0.01
+Plant Functional Redundancy,Herbivore Visitation,plot,0.01 (0-0.02),0.0076,0.0228,0.0228,0.042,0.04
+Plant Functional Richness,Herbivore Biomass,plot,0.18 (-0.06-0.42),0.1329,0.3987,0.3987,0.031,0.04
+Plant Functional Richness,Herbivore Species Richness,plot,-0.01 (-0.27-0.26),0.9506,0.9506,1,0,0
+Plant Functional Richness,Herbivore Visitation,plot,0.08 (-0.1-0.25),0.4072,0.6108,1,0.005,0.01
+Plant Functional Diversity,Herbivore Biomass,reserve,0.01 (-0.05-0.06),0.794,0.794,1,0.007,0.01
+Plant Functional Diversity,Herbivore Species Richness,reserve,-0.04 (-0.09-0.01),0.1456,0.4368,0.4368,0.19,0.19
+Plant Functional Diversity,Herbivore Visitation,reserve,-0.01 (-0.07-0.05),0.7376,0.794,1,0.012,0.01
+Plant Functional Redundancy,Herbivore Biomass,reserve,0.02 (0-0.04),0.1162,0.1162,0.3486,0.219,0.22
+Plant Functional Redundancy,Herbivore Species Richness,reserve,0.02 (0-0.04),0.0439,0.0658,0.1317,0.31,0.31
+Plant Functional Redundancy,Herbivore Visitation,reserve,0.03 (0.01-0.04),0.0014,0.0042,0.0042,0.53,0.53
+Plant Functional Richness,Herbivore Biomass,reserve,0.07 (-0.02-0.15),0.1138,0.1707,0.3413,0.22,0.22
+Plant Functional Richness,Herbivore Species Richness,reserve,0.02 (-0.07-0.11),0.7226,0.7226,1,0.014,0.01
+Plant Functional Richness,Herbivore Visitation,reserve,0.09 (0.01-0.16),0.0287,0.086,0.086,0.358,0.36
+Plant Functional Diversity,Herbivore Biomass,site,0 (-0.08-0.07),0.9374,0.9374,1,0,0
+Plant Functional Diversity,Herbivore Species Richness,site,-0.04 (-0.11-0.03),0.3185,0.9374,0.9555,0.024,0.03
+Plant Functional Diversity,Herbivore Visitation,site,0.01 (-0.06-0.08),0.7396,0.9374,1,0.003,0
+Plant Functional Redundancy,Herbivore Biomass,site,0.01 (-0.01-0.02),0.2977,0.3872,0.8931,0.027,0.03
+Plant Functional Redundancy,Herbivore Species Richness,site,0.01 (-0.01-0.02),0.3872,0.3872,1,0.019,0.02
+Plant Functional Redundancy,Herbivore Visitation,site,0.02 (0-0.03),0.0087,0.0262,0.0262,0.123,0.12
+Plant Functional Richness,Herbivore Biomass,site,0.08 (-0.02-0.19),0.1308,0.1962,0.3925,0.057,0.06
+Plant Functional Richness,Herbivore Species Richness,site,0 (-0.12-0.13),0.9604,0.9604,1,0,0
+Plant Functional Richness,Herbivore Visitation,site,0.12 (0.01-0.22),0.0261,0.0782,0.0782,0.114,0.12
+Forb Richness,Herbivore Biomass,plot,0.08 (-0.05-0.2),0.2411,0.3616,0.7232,0.027,0.03
+Forb Richness,Herbivore Species Richness,plot,-0.05 (-0.19-0.08),0.4174,0.4174,1,0.014,0.01
+Forb Richness,Herbivore Visitation,plot,0.1 (0.02-0.18),0.0145,0.0435,0.0435,0.05,0.05
+Graminoid Richness,Herbivore Biomass,plot,0.11 (0.01-0.21),0.0373,0.1119,0.1119,0.054,0.06
+Graminoid Richness,Herbivore Species Richness,plot,0.06 (-0.05-0.18),0.2862,0.2862,0.8586,0.019,0.02
+Graminoid Richness,Herbivore Visitation,plot,0.05 (-0.02-0.12),0.1559,0.2339,0.4678,0.013,0.01
+Plant Species Richness,Herbivore Biomass,plot,0.1 (0-0.2),0.0595,0.105,0.1786,0.08,0.08
+Plant Species Richness,Herbivore Species Richness,plot,0 (-0.12-0.12),0.9412,0.9412,1,0,0
+Plant Species Richness,Herbivore Visitation,plot,0.06 (0-0.12),0.07,0.105,0.21,0.031,0.03
+Woody Richness,Herbivore Biomass,plot,-0.04 (-0.15-0.06),0.4146,0.6219,1,0.009,0.01
+Woody Richness,Herbivore Species Richness,plot,-0.09 (-0.19-0.01),0.0642,0.1925,0.1925,0.037,0.04
+Woody Richness,Herbivore Visitation,plot,-0.02 (-0.13-0.09),0.7197,0.7197,1,0.002,0
+Forb Richness,Herbivore Biomass,reserve,0.13 (0.06-0.2),2e-04,6e-04,6e-04,0.551,0.55
+Forb Richness,Herbivore Species Richness,reserve,0.05 (-0.03-0.13),0.2469,0.2469,0.7408,0.134,0.14
+Forb Richness,Herbivore Visitation,reserve,0.13 (0.05-0.21),9e-04,0.0014,0.0027,0.546,0.55
+Graminoid Richness,Herbivore Biomass,reserve,0.14 (0.04-0.23),0.0056,0.0084,0.0168,0.404,0.41
+Graminoid Richness,Herbivore Species Richness,reserve,0.12 (0-0.23),0.0427,0.0427,0.1281,0.336,0.34
+Graminoid Richness,Herbivore Visitation,reserve,0.21 (0.1-0.32),1e-04,3e-04,3e-04,0.62,0.62
+Plant Species Richness,Herbivore Biomass,reserve,0.09 (0.04-0.14),4e-04,6e-04,0.0013,0.542,0.54
+Plant Species Richness,Herbivore Species Richness,reserve,0.04 (-0.01-0.1),0.1412,0.1412,0.4235,0.199,0.2
+Plant Species Richness,Herbivore Visitation,reserve,0.1 (0.05-0.16),2e-04,5e-04,5e-04,0.609,0.61
+Woody Richness,Herbivore Biomass,reserve,-0.04 (-0.15-0.06),0.4113,0.5183,1,0.075,0.08
+Woody Richness,Herbivore Species Richness,reserve,-0.03 (-0.13-0.07),0.5183,0.5183,1,0.043,0.04
+Woody Richness,Herbivore Visitation,reserve,-0.05 (-0.15-0.06),0.3859,0.5183,1,0.078,0.08
+Forb Richness,Herbivore Biomass,site,0.06 (-0.04-0.16),0.2613,0.3919,0.7839,0.051,0.05
+Forb Richness,Herbivore Species Richness,site,-0.05 (-0.15-0.06),0.3957,0.3957,1,0.032,0.03
+Forb Richness,Herbivore Visitation,site,0.06 (-0.01-0.13),0.0891,0.2673,0.2673,0.061,0.06
+Graminoid Richness,Herbivore Biomass,site,0.11 (-0.02-0.25),0.0878,0.2405,0.2633,0.114,0.12
+Graminoid Richness,Herbivore Species Richness,site,0.1 (-0.04-0.24),0.1604,0.2405,0.4811,0.088,0.09
+Graminoid Richness,Herbivore Visitation,site,0.06 (-0.04-0.15),0.2578,0.2578,0.7735,0.029,0.03
+Plant Species Richness,Herbivore Biomass,site,0.03 (-0.05-0.11),0.4803,0.5338,1,0.026,0.03
+Plant Species Richness,Herbivore Species Richness,site,-0.03 (-0.11-0.06),0.5338,0.5338,1,0.021,0.02
+Plant Species Richness,Herbivore Visitation,site,0.03 (-0.02-0.08),0.237,0.5338,0.7109,0.029,0.03
+Woody Richness,Herbivore Biomass,site,-0.09 (-0.18--0.01),0.0292,0.0438,0.0877,0.122,0.12
+Woody Richness,Herbivore Species Richness,site,-0.1 (-0.17--0.03),0.0048,0.0144,0.0144,0.141,0.14
+Woody Richness,Herbivore Visitation,site,-0.03 (-0.11-0.05),0.5109,0.5109,1,0.01,0.01
+Canopy Openness,Herbivore Biomass,plot,0.05 (-0.34-0.44),0.7899,0.7899,1,0.002,0
+Canopy Openness,Herbivore Species Richness,plot,0.06 (-0.33-0.45),0.7639,0.7899,1,0.002,0
+Canopy Openness,Herbivore Visitation,plot,0.33 (0.05-0.62),0.0225,0.0674,0.0674,0.063,0.07
+LiDAR SD,Herbivore Biomass,plot,0.03 (-0.12-0.18),0.6887,0.6887,1,0.002,0
+LiDAR SD,Herbivore Species Richness,plot,0.07 (-0.08-0.22),0.3467,0.5201,1,0.011,0.01
+LiDAR SD,Herbivore Visitation,plot,0.1 (-0.02-0.22),0.0952,0.2856,0.2856,0.023,0.03
+Vegetation Openness,Herbivore Biomass,plot,0 (-0.04-0.04),0.9503,0.9503,1,0,0
+Vegetation Openness,Herbivore Species Richness,plot,0.01 (-0.02-0.05),0.461,0.6916,1,0.004,0
+Vegetation Openness,Herbivore Visitation,plot,0.05 (0.02-0.08),7e-04,0.002,0.002,0.049,0.05
+Canopy Openness,Herbivore Biomass,reserve,0.13 (-0.31-0.58),0.5561,0.5561,1,0.046,0.06
+Canopy Openness,Herbivore Species Richness,reserve,0.22 (-0.21-0.65),0.3109,0.4663,0.9326,0.12,0.14
+Canopy Openness,Herbivore Visitation,reserve,0.49 (0.17-0.82),0.0029,0.0086,0.0086,0.534,0.56
+LiDAR SD,Herbivore Biomass,reserve,-0.04 (-0.14-0.06),0.4175,0.5922,1,0.072,0.07
+LiDAR SD,Herbivore Species Richness,reserve,0.03 (-0.07-0.12),0.5922,0.5922,1,0.031,0.03
+LiDAR SD,Herbivore Visitation,reserve,-0.05 (-0.15-0.04),0.2533,0.5922,0.7598,0.123,0.12
+,Herbivore Biomass,reserve,0 (-0.04-0.04),0.9589,0.9589,1,0,0
+,Herbivore Species Richness,reserve,0.01 (-0.02-0.05),0.4567,0.6851,1,0.059,0.06
+,Herbivore Visitation,reserve,0.04 (0.02-0.07),9e-04,0.0026,0.0026,0.55,0.55
+Canopy Openness,Herbivore Biomass,site,0.17 (-0.25-0.59),0.4259,0.4407,1,0.027,0.03
+Canopy Openness,Herbivore Species Richness,site,0.17 (-0.25-0.58),0.4407,0.4407,1,0.025,0.03
+Canopy Openness,Herbivore Visitation,site,0.44 (0.18-0.7),0.001,0.0031,0.0031,0.185,0.22
+LiDAR SD,Herbivore Biomass,site,-0.05 (-0.18-0.08),0.4125,0.8927,1,0.015,0.02
+LiDAR SD,Herbivore Species Richness,site,0.03 (-0.09-0.16),0.5951,0.8927,1,0.006,0.01
+LiDAR SD,Herbivore Visitation,site,-0.01 (-0.13-0.12),0.9251,0.9251,1,0,0
+Vegetation Openness,Herbivore Biomass,site,0 (-0.04-0.04),0.9408,0.9408,1,0,0
+Vegetation Openness,Herbivore Species Richness,site,0.01 (-0.02-0.05),0.4509,0.6764,1,0.015,0.02
+Vegetation Openness,Herbivore Visitation,site,0.05 (0.02-0.08),6e-04,0.0019,0.0019,0.19,0.19

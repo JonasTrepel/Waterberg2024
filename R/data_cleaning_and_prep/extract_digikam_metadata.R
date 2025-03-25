@@ -4,18 +4,20 @@ library(tidyverse)
 library(lubridate)
 
 #load site metadata 
-sitesAndCams <- fread("data/processedData/dataFragments/SitesAndCams.csv")
+sites_and_cams <- fread("data/processed_data/data_fragments/sites_and_cams.csv") %>% 
+  dplyr::select(-plot_ID) %>% 
+  unique()
 
 
-filesRaw <- list.files("/Volumes/TOSHIBA EXT/WaterbergCameraTraps2024/R1Processed", pattern = "JPG", full.names = TRUE)
-files <- filesRaw
+files_raw <- list.files("/Volumes/TOSHIBA EXT/WaterbergCameraTraps2024/R1Processed", pattern = "JPG", full.names = TRUE)
+files <- files_raw
 
 
-metaDTRaw <- exifr::read_exif(files, quiet = TRUE, tags = c("Directory", "FileName", "DateTimeOriginal", "Subject", 
+dt_meta_raw <- exifr::read_exif(files, quiet = TRUE, tags = c("Directory", "FileName", "DateTimeOriginal", "Subject", 
                                                          "TagsList", "Keywords"))
 
 # this splits the hierarchical columns (in this case Subject and Keywords) into several rows per observation if you have tagged i.e. multiple species o
-metaDTRaw2 <- metaDTRaw %>% 
+dt_meta_raw2 <- dt_meta_raw %>% 
   unnest(cols = c(Subject, Keywords, TagsList)) %>% 
   mutate(cameraIDRaw = sapply(str_split(FileName, pattern = "ECO"), function(x) x[2]), 
          cameraIDRaw = gsub(".JPG", "",cameraIDRaw), 
@@ -27,31 +29,31 @@ metaDTRaw2 <- metaDTRaw %>%
          dateOnly = date(DateTime), 
          blastID = paste0(cameraID,"_", roundDateID), 
          uniqueID = paste0("obs", 1:nrow(.))) %>% 
-  left_join(sitesAndCams)  %>% 
+  left_join(sites_and_cams)  %>% 
   dplyr::select(-c(DateTimeRaw, cameraIDRaw, roundDateID)) 
 
-fwrite(metaDTRaw2, "data/processedData/dataFragments/cameraTrapMetaDataR1.csv")
-metaDTRaw2 <- fread("data/processedData/dataFragments/cameraTrapMetaDataR1.csv")
+fwrite(dt_meta_raw2, "data/processed_data/data_fragments/camera_trap_meta_data_r1.csv")
+dt_meta_raw2 <- fread("data/processed_data/data_fragments/camera_trap_meta_data_r1.csv")
 
 
-#fwrite(nicePics, "data/processedData/dataFragments/cameraTrapR1NicePics.csv")
+#fwrite(nicePics, "data/processed_data/data_fragments/cameraTrapR1NicePics.csv")
 
 
-unique(metaDTRaw2$cameraID)
-table(metaDTRaw2$Subject)
+unique(dt_meta_raw2$cameraID)
+table(dt_meta_raw2$Subject)
 
 
-siteTimes <- metaDTRaw2 %>% 
+site_times <- dt_meta_raw2 %>% 
   group_by(site_ID) %>%
   summarize(
   firstTrigger = min(DateTime), 
   lastTrigger = max(DateTime), 
   deploymentTime = abs(as.numeric(difftime(firstTrigger, lastTrigger, units = "days"))))
 
-herbiTraits <- fread("/Users/jonas/Library/CloudStorage/Dropbox/resources/traits/HerbiTraits/HerbiTraits_1.2/HerbiTraits_1.2.csv")
+herbi_traits <- fread("../../../../resources/traits/HerbiTraits/HerbiTraits_1.2/HerbiTraits_1.2.csv")
 
-metaDT <- metaDTRaw2 %>% 
-  left_join(siteTimes) %>% 
+dt_meta <- dt_meta_raw2 %>% 
+  left_join(site_times) %>% 
   filter(!Subject %in% c("Human", "Empty", "ParticularlyBeautiful", "Predator", "VervetMonkey",
                          "Baboon", "MultipleIndividuals", "Hare", "Porcupine", "Aardvark", "Bird")) %>% 
   filter(!FileName == "00000000_ECO_06.JPG") %>% 
@@ -81,119 +83,120 @@ metaDT <- metaDTRaw2 %>%
     Subject == "Reedbuck" ~ "Redunca fulvorufula", 
     Subject == "Nyala" ~ "Tragelaphus angasii", 
   )) %>% 
-  left_join(herbiTraits %>% dplyr::select(Binomial, Mass.g, Guild.w.Omnivory, Guild.only.Herbivory)) %>%
+  left_join(herbi_traits %>% dplyr::select(Binomial, Mass.g, Guild.w.Omnivory, Guild.only.Herbivory)) %>%
   mutate(massKg = Mass.g/1000) %>% 
   rename(ScientificName = Binomial, 
          GuildWithOmnivory = Guild.w.Omnivory, 
          GuildOnlyHerbivory = Guild.only.Herbivory)
 
-unique(metaDT$Subject)
-unique(metaDT[is.na(metaDT$ScientificName), ]$Subject)
+unique(dt_meta$Subject)
+unique(dt_meta[is.na(dt_meta$ScientificName), ]$Subject)
 
-mean(metaDT$deploymentTime) 
-sd(metaDT$deploymentTime) 
+mean(dt_meta$deploymentTime) 
+sd(dt_meta$deploymentTime) 
 
-unique(metaDT$Subject)
-table(metaDT$blastID)
+unique(dt_meta$Subject)
+table(dt_meta$blastID)
 
-#metaDT <- metaDT[metaDT$uniqueID %in% uIDS, ]
+#dt_meta <- dt_meta[dt_meta$uniqueID %in% uIDS, ]
 
-for(i in 1:nrow(metaDT)){
+for(i in 1:nrow(dt_meta)){
   
-  DaTi <- metaDT[i,]$DateTime
-  camID <-  metaDT[i,]$cameraID
-  bID <-  metaDT[i,]$blastID
-  Da <- metaDT[i,]$dateOnly
+  DaTi <- dt_meta[i,]$DateTime
+  camID <-  dt_meta[i,]$cameraID
+  bID <-  dt_meta[i,]$blastID
+  Da <- dt_meta[i,]$dateOnly
   
   
-  metaDT <- metaDT %>% 
+  dt_meta <- dt_meta %>% 
     mutate(timeDiff = as.numeric(difftime(DaTi, DateTime, units = "secs"))) %>% 
     mutate(blastID = ifelse(abs(timeDiff) < 10 & cameraID == camID & dateOnly == Da,
                             bID, blastID))
   
-  print(paste0(i, "/", nrow(metaDT)))
+  print(paste0(i, "/", nrow(dt_meta)))
   
 }
 
 
-unique(metaDT$Subject)
+unique(dt_meta$Subject)
 
 ### 
 
 ## get number of blasts per Site 
 
-eventsPerSite <- metaDT %>% 
+events_per_site <- dt_meta %>% 
   group_by(site_ID) %>% 
-  summarize(nEvents = n_distinct(blastID), 
-            nEventsDay = (nEvents/deploymentTime), 
-            meanBodyMassKg = mean(massKg, na.rm = T)) %>% 
+  summarize(n_trigger_events = n_distinct(blastID), 
+            n_trigger_events_day = (n_trigger_events/deploymentTime), 
+            camera_mean_body_mass_kg = mean(massKg, na.rm = T)) %>% 
   unique() %>% 
-  left_join(sitesAndCams) %>% 
-  dplyr::select(-plot_ID)
+  left_join(sites_and_cams) 
 
 
-sum(eventsPerSite$nEvents)
+sum(events_per_site$n_trigger_events)
+hist(events_per_site$n_trigger_events_day)
 
-eventsPerReserve <- eventsPerSite %>% 
+
+events_per_reserve <- events_per_site %>% 
   group_by(reserve) %>% 
-  summarize(nEventsReserve = mean(nEvents, na.rm = T), 
-            nEventsDayReserve =  mean(nEventsDay, na.rm = T), 
-            meanBodyMassKgReserve = mean(meanBodyMassKg, na.rm = T)) %>% 
+  summarize(n_trigger_events_reserve = mean(n_trigger_events, na.rm = T), 
+            n_trigger_events_day_reserve =  mean(n_trigger_events_day, na.rm = T), 
+            camera_mean_body_mass_kg_reserve = mean(camera_mean_body_mass_kg, na.rm = T)) %>% 
   unique() 
 
-cameraTrapResults <- eventsPerSite %>% left_join(eventsPerReserve)
+camera_trap_results <- events_per_site %>% left_join(events_per_reserve)
 
-hist(eventsPerSite$nEventsDay)
+hist(events_per_site$n_trigger_events_day)
 
 ggplot() +
-  geom_histogram(data = cameraTrapResults, aes(x = nEventsDay, y = ..count..)) + 
+  geom_histogram(data = camera_trap_results, aes(x = n_trigger_events_day, y = ..count..)) + 
   facet_wrap(~reserve)
   
 ggplot() +
-  geom_histogram(data = cameraTrapResults, aes(x = meanBodyMassKg, y = ..count..)) + 
+  geom_histogram(data = camera_trap_results, aes(x = camera_mean_body_mass_kg, y = ..count..)) + 
   facet_wrap(~reserve)
 
-table(metaDT$blastID)
-n_distinct(metaDT$blastID)
+table(dt_meta$blastID)
+n_distinct(dt_meta$blastID)
 
-fwrite(cameraTrapResults, "data/processedData/dataFragments/cameraTrapObs.csv")
+fwrite(camera_trap_results, "data/processed_data/data_fragments/camera_trap_obs.csv")
 
 ###### explore if we can separate by feeding guilds 
 
-browser_events_site <- metaDT %>% 
+browser_events_site <- dt_meta %>% 
   filter(GuildWithOmnivory == "Browser") %>% 
   group_by(site_ID) %>% 
-  summarize(nEvents = n_distinct(blastID), 
-            n_events_day_browser = (nEvents/deploymentTime)) %>% 
+  summarize(n_trigger_events = n_distinct(blastID), 
+            n_events_day_browser = (n_trigger_events/deploymentTime)) %>% 
   unique() %>% 
-  left_join(sitesAndCams) %>% 
-  dplyr::select(-plot_ID, - nEvents)
+  left_join(sites_and_cams) %>% 
+  dplyr::select(-plot_ID, - n_trigger_events)
 
 
-grazer_events_site <- metaDT %>% 
+grazer_events_site <- dt_meta %>% 
   filter(GuildWithOmnivory == "Grazer") %>% 
   group_by(site_ID) %>% 
-  summarize(nEvents = n_distinct(blastID), 
-            n_events_day_grazer = (nEvents/deploymentTime)) %>% 
+  summarize(n_trigger_events = n_distinct(blastID), 
+            n_events_day_grazer = (n_trigger_events/deploymentTime)) %>% 
   unique() %>% 
-  left_join(sitesAndCams) %>% 
-  dplyr::select(-plot_ID, - nEvents)
+  left_join(sites_and_cams) %>% 
+  dplyr::select(-plot_ID, - n_trigger_events)
 
-mixed_events_site <- metaDT %>% 
+mixed_events_site <- dt_meta %>% 
   filter(GuildWithOmnivory == "Mixed Feeder") %>% 
   group_by(site_ID) %>% 
-  summarize(nEvents = n_distinct(blastID), 
-            n_events_day_mixed = (nEvents/deploymentTime)) %>% 
+  summarize(n_trigger_events = n_distinct(blastID), 
+            n_events_day_mixed = (n_trigger_events/deploymentTime)) %>% 
   unique() %>% 
-  left_join(sitesAndCams) %>% 
-  dplyr::select(-plot_ID, - nEvents)
+  left_join(sites_and_cams) %>% 
+  dplyr::select(-plot_ID, - n_trigger_events)
 
 
-guild_events <- eventsPerSite %>% 
+guild_events <- events_per_site %>% 
   left_join(browser_events_site) %>% 
   left_join(mixed_events_site) %>% 
   left_join(grazer_events_site) %>% 
-  rename(n_events_day_total = nEventsDay) %>% 
+  rename(n_events_day_total = n_trigger_events_day) %>% 
   ungroup() %>% 
   dplyr::select(n_events_day_total, n_events_day_browser, n_events_day_grazer, n_events_day_mixed)
 
