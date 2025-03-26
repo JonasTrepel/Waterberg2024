@@ -100,3 +100,27 @@ p_height
 
 ggsave(plot = p_height, "builds/plots/supplement/plant_height_distribution.png", dpi = 600)
 
+p_n_fam <- dt_sp %>% 
+  ggplot(aes(x = n_family)) +
+  geom_histogram(bins = 30, fill = "steelblue", color = "black", alpha = 0.7) +
+  scale_x_log10() +
+  labs(x = "Number of Species per Family", y = "Count") +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+p_n_fam
+
+p_n_fam <- dt_sp %>% 
+  dplyr::select(family, n_family) %>% 
+  unique() %>% 
+  ggplot(aes(x = n_family, y = reorder(family, n_family))) +
+ # geom_vline(xintercept = 10, linetype = "dashed") +
+  geom_col(fill = "steelblue", color = "black", alpha = 0.7) +
+  labs(x = "Number of Species per Family", y = "Family") +
+  theme_bw() 
+p_n_fam
+ggsave(plot = p_n_fam, "builds/plots/supplement/species_in_family_distribution.png", dpi = 600, height = 10, width = 8)
+
+n_distinct(dt_sp$family)
+n_distinct(dt_sp$species)
+n_distinct(dt_sp[dt_sp$n_family > 9, ]$species)
+n_distinct(dt_sp[dt_sp$n_family > 9, ]$family)

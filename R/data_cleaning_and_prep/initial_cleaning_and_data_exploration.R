@@ -362,6 +362,29 @@ p_enc <- dt_enc %>%
   labs(x = "Number of plots a species was found in") +
   theme_classic()
 
+### species list 
+
+dt_sl <- dt_p[, .(plot_ID, species, reserve, id_level)] %>%
+  group_by(species) %>% 
+  mutate(n_plots_encountered = n()) %>% 
+  ungroup() %>% 
+  dplyr::select(species, id_level, n_plots_encountered) %>% 
+  unique() %>% 
+  left_join(dt_fam) %>% 
+  dplyr::select(-n_family) %>% 
+  mutate(species = case_when(
+    .default = species, 
+    species == "Bergia decumbescens" ~ "Bergia decumbens", #Bergia decumbens
+    species == "Boscia alba" ~ "Boscia albitrunca", # Boscia albitrunca
+    species == "Satara pumila" ~ "Setaria pumila", # Setaria pumila
+    species == "Gisekia pharna" ~ "Gisekia pharnaceoides", #Gisekia pharnaceoides
+  )) %>%
+  arrange(desc(id_level), family, -n_plots_encountered) %>% 
+  dplyr::select(species, family, id_level, n_plots_encountered)
+  
+fwrite(dt_fam, "builds/species_lists/clean_plot_species_list.csv")
+
+
 ### subset 
 
 sp_la <- su_res %>% filter(reserve == "Lapalala")

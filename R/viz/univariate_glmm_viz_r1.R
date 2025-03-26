@@ -534,13 +534,13 @@ for(i in 1:nrow(comb_fd)) {
 
 library(patchwork)
 # Combine all plots using patchwork
-p_fd_t <- wrap_plots(p_fd_trends, ncol = 1, nrow = 4)  # Adjust ncol as needed
+p_fd_t <- wrap_plots(p_fd_trends, ncol = 2, nrow = 2)  # Adjust ncol as needed
 
 # Display the combined plot
 print(p_fd_t)
 
 
-ggsave(plot = p_fd_t, "builds/plots/functional_diversity_sig_pred.png", dpi = 600, height = 7.5, width = 2.5)
+ggsave(plot = p_fd_t, "builds/plots/functional_diversity_sig_pred.png", dpi = 600, height = 5, width = 5)
 
 
 ### combine -------------
