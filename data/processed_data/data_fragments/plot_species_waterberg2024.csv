@@ -802,7 +802,7 @@ MA_S01_P03,MA_S01,Marakele,Cordylostigma virgatum,1,Forb,species_level,Straight 
 MA_S01_P04,MA_S01,Marakele,Cordylostigma virgatum,1,Forb,species_level,Straight forb,10,both,Thin linear,low,
 MA_S01_P05,MA_S01,Marakele,Cordylostigma virgatum,1,Forb,species_level,Straight forb,25,stems,Thin linear,low,30
 MA_S04_P02,MA_S04,Marakele,Cordylostigma virgatum,1,Forb,species_level,Straight forb,28,both,Thick linear,low,37
-SW_S02_P04,SW_S02,Swebeswebe,Corky bark,1,Shrub,species_level,Shrub single-stemmed,18,leaves,Macro,low,
+SW_S02_P04,SW_S02,Swebeswebe,Corky bark,1,Shrub,no,Shrub single-stemmed,18,leaves,Macro,low,
 MA_S03_P02,MA_S03,Marakele,Crabbea angustifolia,1,Forb,species_level,Straight forb,10,absent,Thick linear,low,
 MA_S04_P01,MA_S04,Marakele,Crabbea angustifolia,1,Forb,species_level,Creeping forb,18,absent,Thick linear,medium,
 MA_S04_P03,MA_S04,Marakele,Crabbea angustifolia,1,Forb,species_level,Straight forb,9,absent,Macro,low,
@@ -2086,7 +2086,7 @@ WI_S04_P02,WI_S04,Willowisp,Mundulea sericea,1,Shrub,species_level,Shrub single-
 SW_S05_P05,SW_S05,Swebeswebe,Mundulea sericea,1,Shrub,species_level,Shrub single-stemmed,81,absent,Macro,low,
 SW_S05_P01,SW_S05,Swebeswebe,Mundulea sericea,1,Forb,species_level,Tree multi-stemmed,250,absent,Macro,low,
 DA_S02_P03,DA_S02,Dabchick,Nidorella resedifolia,1,Forb,species_level,Straight forb,43,both,Macro,low,47
-SU_S03_P01,SU_S03,Summerplace,Obvious veins and hairs under,1,Forb,species_level,Straight forb,19.5,both,Macro,low,
+SU_S03_P01,SU_S03,Summerplace,Obvious veins and hairs under,1,Forb,no,Straight forb,19.5,both,Macro,low,
 JE_S05_P02,JE_S05,Jembisa,Ochna pulchra,1,Shrub,species_level,Shrub single-stemmed,6,absent,Macro,medium,
 SY_S01_P03,SY_S01,Syringa Sands,Ochna pulchra,1,Shrub,species_level,Shrub multi-stemmed,20,absent,Macro,medium,
 SY_S01_P05,SY_S01,Syringa Sands,Ochna pulchra,1,Shrub,species_level,Shrub single-stemmed,35,absent,Macro,medium,
