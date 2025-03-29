@@ -17,12 +17,19 @@ dt <- fread("data/processed_data/clean_data/waterberg_2024_main_dataset.csv")
 
 dt_exp <- dt %>% dplyr::select("herbivore_biomass_kg_ha",
                                 "herbivore_species_richness",
-                              "n_trigger_events_day_reserve") %>% 
+                              "n_trigger_events_day_reserve", 
+                              elevation_site, 
+                              map_site, 
+                              mat_site) %>% 
   rename(
     `Herbivore Biomass (kg/ha)` = herbivore_biomass_kg_ha, 
     `Herbivore Species Richness` = herbivore_species_richness, 
     `Herbivore Visitation` = n_trigger_events_day_reserve,
-  )
+    `Elevation (m)` = elevation_site, 
+    `MAP (mm)` = map_site, 
+    `MAT (°C)` = mat_site, 
+    
+  ) %>% unique()
 
 p_exp <- ggpairs(dt_exp) +
   theme_bw() +
@@ -40,14 +47,7 @@ dt_vars_plot <- dt %>% dplyr::select(  ## Taxonomic diversity
   
   ## Functional_diversity  
   "functional_redundancy_plot",
-  "functional_diversity_plot",
-  "functional_richness_plot",
-  
-  ## Structure
-  "lidar_adjusted_mean_3d_plot", # mean distance travelled by a point, adjusted for the return fraction
-  "lidar_adjusted_mean_3d_woody_plot", # mean distance travelled by a point above 90cm, adjusted for the return fraction
-  "lidar_sd_adjusted_3d_partial_plot", # sd of mean distance travelled by a point, adjusted for the return fraction of 5 parts of the scan
-  ) %>% 
+  "functional_richness_plot") %>% 
   filter(complete.cases(.)) 
 
 plot_corr <- round(cor(dt_vars_plot), 2)
@@ -69,13 +69,7 @@ dt_vars_site <- dt %>% dplyr::select( ## Taxonomic diversity
   
   ## Functional_diversity  
   "functional_redundancy_site",
-  "functional_diversity_site",
-  "functional_richness_site",
-  
-  ## Structure
-  "lidar_adjusted_mean_3d_site", # mean distance travelled by a point, adjusted for the return fraction
-  "lidar_adjusted_mean_3d_woody_site", # mean distance travelled by a point above 90cm, adjusted for the return fraction
-  "lidar_sd_adjusted_mean_3d_site",) %>% 
+  "functional_richness_site") %>% 
   filter(complete.cases(.)) 
 
 site_corr <- round(cor(dt_vars_site), 2)
@@ -98,13 +92,8 @@ dt_vars_reserve <- dt %>% dplyr::select( ## Taxonomic diversity
   
   ## Functional_diversity  
   "functional_redundancy_reserve",
-  "functional_diversity_reserve",
   "functional_richness_reserve",
-  
-  ## Structure
-  "lidar_adjusted_mean_3d_reserve", # mean distance travelled by a point, adjusted for the return fraction
-  "lidar_adjusted_mean_3d_woody_reserve", # mean distance travelled by a point above 90cm, adjusted for the return fraction
-  "lidar_sd_adjusted_mean_3d_reserve",) %>% 
+  ) %>% 
   filter(complete.cases(.)) 
 
 site_corr <- round(cor(dt_vars_reserve), 2)
@@ -162,7 +151,6 @@ dt_alt_site <- dt %>%
     `Elevation (m)` = elevation_site,
     `MAP (mm)` = map_site,
     `MAT (°C)` = mat_site,
-    `Reserve Area (ha)` = area_ha,
     `Herbivore\nSpecies Richness` = herbivore_species_richness,
     `Herbivore Visitation` = n_trigger_events_day,
     `Herbivore Biomass\n(kg/ha)` = herbivore_biomass_kg_ha
@@ -227,11 +215,18 @@ p_ridges <- dt %>%
 
 p_ridges
 
+
+# combine
+library(gridExtra)
+p_pred <- grid.arrange(p_plot_corr, p_site_corr, p_reserve_corr, ncol = 2)
+
 #save 
 ggsave(plot = p_exp, "builds/plots/supplement/corr_explanatories.png", dpi = 600, height = 6, width = 6)
 ggsave(plot = p_plot_corr, "builds/plots/supplement/corr_plot_vars.png", dpi = 600, height = 10, width = 10)
 ggsave(plot = p_site_corr, "builds/plots/supplement/corr_plot_vars.png", dpi = 600,  height = 10, width = 10)
 ggsave(plot = p_reserve_corr, "builds/plots/supplement/corr_reserve_vars.png", dpi = 600,  height = 10, width = 10)
+ggsave(plot = p_pred, "builds/plots/supplement/corr_all_vars.png", dpi = 600,  height = 9, width = 12)
+
 ggsave(plot = p_herbi_corr, "builds/plots/supplement/corr_herbi_vars.png", dpi = 600)
 ggsave(plot= p_alt_site, "builds/plots/supplement/pairwise_corr_alternative_explanatories.png", height = 10, width = 10, dpi = 600)
 ggsave(plot= p_ridges, "builds/plots/supplement/environmental_variables_ridges.png", height = 3, width = 10, dpi = 600)

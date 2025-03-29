@@ -124,3 +124,36 @@ n_distinct(dt_sp$family)
 n_distinct(dt_sp$species)
 n_distinct(dt_sp[dt_sp$n_family > 9, ]$species)
 n_distinct(dt_sp[dt_sp$n_family > 9, ]$family)
+
+dt_traits <- fread("data/processed_data/data_fragments/plot_species_waterberg2024.csv") %>% 
+  dplyr::select(species, growth_form, height_cm, hairs, leaf_size, bulk_density) %>%
+  mutate(hairs = case_when(
+    .default = hairs, 
+    hairs %in% c("Absent", "absent") ~ "Absent", 
+    hairs %in% c("stems", "stems and branches") ~ "Stems", 
+    hairs %in% c("leaves") ~ "Leaves", 
+    hairs %in% c("both") ~ "Leaves and Stems"), 
+    height_cm = as.numeric(height_cm)) %>% 
+  group_by(species) %>% 
+  mutate(
+    n_growth_form_species = n_distinct(growth_form),
+    cv_height_cm_species = (sd(height_cm, na.rm = T)/mean(height_cm, na.rm = T)),  
+    n_hairs_species = n_distinct(hairs), 
+    n_leaf_size_species = n_distinct(leaf_size), 
+    bulk_density_species = n_distinct(bulk_density)) %>%
+  ungroup() %>% 
+  dplyr::select(species, n_growth_form_species, cv_height_cm_species, n_hairs_species, n_leaf_size_species, bulk_density_species) %>% 
+  unique() %>% 
+  pivot_longer(cols = c("n_growth_form_species", "cv_height_cm_species", 
+                        "n_hairs_species", "n_leaf_size_species", "bulk_density_species"), 
+               names_to = "variable_name", 
+               values_to = "variable_value")
+
+
+dt_traits %>% 
+  ggplot() +
+  geom_histogram(aes(x = variable_value)) +
+  facet_wrap(~ variable_name, scales = "free")
+
+
+  

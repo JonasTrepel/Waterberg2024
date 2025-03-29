@@ -8,18 +8,15 @@ dt_raw <- fread("data/processed_data/clean_data/waterberg_2024_main_dataset.csv"
 dt <- dt_raw %>%  
   pivot_longer(
     cols = c(
-      species_richness_plot, shannon_diversity_plot,  
-      graminoid_richness_plot, forb_richness_plot, woody_richness_plot,
-      functional_redundancy_plot, functional_diversity_plot, community_dominance_plot, functional_richness_plot, 
+      plant_richness_plot, graminoid_richness_plot, forb_richness_plot, woody_richness_plot,
+      functional_redundancy_plot, functional_richness_plot, functional_richness_plot, 
       
       
-      species_richness_site, shannon_diversity_site, beta_diversity_site,  
-      graminoid_richness_site, forb_richness_site, woody_richness_site,  
-      functional_redundancy_site, functional_diversity_site, community_dominance_site, functional_richness_site,
+      plant_richness_site, graminoid_richness_site, forb_richness_site, woody_richness_site,  
+      functional_redundancy_site,  functional_richness_site,
       
-      species_richness_reserve, shannon_diversity_reserve, beta_diversity_reserve,  
-      graminoid_richness_reserve, forb_richness_reserve, woody_richness_reserve,  
-      functional_redundancy_reserve, functional_diversity_reserve, community_dominance_reserve, functional_richness_reserve
+      plant_richness_reserve, graminoid_richness_reserve, forb_richness_reserve, woody_richness_reserve,  
+      functional_redundancy_reserve, functional_richness_reserve
     ),  
     names_to = "response_name", values_to = "response_value"
   )
@@ -37,4 +34,4 @@ dist_plot <- dt %>%
   )
 dist_plot
 
-ggsave(plot = dist_plot, "builds/plots/sensitivity/response_distributions.png", height = 10, width = 12)
+ggsave(plot = dist_plot, "builds/plots/supplement/response_distributions.png", height = 10, width = 12)

@@ -135,7 +135,13 @@ dt_p <-  pv %>%
       growth_form == "cf (Creeping forb)" ~ "Creeping forb", 
       growth_form == "ug (Sparse upward graminoid)" ~ "Sparse upward graminoid", 
       growth_form == "lg (Large graminoid)" ~ "Large graminoid", 
-      growth_form == "" ~ NA)) %>% 
+      growth_form == "" ~ NA),
+    hairs = case_when(
+      .default = hairs, 
+      hairs %in% c("Absent", "absent") ~ "Absent", 
+      hairs %in% c("stems", "stems and branches") ~ "Stems", 
+      hairs %in% c("leaves") ~ "Leaves", 
+      hairs %in% c("both") ~ "Leaves and Stems")) %>% 
   group_by(plot_ID) %>% 
   mutate(species_richness_plot = n_distinct(species), 
          tsq_x_shrub_plot = mean(tsq_x_shrub, na.rm = T),
@@ -150,6 +156,7 @@ dt_p <-  pv %>%
          length_cm_plot = mean(as.numeric(length_cm), na.rm = T),
          height_cm_plot = mean(as.numeric(height_cm), na.rm = T),
          growth_form_plot = get_mode(growth_form),
+         n_growth_forms_plot = n_distinct(growth_form),
          life_form_plot = get_mode(life_form)) %>% 
   ungroup() %>% 
   group_by(site_ID) %>% 
@@ -168,6 +175,10 @@ n_distinct(dt_p[!id_level == "species_level", ]$species) # 36 unidentified #90 %
 
 n_distinct(dt_p[life_form %in% c("Forb", "Graminoid"), ]$species) 
 n_distinct(dt_p[!life_form %in% c("Forb", "Graminoid"), ]$species) 
+
+
+dt_tc <- dt_p %>% dplyr::select(contains("plot")) %>% unique()
+fwrite(dt_tc, "data/processed_data/data_fragments/plot_aggregated_metric.csv")
 
 ### Get life form specific richness ----------------
 
@@ -382,7 +393,7 @@ dt_sl <- dt_p[, .(plot_ID, species, reserve, id_level)] %>%
   arrange(desc(id_level), family, -n_plots_encountered) %>% 
   dplyr::select(species, family, id_level, n_plots_encountered)
   
-fwrite(dt_fam, "builds/species_lists/clean_plot_species_list.csv")
+fwrite(dt_sl, "builds/species_lists/clean_plot_species_list.csv")
 
 
 ### subset 
