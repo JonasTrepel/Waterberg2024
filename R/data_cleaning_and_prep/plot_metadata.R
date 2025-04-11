@@ -15,7 +15,7 @@ mapview(dt_sf)
 
 
 ### Canopy heigth (meta) -------------------------------
-ch <- rast("../../../../resources/spatial/meta_canopy_height/canopy_height_10m_waterberg.tif")
+ch <- rast("../../../../Resources/spatial/meta_canopy_height/canopy_height_10m_waterberg.tif")
 res(ch)
 max(values(ch))
 
@@ -33,7 +33,7 @@ setnames(ch_extr, c("mean"), c("canopy_height_plot"))
 
 ## elevation --------
 
-ele <- rast("../../../../resources/spatial/Elevation_ZAF/Elevation_SA_90m.tif")
+ele <- rast("../../../../Resources/spatial/Elevation_ZAF/Elevation_SA_90m.tif")
 crs(ele) # 
 
 dt_sf_ele <- st_transform(dt_sf, crs = crs(ele))
@@ -47,7 +47,7 @@ setnames(ele_extr, "mean", "elevation_plot")
 
 ## MAT---------------
 
-mat <- rast("../../../../resources/spatial/Chelsa_Climate/CHELSA_bio1_1981-2010_V.2.1.tif") 
+mat <- rast("../../../../Resources/spatial/Chelsa_Climate/CHELSA_bio1_1981-2010_V.2.1.tif") 
 
 
 dt_sf_mat <- st_transform(dt_sf, crs = crs(mat))
@@ -61,7 +61,7 @@ setnames(mat_extr, "mean", "mat_plot")
 
 
 ## MAP---------------
-map <- rast("../../../../resources/spatial/Chelsa_Climate/CHELSA_bio12_1981-2010_V.2.1.tif") 
+map <- rast("../../../../Resources/spatial/Chelsa_Climate/CHELSA_bio12_1981-2010_V.2.1.tif") 
 
 
 dt_sf_map <- st_transform(dt_sf, crs = crs(map))
@@ -74,7 +74,7 @@ map_extr <- exactextractr::exact_extract(map,
 setnames(map_extr, "mean", "map_plot")
 
 ## Tree cover ---------------
-tc <- rast("../../../../resources/spatial/meta_canopy_height/woody_cover_10m_waterberg.tif") 
+tc <- rast("../../../../Resources/spatial/meta_canopy_height/woody_cover_10m_waterberg.tif") 
 plot(tc)
 
 dt_sf_tc <- st_transform(dt_sf, crs = crs(tc))
@@ -88,7 +88,7 @@ setnames(tc_extr, "mean", "tree_cover_plot")
 
 
 ## Tree cover reiner ---------
-tc_r <- rast("../../../../resources/spatial/Africa_Tree_Cover_Reiner_et_al_2023/South_Africa_treecover_2019_v1_10m.tif") 
+tc_r <- rast("../../../../Resources/spatial/Africa_Tree_Cover_Reiner_et_al_2023/South_Africa_treecover_2019_v1_10m.tif") 
 plot(tc_r)
 
 dt_sf_tc_r <- st_transform(dt_sf, crs = crs(tc_r))

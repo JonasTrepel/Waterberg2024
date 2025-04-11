@@ -7,6 +7,9 @@ library(data.table)
 res_meta <- fread("data/processed_data/data_fragments/reserve_meta_waterberg2024.csv")
 plot_meta <- fread("data/processed_data/data_fragments/plot_meta_waterberg2024.csv")
 
+plot_level <- fread("data/raw_data/Waterberg2024_Plot_Metadata.csv") %>% 
+  dplyr::select(plot_ID, tsq_t_shrub, tsq_t_tree, bare_ground, rock_cover)
+
 dt_div <- fread("data/processed_data/data_fragments/species_numbers_per_plot_waterberg2024.csv") %>% mutate(
   species_richness_site = (forb_richness_site + graminoid_richness_site + woody_richness_site),
   species_richness_reserve = (forb_richness_reserve + graminoid_richness_reserve + woody_richness_reserve), 
@@ -117,6 +120,7 @@ dt_comb <- dt_div %>%
   left_join(dt_lidar) %>% 
   left_join(dt_div) %>% 
   left_join(dt_ct) %>% 
+  left_join(plot_level) %>% 
   unique() %>% mutate(across(where(is.numeric), ~ ifelse(is.infinite(.), NA, .)))
 summary(dt_comb)
 

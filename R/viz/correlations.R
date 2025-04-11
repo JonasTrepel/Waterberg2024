@@ -11,6 +11,18 @@ library(ggcorrplot)
 
 dt <- fread("data/processed_data/clean_data/waterberg_2024_main_dataset.csv") 
 
+plot(dt$herbivore_species_richness, dt$tree_cover_plot)
+cor.test(dt$herbivore_species_richness, dt$tree_cover_plot)
+
+plot(dt$herbivore_species_richness, dt$canopy_height_plot)
+cor.test(dt$herbivore_species_richness, dt$canopy_height_plot)
+
+plot(dt$herbivore_species_richness, dt$bare_ground)
+cor.test(dt$herbivore_species_richness, dt$bare_ground)
+
+plot(dt$herbivore_species_richness, dt$tsq_t_tree)
+cor.test(dt$herbivore_species_richness, dt$tsq_t_tree)
+
 
 #### Explanatory variables 
 
@@ -133,6 +145,14 @@ p_herbi_corr <- ggcorrplot(herbi_corr, hc.order = TRUE, type = "lower",
 
 p_herbi_corr
 
+p_alt_herbis <- ggpairs(dt_herbi) +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        strip.text = element_text(face = "bold"))
+
+p_alt_herbis
+
+
 ##### Herbivores and other explanatories 
  
 ############ Site 
@@ -141,7 +161,6 @@ dt_alt_site <- dt %>%
     elevation_site, 
     map_site, 
     mat_site, 
-    area_ha, 
     herbivore_species_richness,
     n_trigger_events_day, 
     herbivore_biomass_kg_ha
@@ -152,7 +171,7 @@ dt_alt_site <- dt %>%
     `MAP (mm)` = map_site,
     `MAT (°C)` = mat_site,
     `Herbivore\nSpecies Richness` = herbivore_species_richness,
-    `Herbivore Visitation` = n_trigger_events_day,
+    `Herbivore Visitation\n(Ind. Detections/Day)` = n_trigger_events_day,
     `Herbivore Biomass\n(kg/ha)` = herbivore_biomass_kg_ha
   )
 
