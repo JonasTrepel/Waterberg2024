@@ -76,3 +76,30 @@ The R code is organized into three primary components:
 - `supplement_double_check_forb_richness.R`  
   Investigate and visualize the effects of herbivore regime on forb richness when including multiple predictors.
 
+## Main dataset: 
+The main dataset can be found here: data/processed_data/clean_data/waterberg_2024_main_dataset.csv
+The most important colums are: 
+
+
+
+| Column Name(s)                         | Description |
+|------------------------------------|-------------|
+| `plot_ID`, `site_ID`, `reserve`    | Unique identifiers (plot, site, reserve) |
+| `plant_richness_*`                 | Species richness of all herbaceous plants at plot, site, and reserve levels |
+| `forb_richness_*`                  | Forb richness at each spatial scale |
+| `graminoid_richness_*`            | Graminoid richness at each scale |
+| `woody_richness_*`                | Woody species richness at each scale |
+| `functional_richness_*`           | Functional plant richness at each scale |
+| `functional_redundancy_*`         | Functional redundancy at each scale |
+| `max_species_body_mass`, `mean_species_body_mass`, `median_species_body_mass` | Body mass summaries of mammal species present in reserves |
+| `cw_*body_mass`                   | Community-weighted mean, median, and max body mass (abundance-weighted) |
+| `herbivore_species_richness`      | Number of large herbivore species in a reserve |
+| `herbivore_biomass_kg_ha`         | Total biomass of herbivorous mammals (kg/ha) |
+| `browser_biomass_ha`, `grazer_biomass_ha`, `mixed_feeder_biomass_ha` | Biomass of browsers, grazers, and mixed feeders |
+| `grazer_browser_ratio`, `grazer_mixed_ratio`, `browser_mixed_ratio` | Biomass ratios among herbivore feeding guilds |
+| `area_ha`                         | Reserve area (hectares) |
+| `elevation_*`, `mat_*`, `map_*`   | Elevation, mean annual temperature (MAT), and precipitation (MAP) at plot, site, and reserve scales |
+| `n_trigger_events_day_*`          | Herbivore visitation rate (number of independent trigger events per day) |
+| `cameraID`                        | Camera trap identifier |
+| `bare_ground`, `rock_cover`       | Percent cover of bare soil and rock at plots |
+| `date_time`                       | Date and time when plots were surveyed |
