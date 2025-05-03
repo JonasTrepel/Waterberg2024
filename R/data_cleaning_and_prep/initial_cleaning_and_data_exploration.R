@@ -171,9 +171,16 @@ n_distinct(dt_p$species) # 435
 unique(dt_p$species) 
 
 n_distinct(dt_p[id_level == "species_level", ]$species) # 399 on species level
-n_distinct(dt_p[!id_level == "species_level", ]$species) # 36 unidentified #90 % of plants identified 
+n_distinct(dt_p[!id_level == "species_level", ]$species) # 399 on species level
+
+n_distinct(dt_p[!id_level == "species_level" & life_form_plot == "Forb", ]$species) # 36 unidentified #90 % of plants identified 
+n_distinct(dt_p[id_level == "species_level" & life_form_plot == "Forb", ]$species) # 36 unidentified #90 % of plants identified 
 
 n_distinct(dt_p[life_form %in% c("Forb", "Graminoid"), ]$species) 
+n_distinct(dt_p[life_form %in% c("Forb") & id_level == "species_level", ]$species) 
+n_distinct(dt_p[life_form %in% c("Forb") & !id_level == "species_level", ]$species) 
+
+
 n_distinct(dt_p[!life_form %in% c("Forb", "Graminoid"), ]$species) 
 
 
@@ -199,7 +206,8 @@ dt_forb <- dt_p %>%
 dt_graminoid <- dt_p %>% 
   filter(life_form == "Graminoid") %>% 
   group_by(plot_ID) %>% 
-  mutate(graminoid_richness_plot = n_distinct(species)) %>% 
+  mutate(graminoid_richness_plot = n_distinct(species), 
+         graminoid_cover_plot = sum(cover_percent, na.rm = T)) %>% 
   ungroup() %>% 
   group_by(site_ID) %>% 
   mutate(graminoid_richness_site = n_distinct(species)) %>% 
@@ -207,7 +215,7 @@ dt_graminoid <- dt_p %>%
   group_by(reserve) %>% 
   mutate(graminoid_richness_reserve = n_distinct(species)) %>% 
   ungroup() %>% 
-  dplyr::select(plot_ID, graminoid_richness_plot, graminoid_richness_site, graminoid_richness_reserve) %>% 
+  dplyr::select(plot_ID, graminoid_richness_plot, graminoid_richness_site, graminoid_richness_reserve, graminoid_cover_plot) %>% 
   unique()
 
 dt_woody <- dt_t  %>% 
@@ -227,6 +235,7 @@ dt_div <- dt_p %>%
  
 summary(dt_div) 
 summary(dt_woody)
+cor.test(dt_div$forb_richness_plot, dt_div$graminoid_cover_plot)
 
 
 fwrite(dt_div, "data/processed_data/data_fragments/species_numbers_per_plot_waterberg2024.csv")

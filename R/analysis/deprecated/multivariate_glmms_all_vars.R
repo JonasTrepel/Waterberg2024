@@ -5,8 +5,6 @@ library(tidyverse)
 library(gridExtra)
 library(glmmTMB)
 library(GGally)
-library(MuMIn)
-library(DHARMa)
 
 dt <- fread("data/processed_data/clean_data/waterberg_2024_main_dataset.csv") 
 
@@ -51,7 +49,17 @@ plot_resp <- c(
   ## Functional_diversity  
   "functional_redundancy_plot",
   "functional_diversity_plot",
-  "functional_richness_plot")
+  "functional_richness_plot",
+  
+  ## Structure
+  "lidar_adjusted_mean_3d_plot", # mean distance travelled by a point, adjusted for the return fraction
+  "lidar_adjusted_mean_3d_woody_plot", # mean distance travelled by a point above 90cm, adjusted for the return fraction
+  "lidar_sd_adjusted_3d_partial_plot", # sd of mean distance travelled by a point, adjusted for the return fraction of 5 parts of the scan
+  
+  ## Additional responses  
+  "community_dominance_plot",
+  "berger_parker_plot",
+  "shannon_diversity_plot")
 
 alternative_hypo <- c(
   "elevation_plot_scaled", 
@@ -66,7 +74,12 @@ plot_guide <- CJ(alternative_hypothesis = alternative_hypo,
     response %in% c("functional_redundancy_plot","functional_diversity_plot", 
                     "functional_richness_plot") ~ "functional_diversity",
     response %in% c("plant_richness_plot", "forb_richness_plot",
-                    "graminoid_richness_plot", "woody_richness_plot") ~ "taxonomic_diversity"))
+                    "graminoid_richness_plot", "woody_richness_plot") ~ "taxonomic_diversity",
+    response %in% c("community_dominance_plot", "berger_parker_plot",
+                    "beta_diversity_plot", "shannon_diversity_plot") ~ "additional_responses",
+    response %in% c(  "lidar_adjusted_mean_3d_plot",
+                      "lidar_adjusted_mean_3d_woody_plot",
+                      "lidar_sd_adjusted_3d_partial_plot") ~ "vegetation_structure"))
 
 
 resp <- "plant_richness_plot"
@@ -196,18 +209,29 @@ dt_site <- dt_plot %>%
     functional_redundancy_site,
     functional_diversity_site,
     functional_richness_site,
-
+    
+    ## Structure
+    lidar_adjusted_mean_3d_site, # mean distance travelled by a point, adjusted for the return fraction
+    lidar_adjusted_mean_3d_woody_site, # mean distance travelled by a point above 90cm, adjusted for the return fraction
+    lidar_sd_adjusted_mean_3d_site, # sd of mean distance travelled by a point, adjusted for the return fraction of 5 parts of the scan
+    
+    ## Additional responses  
+    community_dominance_site,
+    berger_parker_site,
+    shannon_diversity_site,
+    
     #predictors 
     elevation_site_scaled, 
     map_site_scaled, 
     mat_site_scaled, 
+    area_ha_scaled,
     herbivore_biomass_kg_ha_scaled,
     herbivore_species_richness_scaled,
     n_trigger_events_day_scaled,
     
     reserve,
     site_ID
-  ) %>% unique() 
+  ) %>% unique() %>% filter(!is.na(lidar_adjusted_mean_3d_woody_site))
   
 
 site_resp <- c(
@@ -220,7 +244,17 @@ site_resp <- c(
   ## Functional_diversity  
   "functional_redundancy_site",
   "functional_diversity_site",
-  "functional_richness_site")
+  "functional_richness_site",
+  
+  ## Structure
+  "lidar_adjusted_mean_3d_site", # mean distance travelled by a point, adjusted for the return fraction
+  "lidar_adjusted_mean_3d_woody_site", # mean distance travelled by a point above 90cm, adjusted for the return fraction
+  "lidar_sd_adjusted_mean_3d_site", # sd of mean distance travelled by a point, adjusted for the return fraction of 5 parts of the scan
+  
+  ## Additional responses  
+  "community_dominance_site",
+  "berger_parker_site",
+  "shannon_diversity_site")
 
 alternative_hypo <- c(
   "elevation_site_scaled", 
@@ -235,7 +269,12 @@ site_guide <- CJ(alternative_hypothesis = alternative_hypo,
     response %in% c("functional_redundancy_site","functional_diversity_site", 
                     "functional_richness_site") ~ "functional_diversity",
     response %in% c("plant_richness_site", "forb_richness_site",
-                    "graminoid_richness_site", "woody_richness_site") ~ "taxonomic_diversity"))
+                    "graminoid_richness_site", "woody_richness_site") ~ "taxonomic_diversity",
+    response %in% c("community_dominance_site", "berger_parker_site",
+                    "beta_diversity_site", "shannon_diversity_site") ~ "additional_responses",
+    response %in% c(  "lidar_adjusted_mean_3d_site",
+                      "lidar_adjusted_mean_3d_woody_site",
+                      "lidar_sd_adjusted_mean_3d_site") ~ "vegetation_structure"))
 
 
 resp <- "plant_richness_site"
