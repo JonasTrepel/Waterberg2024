@@ -40,7 +40,7 @@ dt_sp <- fread("data/processed_data/data_fragments/plot_species_waterberg2024.cs
 p_gf <- dt_sp %>% 
   filter(n_family > 9) %>% 
   ggplot() +
-  geom_bar(aes(x = growth_form), fill = "steelblue", color = "black", alpha = 0.7) +
+  geom_bar(aes(x = growth_form), fill = "olivedrab", color = "black", alpha = 0.7) +
   facet_wrap(~family) +
   labs(x = "Growth Form", y = "Count") +
   theme_bw() +
@@ -52,7 +52,7 @@ ggsave(plot = p_gf, "builds/plots/supplement/growth_form_distribution.png", dpi 
 p_hairs <- dt_sp %>% 
   filter(n_family > 9) %>% 
   ggplot() +
-  geom_bar(aes(x = hairs), fill = "steelblue", color = "black", alpha = 0.7) +
+  geom_bar(aes(x = hairs), fill = "olivedrab", color = "black", alpha = 0.7) +
   facet_wrap(~family) +
   labs(x = "Hairiness", y = "Count") +
   theme_bw() +
@@ -64,7 +64,7 @@ ggsave(plot = p_hairs, "builds/plots/supplement/hairiness_distribution.png", dpi
 p_ls <- dt_sp %>% 
   filter(n_family > 9) %>% 
   ggplot() +
-  geom_bar(aes(x = leaf_size), fill = "steelblue", color = "black", alpha = 0.7) +
+  geom_bar(aes(x = leaf_size), fill = "olivedrab", color = "black", alpha = 0.7) +
   facet_wrap(~family) +
   labs(x = "Leaf Size Class", y = "Count") +
   theme_bw() +
@@ -77,7 +77,7 @@ p_bd <- dt_sp %>%
   filter(n_family > 9) %>% 
   mutate(bulk_density = str_to_sentence(bulk_density)) %>%  
   ggplot() +
-  geom_bar(aes(x = bulk_density), fill = "steelblue", color = "black", alpha = 0.7) +
+  geom_bar(aes(x = bulk_density), fill = "olivedrab", color = "black", alpha = 0.7) +
   facet_wrap(~family) +
   labs(x = "Biomass Density", y = "Count") +
   theme_bw() +
@@ -90,7 +90,7 @@ p_height <- dt_sp %>%
   filter(n_family > 9) %>% 
   mutate(height_cm = as.numeric(height_cm)) %>% 
   ggplot(aes(x = height_cm)) +
-  geom_histogram(bins = 30, fill = "steelblue", color = "black", alpha = 0.7) +
+  geom_histogram(bins = 30, fill = "olivedrab", color = "black", alpha = 0.7) +
   facet_wrap(~family) +
   scale_x_log10() +
   labs(x = "Plant Height (cm)", y = "Count") +
@@ -102,7 +102,7 @@ ggsave(plot = p_height, "builds/plots/supplement/plant_height_distribution.png",
 
 p_n_fam <- dt_sp %>% 
   ggplot(aes(x = n_family)) +
-  geom_histogram(bins = 30, fill = "steelblue", color = "black", alpha = 0.7) +
+  geom_histogram(bins = 30, fill = "olivedrab", color = "black", alpha = 0.7) +
   scale_x_log10() +
   labs(x = "Number of Species per Family", y = "Count") +
   theme_bw() +
@@ -114,7 +114,7 @@ p_n_fam <- dt_sp %>%
   unique() %>% 
   ggplot(aes(x = n_family, y = reorder(family, n_family))) +
  # geom_vline(xintercept = 10, linetype = "dashed") +
-  geom_col(fill = "steelblue", color = "black", alpha = 0.7) +
+  geom_col(fill = "olivedrab", color = "black", alpha = 0.7) +
   labs(x = "Number of Species per Family", y = "Family") +
   theme_bw() 
 p_n_fam
