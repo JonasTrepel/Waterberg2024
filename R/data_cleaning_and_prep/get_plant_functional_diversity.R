@@ -138,12 +138,22 @@ trait_data <- traits %>%
   bulk_density = get_mode(bulk_density)) %>%
   ungroup() %>% 
   mutate(height_bins = as.factor(cut_number(height_cm, n = k))) %>%
+  mutate(height_bins = case_when( #alternative height category
+    height_cm < 10 ~ "1",
+    height_cm >= 10 &  height_cm < 30 ~ "2",
+    height_cm >= 30 &  height_cm < 50 ~ "3",
+    height_cm >= 50 &  height_cm < 75 ~ "4",
+    height_cm >= 75 &  height_cm < 100 ~ "5",
+    height_cm >= 100 &  height_cm < 200 ~ "6",
+    height_cm >= 200 ~ "7"),
+    height_bins = as.factor(height_bins)) %>%
   dplyr::select(-plot_ID, -reproductive_height, -height_cm) %>% ## remove reproductive height for now as we don't have enough data 
   unique() %>% filter(complete.cases(.))
 
+plot(trait_data$height_bins)
 ## remove reproductive height for now as we don't have enough data 
 summary(trait_data)
-n_distinct(trait_data$height_bins)
+unique(trait_data$height_bins)
 
 #### trait data: 
 trait_data 
@@ -271,7 +281,7 @@ alpha_fd_indices <- mFD::alpha.fd.multidim(
 
 alpha_fd_indices$functional_diversity_indices
 hist(alpha_fd_indices$functional_diversity_indices$fric)
-quantile(alpha_fd_indices$functional_diversity_indices$fric, c(0, 0.05, 0.95, 1))
+quantile(alpha_fd_indices$functional_diversity_indices$fric, c(0, 0.05, 0.95, 1), na.rm = T)
 min_fric <- min(alpha_fd_indices$functional_diversity_indices$fric)
 
 

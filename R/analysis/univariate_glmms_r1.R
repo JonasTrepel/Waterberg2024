@@ -62,9 +62,9 @@ responses_plot <- c(
   "functional_richness_plot",
   
   ## Structure
-  "lidar_adjusted_mean_3d_plot", # mean distance travelled by a point, adjusted for the return fraction
-  "lidar_adjusted_mean_3d_woody_plot", # mean distance travelled by a point above 90cm, adjusted for the return fraction
-  "lidar_sd_adjusted_3d_partial_plot", # sd of mean distance travelled by a point, adjusted for the return fraction of 5 parts of the scan
+#  "lidar_adjusted_mean_3d_plot", # mean distance travelled by a point, adjusted for the return fraction
+#  "lidar_adjusted_mean_3d_woody_plot", # mean distance travelled by a point above 90cm, adjusted for the return fraction
+#  "lidar_sd_adjusted_3d_partial_plot", # sd of mean distance travelled by a point, adjusted for the return fraction of 5 parts of the scan
   
   ## Additional responses  
   "community_dominance_plot",
@@ -251,7 +251,8 @@ table(guide_reserve$predictor_tier)
 
 guide <- rbind(guide_plot, guide_site, guide_reserve) %>% 
   mutate(distribution_family = ifelse(grepl("richness", response) &
-                                        !grepl("functional_richness", response), "poisson", "gamma")) 
+                                        !grepl("functional_richness", response), "poisson", "gamma")) %>% 
+  filter(response_tier != "vegetation_structure")
 table(guide$distribution_family)
 ## test 
 
@@ -357,14 +358,15 @@ for(i in 1:nrow(guide)){
      delta_aic <- AIC(m0) - AIC(m)
      delta_bic <- BIC(m0) - BIC(m)
                              
-     rsq_m <-  as.numeric(r.squaredGLMM(m)[1])
-     rsq_c <-  as.numeric(r.squaredGLMM(m)[2])
+     
+     rsq_m <-  as.numeric(r.squaredGLMM(m)[1,1])
+     rsq_c <-  as.numeric(r.squaredGLMM(m)[1,2])
                              
                              
      tmp <- tmp %>% 
        mutate(
-         rsq_m = round(rsq_m, 3),
-         rsq_c = round(rsq_c, 3),
+         rsq_m = round(rsq_m, 2),
+         rsq_c = round(rsq_c, 2),
          formula = guide[i,]$formula, 
          response = guide[i,]$response,
          response_tier = guide[i,]$response_tier,

@@ -276,100 +276,100 @@ p_fd2
 empty_plot <- ggplot() + theme_void()
 
 p_fd_raw <- gridExtra::grid.arrange(p_fd1, p_fd2, heights = c(1.3, 1))
-p_fd <- gridExtra::grid.arrange(p_fd_raw, lfd_leg, heights = c(5, 1))
+#p_fd <- gridExtra::grid.arrange(p_fd_raw, lfd_leg, heights = c(5, 1))
 
 
 ggsave(plot = p_fd_raw, "builds/plots/functional_diversity_grid_univariate.png", dpi = 600, height = 6, width = 6)
 
 
-#### Structure ---------------------
-
-unique(dt_est$clean_response)
-
-dt_est_str <- dt_est[response_tier == "vegetation_structure"] %>% 
-  filter(clean_term != "Herbivore Visitation") %>% 
-  mutate(scale = factor(scale, levels = c("Plot", "Site", "Reserve")), 
-         scale_n = factor(scale_n, levels = c("Plot\nn=250", "Site\nn=50", "Reserve\nn=10")), 
-         clean_response = case_when(
-           .default = clean_response, 
-           clean_response == "LiDAR Mean Distance (adj.)" ~ "LiDAR\nMean Distance (adj.)",
-           clean_response == "LiDAR Point Return Fraction" ~ "LiDAR\nPoint Return Fraction")
-  )
-
-dt_est_str <- dt_est_str %>%
-  complete(scale_n, nesting(clean_term, clean_response),
-           fill = list(estimate = NA, ci_lb = NA, ci_ub = NA, 
-                       ci_overlap = "CI overlapping 0", better_than_intercept = "Similar to Null-Model"))  %>% 
-  mutate(ci_overlap = factor(ci_overlap, 
-                         levels = c("Negative estimate;\nCI not overlapping 0", 
-                                    "CI overlapping 0",  
-                                    "Positive estimate;\nCI not overlapping 0")))
-
-# Create individual plots for Life Form Specific Diversity
-
-# Plot 1
-p_str1 <- dt_est_str %>%
-  filter(clean_response == "Vegetation Openness") %>%  
-  ggplot() +
-  geom_vline(xintercept = 0, linetype = "dashed", color = "grey25", alpha = 0.75, linewidth = .5) +
-  geom_pointrange(aes(x = estimate, xmin = ci_lb, xmax = ci_ub, y = clean_term,
-                      color = sig, fill = sig),
-                  linewidth = 1.5, size = 1.1, alpha = 0.85, shape = 23) +
-  scale_fill_manual(values=c("Non-Significant" = "gray50",
-                             "Significant" =  "darkorange"), guide = "none") + 
-  scale_color_manual(values=c("Non-Significant" = "gray50",
-                              "Significant" =  "darkorange")) +
-  facet_grid(cols = vars(scale_n), rows = vars(clean_response), scales = "free_x", drop = FALSE) +
-  labs(y = "", x = "Estimate", title = "Vegetation Structure Responses", 
-       alpha = "Quality:", color = "Significance:", shape = "Quality:") +
-  scale_x_continuous(breaks = scales::breaks_pretty(n = 3))+
-  theme_bw() +
-  theme_first
-p_str1
-
-# Plot 2
-p_str2 <- dt_est_str %>%
-  filter(clean_response == "Canopy Openness") %>%  
-  ggplot() +
-  geom_vline(xintercept = 0, linetype = "dashed", color = "grey25", alpha = 0.75, linewidth = .5) +
-  geom_pointrange(aes(x = estimate, xmin = ci_lb, xmax = ci_ub, y = clean_term,
-                      color = sig, fill = sig),
-                  linewidth = 1.5, size = 1.1, alpha = 0.85, shape = 23) +
-  scale_fill_manual(values=c("Non-Significant" = "gray50",
-                             "Significant" =  "darkorange"), guide = "none") + 
-  scale_color_manual(values=c("Non-Significant" = "gray50",
-                              "Significant" =  "darkorange")) +
-  facet_grid(cols = vars(scale_n), rows = vars(clean_response), scales = "free_x", drop = FALSE) +
-  labs(y = "", x = "Estimate", title = "Ecosystem Structure", 
-       alpha = "Quality:", color = "Significance:", shape = "Quality:") +
-  scale_x_continuous(breaks = scales::breaks_pretty(n = 3))+
-  theme_bw() +
-  theme_lower
-p_str2
-
-p_str3 <- dt_est_str %>%
-  filter(clean_response == "LiDAR SD") %>%  
-  ggplot() +
-  geom_vline(xintercept = 0, linetype = "dashed", color = "grey25", alpha = 0.75, linewidth = .5) +
-  geom_pointrange(aes(x = estimate, xmin = ci_lb, xmax = ci_ub, y = clean_term,
-                      color = sig, fill = sig),
-                  linewidth = 1.5, size = 1.1, alpha = 0.85, shape = 23) +
-  scale_fill_manual(values=c("Non-Significant" = "gray50",
-                             "Significant" =  "darkorange"), guide = "none") + 
-  scale_color_manual(values=c("Non-Significant" = "gray50",
-                              "Significant" =  "darkorange")) +
-  facet_grid(cols = vars(scale_n), rows = vars(clean_response), scales = "free_x", drop = FALSE) +
-  labs(y = "", x = "Estimate", title = "Ecosystem Structure", 
-       alpha = "Quality:", color = "Significance:", shape = "Quality:") +
-  scale_x_continuous(breaks = scales::breaks_pretty(n = 3))+
-  theme_bw() +
-  theme_lower
-
-p_str3
-
-p_str_raw <- gridExtra::grid.arrange(p_str1, p_str2, p_str3, heights = c(1.3, 1, 1))
-
-ggsave(plot = p_str_raw, "builds/plots/vegetation_structure_grid_univariate.png", dpi = 600, height = 10, width = 7)
+# #### Structure ---------------------
+# 
+# unique(dt_est$clean_response)
+# 
+# dt_est_str <- dt_est[response_tier == "vegetation_structure"] %>% 
+#   filter(clean_term != "Herbivore Visitation") %>% 
+#   mutate(scale = factor(scale, levels = c("Plot", "Site", "Reserve")), 
+#          scale_n = factor(scale_n, levels = c("Plot\nn=250", "Site\nn=50", "Reserve\nn=10")), 
+#          clean_response = case_when(
+#            .default = clean_response, 
+#            clean_response == "LiDAR Mean Distance (adj.)" ~ "LiDAR\nMean Distance (adj.)",
+#            clean_response == "LiDAR Point Return Fraction" ~ "LiDAR\nPoint Return Fraction")
+#   )
+# 
+# dt_est_str <- dt_est_str %>%
+#   complete(scale_n, nesting(clean_term, clean_response),
+#            fill = list(estimate = NA, ci_lb = NA, ci_ub = NA, 
+#                        ci_overlap = "CI overlapping 0", better_than_intercept = "Similar to Null-Model"))  %>% 
+#   mutate(ci_overlap = factor(ci_overlap, 
+#                          levels = c("Negative estimate;\nCI not overlapping 0", 
+#                                     "CI overlapping 0",  
+#                                     "Positive estimate;\nCI not overlapping 0")))
+# 
+# # Create individual plots for Life Form Specific Diversity
+# 
+# # Plot 1
+# p_str1 <- dt_est_str %>%
+#   filter(clean_response == "Vegetation Openness") %>%  
+#   ggplot() +
+#   geom_vline(xintercept = 0, linetype = "dashed", color = "grey25", alpha = 0.75, linewidth = .5) +
+#   geom_pointrange(aes(x = estimate, xmin = ci_lb, xmax = ci_ub, y = clean_term,
+#                       color = sig, fill = sig),
+#                   linewidth = 1.5, size = 1.1, alpha = 0.85, shape = 23) +
+#   scale_fill_manual(values=c("Non-Significant" = "gray50",
+#                              "Significant" =  "darkorange"), guide = "none") + 
+#   scale_color_manual(values=c("Non-Significant" = "gray50",
+#                               "Significant" =  "darkorange")) +
+#   facet_grid(cols = vars(scale_n), rows = vars(clean_response), scales = "free_x", drop = FALSE) +
+#   labs(y = "", x = "Estimate", title = "Vegetation Structure Responses", 
+#        alpha = "Quality:", color = "Significance:", shape = "Quality:") +
+#   scale_x_continuous(breaks = scales::breaks_pretty(n = 3))+
+#   theme_bw() +
+#   theme_first
+# p_str1
+# 
+# # Plot 2
+# p_str2 <- dt_est_str %>%
+#   filter(clean_response == "Canopy Openness") %>%  
+#   ggplot() +
+#   geom_vline(xintercept = 0, linetype = "dashed", color = "grey25", alpha = 0.75, linewidth = .5) +
+#   geom_pointrange(aes(x = estimate, xmin = ci_lb, xmax = ci_ub, y = clean_term,
+#                       color = sig, fill = sig),
+#                   linewidth = 1.5, size = 1.1, alpha = 0.85, shape = 23) +
+#   scale_fill_manual(values=c("Non-Significant" = "gray50",
+#                              "Significant" =  "darkorange"), guide = "none") + 
+#   scale_color_manual(values=c("Non-Significant" = "gray50",
+#                               "Significant" =  "darkorange")) +
+#   facet_grid(cols = vars(scale_n), rows = vars(clean_response), scales = "free_x", drop = FALSE) +
+#   labs(y = "", x = "Estimate", title = "Ecosystem Structure", 
+#        alpha = "Quality:", color = "Significance:", shape = "Quality:") +
+#   scale_x_continuous(breaks = scales::breaks_pretty(n = 3))+
+#   theme_bw() +
+#   theme_lower
+# p_str2
+# 
+# p_str3 <- dt_est_str %>%
+#   filter(clean_response == "LiDAR SD") %>%  
+#   ggplot() +
+#   geom_vline(xintercept = 0, linetype = "dashed", color = "grey25", alpha = 0.75, linewidth = .5) +
+#   geom_pointrange(aes(x = estimate, xmin = ci_lb, xmax = ci_ub, y = clean_term,
+#                       color = sig, fill = sig),
+#                   linewidth = 1.5, size = 1.1, alpha = 0.85, shape = 23) +
+#   scale_fill_manual(values=c("Non-Significant" = "gray50",
+#                              "Significant" =  "darkorange"), guide = "none") + 
+#   scale_color_manual(values=c("Non-Significant" = "gray50",
+#                               "Significant" =  "darkorange")) +
+#   facet_grid(cols = vars(scale_n), rows = vars(clean_response), scales = "free_x", drop = FALSE) +
+#   labs(y = "", x = "Estimate", title = "Ecosystem Structure", 
+#        alpha = "Quality:", color = "Significance:", shape = "Quality:") +
+#   scale_x_continuous(breaks = scales::breaks_pretty(n = 3))+
+#   theme_bw() +
+#   theme_lower
+# 
+# p_str3
+# 
+# p_str_raw <- gridExtra::grid.arrange(p_str1, p_str2, p_str3, heights = c(1.3, 1, 1))
+# 
+# ggsave(plot = p_str_raw, "builds/plots/vegetation_structure_grid_univariate.png", dpi = 600, height = 10, width = 7)
 
 
 #### Trends ---------------------------
