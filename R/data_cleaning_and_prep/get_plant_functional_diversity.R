@@ -116,7 +116,6 @@ traits <- dt_sp %>%
          bulk_density = as.factor(bulk_density), 
          reproductive_height = as.numeric(reproductive_height))
 
-
 get_mode <- function(x, na.rm = FALSE) {
   if(na.rm){
     x = x[!is.na(x)]
@@ -148,7 +147,44 @@ trait_data <- traits %>%
   #   height_cm >= 200 ~ "7"),
   #   height_bins = as.factor(height_bins)) %>%
   dplyr::select(-plot_ID, -reproductive_height, -height_cm) %>% ## remove reproductive height for now as we don't have enough data 
-  unique() %>% filter(complete.cases(.))
+  unique() %>%
+  filter(complete.cases(.)) %>% 
+  mutate(growth_form = factor(growth_form, levels = c(
+                                "Tree single-stemmed",
+                                "Tree multi-stemmed",
+                                "Shrub single-stemmed",
+                                "Shrub multi-stemmed",
+                                "Creeping graminoid",
+                                "Sparse upward graminoid",
+                                "Angry tussock graminoid",
+                                "Relaxed tussock graminoid",
+                                "Large graminoid",
+                                "Creeping forb",
+                                "Round forb",
+                                "Straight forb",
+                                "Cussion forb",
+                                "Messy forb")),
+    hairs = factor(hairs, levels = c(
+      "Absent", "Stems", "Leaves", "Leaves and Stems")),
+    leaf_size = factor(leaf_size, levels = c(
+      "Absent", "Thin linear", "Thick linear", "Micro", "Macro", "Mega")),
+    bulk_density = factor(bulk_density, levels = c(
+      "low", "medium", "high", "extremely thick"))
+    )  %>%
+    filter(complete.cases(.)) 
+
+levels(trait_data$growth_form)
+levels(trait_data$bulk_density)
+levels(trait_data$hairs)
+levels(trait_data$leaf_size)
+levels(trait_data$height_bins)
+
+unique(trait_data$growth_form)
+sum(is.na((trait_data$bulk_density)))
+levels(trait_data$hairs)
+levels(trait_data$leaf_size)
+levels(trait_data$height_bins)
+
 
 plot(trait_data$height_bins)
 ## remove reproductive height for now as we don't have enough data 

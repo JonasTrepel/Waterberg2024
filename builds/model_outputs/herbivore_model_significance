@@ -3,116 +3,116 @@ berger_parker_plot,herbivore_biomass_kg_ha_scaled,plot,0.108,0.3241,0.3241,CI ov
 community_dominance_plot,herbivore_biomass_kg_ha_scaled,plot,0.006,0.0179,0.0179,"Negative estimate;
 CI not overlapping 0",plot_formula_22
 forb_richness_plot,herbivore_biomass_kg_ha_scaled,plot,0.2411,0.3616,0.7232,CI overlapping 0,plot_formula_23
-functional_diversity_plot,herbivore_biomass_kg_ha_scaled,plot,0.5373,0.806,1,CI overlapping 0,plot_formula_24
-functional_redundancy_plot,herbivore_biomass_kg_ha_scaled,plot,0.1235,0.1844,0.3704,CI overlapping 0,plot_formula_25
-functional_richness_plot,herbivore_biomass_kg_ha_scaled,plot,0.1216,0.3647,0.3647,CI overlapping 0,plot_formula_26
+functional_diversity_plot,herbivore_biomass_kg_ha_scaled,plot,0.5398,0.8097,1,CI overlapping 0,plot_formula_24
+functional_redundancy_plot,herbivore_biomass_kg_ha_scaled,plot,0.1242,0.1862,0.3725,CI overlapping 0,plot_formula_25
+functional_richness_plot,herbivore_biomass_kg_ha_scaled,plot,0.1269,0.3806,0.3806,CI overlapping 0,plot_formula_26
 graminoid_richness_plot,herbivore_biomass_kg_ha_scaled,plot,0.0373,0.1119,0.1119,"Positive estimate;
 CI not overlapping 0",plot_formula_27
 plant_richness_plot,herbivore_biomass_kg_ha_scaled,plot,0.0595,0.105,0.1786,CI overlapping 0,plot_formula_28
-shannon_diversity_plot,herbivore_biomass_kg_ha_scaled,plot,0.2689,0.4034,0.8068,CI overlapping 0,plot_formula_29
+shannon_diversity_plot,herbivore_biomass_kg_ha_scaled,plot,0.274,0.411,0.822,CI overlapping 0,plot_formula_29
 woody_richness_plot,herbivore_biomass_kg_ha_scaled,plot,0.4146,0.6219,1,CI overlapping 0,plot_formula_30
 berger_parker_plot,herbivore_species_richness_scaled,plot,0.5884,0.5884,1,CI overlapping 0,plot_formula_31
 community_dominance_plot,herbivore_species_richness_scaled,plot,0.5017,0.5017,1,CI overlapping 0,plot_formula_32
 forb_richness_plot,herbivore_species_richness_scaled,plot,0.4174,0.4174,1,CI overlapping 0,plot_formula_33
-functional_diversity_plot,herbivore_species_richness_scaled,plot,0.4633,0.806,1,CI overlapping 0,plot_formula_34
-functional_redundancy_plot,herbivore_species_richness_scaled,plot,0.1844,0.1844,0.5533,CI overlapping 0,plot_formula_35
-functional_richness_plot,herbivore_species_richness_scaled,plot,0.9217,0.9217,1,CI overlapping 0,plot_formula_36
+functional_diversity_plot,herbivore_species_richness_scaled,plot,0.4501,0.8097,1,CI overlapping 0,plot_formula_34
+functional_redundancy_plot,herbivore_species_richness_scaled,plot,0.1865,0.1865,0.5594,CI overlapping 0,plot_formula_35
+functional_richness_plot,herbivore_species_richness_scaled,plot,0.9236,0.9236,1,CI overlapping 0,plot_formula_36
 graminoid_richness_plot,herbivore_species_richness_scaled,plot,0.2862,0.2862,0.8586,CI overlapping 0,plot_formula_37
 plant_richness_plot,herbivore_species_richness_scaled,plot,0.9412,0.9412,1,CI overlapping 0,plot_formula_38
-shannon_diversity_plot,herbivore_species_richness_scaled,plot,0.9556,0.9556,1,CI overlapping 0,plot_formula_39
+shannon_diversity_plot,herbivore_species_richness_scaled,plot,0.955,0.955,1,CI overlapping 0,plot_formula_39
 woody_richness_plot,herbivore_species_richness_scaled,plot,0.0642,0.1925,0.1925,CI overlapping 0,plot_formula_40
 berger_parker_plot,n_trigger_events_day_scaled,plot,0.3254,0.4882,0.9763,CI overlapping 0,plot_formula_61
 community_dominance_plot,n_trigger_events_day_scaled,plot,0.0631,0.0947,0.1893,CI overlapping 0,plot_formula_62
 forb_richness_plot,n_trigger_events_day_scaled,plot,0.0145,0.0435,0.0435,"Positive estimate;
 CI not overlapping 0",plot_formula_63
-functional_diversity_plot,n_trigger_events_day_scaled,plot,0.8853,0.8853,1,CI overlapping 0,plot_formula_64
-functional_redundancy_plot,n_trigger_events_day_scaled,plot,0.0076,0.0228,0.0228,"Positive estimate;
+functional_diversity_plot,n_trigger_events_day_scaled,plot,0.8702,0.8702,1,CI overlapping 0,plot_formula_64
+functional_redundancy_plot,n_trigger_events_day_scaled,plot,0.0076,0.0227,0.0227,"Positive estimate;
 CI not overlapping 0",plot_formula_65
-functional_richness_plot,n_trigger_events_day_scaled,plot,0.4719,0.7079,1,CI overlapping 0,plot_formula_66
+functional_richness_plot,n_trigger_events_day_scaled,plot,0.5002,0.7503,1,CI overlapping 0,plot_formula_66
 graminoid_richness_plot,n_trigger_events_day_scaled,plot,0.1559,0.2339,0.4678,CI overlapping 0,plot_formula_67
 plant_richness_plot,n_trigger_events_day_scaled,plot,0.07,0.105,0.21,CI overlapping 0,plot_formula_68
-shannon_diversity_plot,n_trigger_events_day_scaled,plot,0.0674,0.2021,0.2021,CI overlapping 0,plot_formula_69
+shannon_diversity_plot,n_trigger_events_day_scaled,plot,0.0724,0.2171,0.2171,CI overlapping 0,plot_formula_69
 woody_richness_plot,n_trigger_events_day_scaled,plot,0.7197,0.7197,1,CI overlapping 0,plot_formula_70
 berger_parker_site,herbivore_biomass_kg_ha_scaled,site,0.8689,0.9839,1,CI overlapping 0,site_formula_29
-beta_diversity_site,herbivore_biomass_kg_ha_scaled,site,0.0713,0.2138,0.2138,CI overlapping 0,site_formula_30
+beta_diversity_site,herbivore_biomass_kg_ha_scaled,site,0.0733,0.22,0.22,CI overlapping 0,site_formula_30
 community_dominance_site,herbivore_biomass_kg_ha_scaled,site,0.3547,0.532,1,CI overlapping 0,site_formula_31
 forb_richness_site,herbivore_biomass_kg_ha_scaled,site,0.2613,0.3919,0.7839,CI overlapping 0,site_formula_32
-functional_diversity_site,herbivore_biomass_kg_ha_scaled,site,0.9044,0.9638,1,CI overlapping 0,site_formula_33
-functional_redundancy_site,herbivore_biomass_kg_ha_scaled,site,0.2977,0.3872,0.8931,CI overlapping 0,site_formula_34
-functional_richness_site,herbivore_biomass_kg_ha_scaled,site,0.1118,0.1677,0.3354,CI overlapping 0,site_formula_35
+functional_diversity_site,herbivore_biomass_kg_ha_scaled,site,0.9078,0.9584,1,CI overlapping 0,site_formula_33
+functional_redundancy_site,herbivore_biomass_kg_ha_scaled,site,0.2971,0.3873,0.8913,CI overlapping 0,site_formula_34
+functional_richness_site,herbivore_biomass_kg_ha_scaled,site,0.1129,0.1694,0.3388,CI overlapping 0,site_formula_35
 graminoid_richness_site,herbivore_biomass_kg_ha_scaled,site,0.0878,0.2405,0.2633,CI overlapping 0,site_formula_36
 plant_richness_site,herbivore_biomass_kg_ha_scaled,site,0.4803,0.5338,1,CI overlapping 0,site_formula_40
-shannon_diversity_site,herbivore_biomass_kg_ha_scaled,site,0.4904,0.7357,1,CI overlapping 0,site_formula_41
+shannon_diversity_site,herbivore_biomass_kg_ha_scaled,site,0.4944,0.7416,1,CI overlapping 0,site_formula_41
 woody_richness_site,herbivore_biomass_kg_ha_scaled,site,0.0292,0.0438,0.0877,"Negative estimate;
 CI not overlapping 0",site_formula_42
 berger_parker_site,herbivore_species_richness_scaled,site,0.9839,0.9839,1,CI overlapping 0,site_formula_43
-beta_diversity_site,herbivore_species_richness_scaled,site,0.9565,0.9565,1,CI overlapping 0,site_formula_44
+beta_diversity_site,herbivore_species_richness_scaled,site,0.9462,0.9462,1,CI overlapping 0,site_formula_44
 community_dominance_site,herbivore_species_richness_scaled,site,0.6473,0.6473,1,CI overlapping 0,site_formula_45
 forb_richness_site,herbivore_species_richness_scaled,site,0.3957,0.3957,1,CI overlapping 0,site_formula_46
-functional_diversity_site,herbivore_species_richness_scaled,site,0.3583,0.9638,1,CI overlapping 0,site_formula_47
-functional_redundancy_site,herbivore_species_richness_scaled,site,0.3872,0.3872,1,CI overlapping 0,site_formula_48
-functional_richness_site,herbivore_species_richness_scaled,site,0.968,0.968,1,CI overlapping 0,site_formula_49
+functional_diversity_site,herbivore_species_richness_scaled,site,0.3485,0.9584,1,CI overlapping 0,site_formula_47
+functional_redundancy_site,herbivore_species_richness_scaled,site,0.3873,0.3873,1,CI overlapping 0,site_formula_48
+functional_richness_site,herbivore_species_richness_scaled,site,0.9566,0.9566,1,CI overlapping 0,site_formula_49
 graminoid_richness_site,herbivore_species_richness_scaled,site,0.1604,0.2405,0.4811,CI overlapping 0,site_formula_50
 plant_richness_site,herbivore_species_richness_scaled,site,0.5338,0.5338,1,CI overlapping 0,site_formula_54
-shannon_diversity_site,herbivore_species_richness_scaled,site,0.9316,0.9316,1,CI overlapping 0,site_formula_55
+shannon_diversity_site,herbivore_species_richness_scaled,site,0.9325,0.9325,1,CI overlapping 0,site_formula_55
 woody_richness_site,herbivore_species_richness_scaled,site,0.0048,0.0144,0.0144,"Negative estimate;
 CI not overlapping 0",site_formula_56
 berger_parker_site,n_trigger_events_day_scaled,site,0.0311,0.0934,0.0934,"Negative estimate;
 CI not overlapping 0",site_formula_85
-beta_diversity_site,n_trigger_events_day_scaled,site,0.5831,0.8747,1,CI overlapping 0,site_formula_86
+beta_diversity_site,n_trigger_events_day_scaled,site,0.5793,0.8689,1,CI overlapping 0,site_formula_86
 community_dominance_site,n_trigger_events_day_scaled,site,0.0905,0.2715,0.2715,CI overlapping 0,site_formula_87
 forb_richness_site,n_trigger_events_day_scaled,site,0.0891,0.2673,0.2673,CI overlapping 0,site_formula_88
-functional_diversity_site,n_trigger_events_day_scaled,site,0.9638,0.9638,1,CI overlapping 0,site_formula_89
-functional_redundancy_site,n_trigger_events_day_scaled,site,0.0087,0.0262,0.0262,"Positive estimate;
+functional_diversity_site,n_trigger_events_day_scaled,site,0.9584,0.9584,1,CI overlapping 0,site_formula_89
+functional_redundancy_site,n_trigger_events_day_scaled,site,0.0089,0.0266,0.0266,"Positive estimate;
 CI not overlapping 0",site_formula_90
-functional_richness_site,n_trigger_events_day_scaled,site,0.0243,0.0728,0.0728,"Positive estimate;
+functional_richness_site,n_trigger_events_day_scaled,site,0.0274,0.0823,0.0823,"Positive estimate;
 CI not overlapping 0",site_formula_91
 graminoid_richness_site,n_trigger_events_day_scaled,site,0.2578,0.2578,0.7735,CI overlapping 0,site_formula_92
 plant_richness_site,n_trigger_events_day_scaled,site,0.237,0.5338,0.7109,CI overlapping 0,site_formula_96
-shannon_diversity_site,n_trigger_events_day_scaled,site,0.1016,0.3047,0.3047,CI overlapping 0,site_formula_97
+shannon_diversity_site,n_trigger_events_day_scaled,site,0.1067,0.3202,0.3202,CI overlapping 0,site_formula_97
 woody_richness_site,n_trigger_events_day_scaled,site,0.5109,0.5109,1,CI overlapping 0,site_formula_98
 berger_parker_reserve,herbivore_biomass_kg_ha_scaled,reserve,0.6773,0.7968,1,CI overlapping 0,reserve_formula_29
 beta_diversity_reserve,herbivore_biomass_kg_ha_scaled,reserve,0.0589,0.0883,0.1766,CI overlapping 0,reserve_formula_30
 community_dominance_reserve,herbivore_biomass_kg_ha_scaled,reserve,0.591,0.7191,1,CI overlapping 0,reserve_formula_31
 forb_richness_reserve,herbivore_biomass_kg_ha_scaled,reserve,2e-04,6e-04,6e-04,"Positive estimate;
 CI not overlapping 0",reserve_formula_32
-functional_diversity_reserve,herbivore_biomass_kg_ha_scaled,reserve,0.6596,0.6596,1,CI overlapping 0,reserve_formula_33
-functional_redundancy_reserve,herbivore_biomass_kg_ha_scaled,reserve,0.1162,0.1162,0.3486,CI overlapping 0,reserve_formula_34
-functional_richness_reserve,herbivore_biomass_kg_ha_scaled,reserve,0.1438,0.2157,0.4314,CI overlapping 0,reserve_formula_35
+functional_diversity_reserve,herbivore_biomass_kg_ha_scaled,reserve,0.6613,0.6613,1,CI overlapping 0,reserve_formula_33
+functional_redundancy_reserve,herbivore_biomass_kg_ha_scaled,reserve,0.121,0.121,0.3629,CI overlapping 0,reserve_formula_34
+functional_richness_reserve,herbivore_biomass_kg_ha_scaled,reserve,0.1403,0.2104,0.4209,CI overlapping 0,reserve_formula_35
 graminoid_richness_reserve,herbivore_biomass_kg_ha_scaled,reserve,0.0056,0.0084,0.0168,"Positive estimate;
 CI not overlapping 0",reserve_formula_36
 plant_richness_reserve,herbivore_biomass_kg_ha_scaled,reserve,4e-04,6e-04,0.0013,"Positive estimate;
 CI not overlapping 0",reserve_formula_40
-shannon_diversity_reserve,herbivore_biomass_kg_ha_scaled,reserve,0.2778,0.4168,0.8335,CI overlapping 0,reserve_formula_41
+shannon_diversity_reserve,herbivore_biomass_kg_ha_scaled,reserve,0.2806,0.4209,0.8418,CI overlapping 0,reserve_formula_41
 woody_richness_reserve,herbivore_biomass_kg_ha_scaled,reserve,0.4113,0.5183,1,CI overlapping 0,reserve_formula_42
 berger_parker_reserve,herbivore_species_richness_scaled,reserve,0.7968,0.7968,1,CI overlapping 0,reserve_formula_43
-beta_diversity_reserve,herbivore_species_richness_scaled,reserve,0.0195,0.0584,0.0584,"Positive estimate;
+beta_diversity_reserve,herbivore_species_richness_scaled,reserve,0.0201,0.0602,0.0602,"Positive estimate;
 CI not overlapping 0",reserve_formula_44
 community_dominance_reserve,herbivore_species_richness_scaled,reserve,0.7191,0.7191,1,CI overlapping 0,reserve_formula_45
 forb_richness_reserve,herbivore_species_richness_scaled,reserve,0.2469,0.2469,0.7408,CI overlapping 0,reserve_formula_46
-functional_diversity_reserve,herbivore_species_richness_scaled,reserve,0.2016,0.6048,0.6048,CI overlapping 0,reserve_formula_47
-functional_redundancy_reserve,herbivore_species_richness_scaled,reserve,0.0439,0.0658,0.1317,"Positive estimate;
+functional_diversity_reserve,herbivore_species_richness_scaled,reserve,0.1925,0.5775,0.5775,CI overlapping 0,reserve_formula_47
+functional_redundancy_reserve,herbivore_species_richness_scaled,reserve,0.0451,0.0676,0.1352,"Positive estimate;
 CI not overlapping 0",reserve_formula_48
-functional_richness_reserve,herbivore_species_richness_scaled,reserve,0.6663,0.6663,1,CI overlapping 0,reserve_formula_49
+functional_richness_reserve,herbivore_species_richness_scaled,reserve,0.6672,0.6672,1,CI overlapping 0,reserve_formula_49
 graminoid_richness_reserve,herbivore_species_richness_scaled,reserve,0.0427,0.0427,0.1281,"Positive estimate;
 CI not overlapping 0",reserve_formula_50
 plant_richness_reserve,herbivore_species_richness_scaled,reserve,0.1412,0.1412,0.4235,CI overlapping 0,reserve_formula_54
-shannon_diversity_reserve,herbivore_species_richness_scaled,reserve,0.6443,0.6443,1,CI overlapping 0,reserve_formula_55
+shannon_diversity_reserve,herbivore_species_richness_scaled,reserve,0.6479,0.6479,1,CI overlapping 0,reserve_formula_55
 woody_richness_reserve,herbivore_species_richness_scaled,reserve,0.5183,0.5183,1,CI overlapping 0,reserve_formula_56
 berger_parker_reserve,n_trigger_events_day_reserve_scaled,reserve,0.1477,0.4432,0.4432,CI overlapping 0,reserve_formula_85
-beta_diversity_reserve,n_trigger_events_day_reserve_scaled,reserve,0.9254,0.9254,1,CI overlapping 0,reserve_formula_86
+beta_diversity_reserve,n_trigger_events_day_reserve_scaled,reserve,0.9328,0.9328,1,CI overlapping 0,reserve_formula_86
 community_dominance_reserve,n_trigger_events_day_reserve_scaled,reserve,0.033,0.099,0.099,"Negative estimate;
 CI not overlapping 0",reserve_formula_87
 forb_richness_reserve,n_trigger_events_day_reserve_scaled,reserve,9e-04,0.0014,0.0027,"Positive estimate;
 CI not overlapping 0",reserve_formula_88
-functional_diversity_reserve,n_trigger_events_day_reserve_scaled,reserve,0.5566,0.6596,1,CI overlapping 0,reserve_formula_89
-functional_redundancy_reserve,n_trigger_events_day_reserve_scaled,reserve,0.0014,0.0042,0.0042,"Positive estimate;
+functional_diversity_reserve,n_trigger_events_day_reserve_scaled,reserve,0.5412,0.6613,1,CI overlapping 0,reserve_formula_89
+functional_redundancy_reserve,n_trigger_events_day_reserve_scaled,reserve,0.0016,0.0047,0.0047,"Positive estimate;
 CI not overlapping 0",reserve_formula_90
-functional_richness_reserve,n_trigger_events_day_reserve_scaled,reserve,0.118,0.2157,0.3539,CI overlapping 0,reserve_formula_91
+functional_richness_reserve,n_trigger_events_day_reserve_scaled,reserve,0.1145,0.2104,0.3434,CI overlapping 0,reserve_formula_91
 graminoid_richness_reserve,n_trigger_events_day_reserve_scaled,reserve,1e-04,3e-04,3e-04,"Positive estimate;
 CI not overlapping 0",reserve_formula_92
 plant_richness_reserve,n_trigger_events_day_reserve_scaled,reserve,2e-04,5e-04,5e-04,"Positive estimate;
 CI not overlapping 0",reserve_formula_96
-shannon_diversity_reserve,n_trigger_events_day_reserve_scaled,reserve,0.0082,0.0247,0.0247,"Positive estimate;
+shannon_diversity_reserve,n_trigger_events_day_reserve_scaled,reserve,0.0088,0.0263,0.0263,"Positive estimate;
 CI not overlapping 0",reserve_formula_97
 woody_richness_reserve,n_trigger_events_day_reserve_scaled,reserve,0.3859,0.5183,1,CI overlapping 0,reserve_formula_98
