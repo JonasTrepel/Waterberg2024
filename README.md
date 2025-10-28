@@ -1,7 +1,7 @@
 # Large Herbivores and Herbaceous Plant Diversity
 
 This repository contains data and R scripts associated with the manuscript:  
-**"Large herbivores are linked to higher herbaceous plant diversity and functional redundancy across spatial scales"** (in review).
+**"Large herbivores are linked to higher herbaceous plant diversity and functional redundancy across spatial scales"** (Journal of Animal Ecology).
 
 The R code is organized into three primary components:
 
@@ -41,24 +41,21 @@ The R code is organized into three primary components:
 
 ## Analysis
 
-- `univariate_glmms_r1.R`  
+- `univariate_glmms.R`  
   Fit univariate generalized linear mixed models (GLMMs) for the main analysis.
 
 - `sensitivity_multivariate_glmms.R`  
   Conduct sensitivity analyses with GLMMs that including multiple predictors and account for alternative hypotheses.
-
-- `sensitivity_manovas.R`  
-  Perform MANOVAs as an additional robustness check.
 
 ---
 
 ## Visualization
 
 
-- `main_study_area.R`  
+- `study_area_plot.R`  
   Visual components of **Figure 1** (assembled later in Inkscape).
 
-- `main_univariate_glmm_viz_r1.R`  
+- `viz_univariate_glmms.R`  
   Visualization of model estimates for **Figures 2–3**.
 
 - `supplement_correlations.R`  
@@ -95,8 +92,7 @@ The most important colums are:
 | `cw_*body_mass`                   | Community-weighted mean, median, and max body mass (abundance-weighted) |
 | `herbivore_species_richness`      | Number of large herbivore species in a reserve |
 | `herbivore_biomass_kg_ha`         | Total biomass of herbivorous mammals (kg/ha) |
-| `browser_biomass_ha`, `grazer_biomass_ha`, `mixed_feeder_biomass_ha` | Biomass of browsers, grazers, and mixed feeders |
-| `grazer_browser_ratio`, `grazer_mixed_ratio`, `browser_mixed_ratio` | Biomass ratios among herbivore feeding guilds |
+| `browser_biomass_ha`, `grazer_biomass_ha`, `mixed_feeder_biomass_ha` | Biomass of browsers, grazers, and mixed feeders in kg/ha|
 | `area_ha`                         | Reserve area (hectares) |
 | `elevation_*`, `mat_*`, `map_*`   | Elevation, mean annual temperature (MAT), and precipitation (MAP) at plot, site, and reserve scales |
 | `n_trigger_events_day_*`          | Herbivore visitation rate (number of independent trigger events per day) |
