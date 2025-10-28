@@ -1,0 +1,334 @@
+plot_ID,site_ID,reserve,species,cover_percent,life_form,id_level,growth_form,height_cm,hairs,leaf_size,bulk_density,reproductive_height,lon,lat
+MA_S02_P03,MA_S02,Marakele,Aeollanthus buchnerianus,2,Forb,species_level,Round forb,23,Leaves and Stems,Macro,low,30,27.457441667599,-24.5226349981083
+MA_S01_P02,MA_S01,Marakele,Aeollanthus buchnerianus,2,Forb,species_level,Straight forb,8,Leaves and Stems,Micro,high,,27.4697566675973,-24.5191349981086
+MA_S02_P05,MA_S02,Marakele,Aeollanthus buchnerianus,1,Forb,species_level,Round forb,13,Leaves and Stems,Macro,low,14,27.4577083342655,-24.5217999981082
+MA_S01_P05,MA_S01,Marakele,Aeollanthus buchnerianus,1,Forb,species_level,Round forb,14,Leaves and Stems,Macro,low,,27.4711083342638,-24.5187299981087
+MA_S03_P03,MA_S03,Marakele,Aeollanthus buchnerianus,1,Forb,species_level,Round forb,9,Leaves and Stems,Micro,low,,27.4497666675985,-24.5049649981068
+MA_S03_P04,MA_S03,Marakele,Aeollanthus buchnerianus,1,Forb,species_level,Round forb,23,Leaves and Stems,Macro,medium,41,27.4498150009318,-24.5045266647735
+MA_S04_P05,MA_S04,Marakele,Aeollanthus buchnerianus,1,Forb,species_level,Round forb,23,Leaves and Stems,Macro,low,28,27.451611667598,-24.4998916647733
+MA_S02_P04,MA_S02,Marakele,Andropogon schirensis,2,Graminoid,species_level,Relaxed tussock graminoid,21,Leaves,Thin linear,low,98,27.4575666675989,-24.5222449981083
+MA_S02_P01,MA_S02,Marakele,Aristida congesta,2,Graminoid,species_level,Relaxed tussock graminoid,5,Absent,Thin linear,low,59,27.4571483342657,-24.523546664775
+MA_S02_P02,MA_S02,Marakele,Aristida congesta,2,Graminoid,species_level,Sparse upward graminoid,7,Absent,Thin linear,low,52,27.4572833342657,-24.5230999981083
+MA_S02_P03,MA_S02,Marakele,Aristida congesta,1,Graminoid,species_level,Sparse upward graminoid,26,Leaves,Thin linear,low,74,27.457441667599,-24.5226349981083
+MA_S01_P02,MA_S01,Marakele,Aristida congesta,1,Graminoid,species_level,Sparse upward graminoid,10,Absent,Thin linear,low,60,27.4697566675973,-24.5191349981086
+MA_S01_P03,MA_S01,Marakele,Aristida congesta,2,Graminoid,species_level,Sparse upward graminoid,7,Absent,Thin linear,low,40,27.470208334264,-24.518993331442
+MA_S01_P04,MA_S01,Marakele,Aristida congesta,1,Graminoid,species_level,Sparse upward graminoid,6,Absent,Thin linear,low,42,27.4706583342639,-24.5188616647753
+MA_S01_P05,MA_S01,Marakele,Aristida congesta,1,Graminoid,species_level,Relaxed tussock graminoid,6,Absent,Thin linear,low,38,27.4711083342638,-24.5187299981087
+MA_S03_P03,MA_S03,Marakele,Aristida congesta,1,Graminoid,species_level,Relaxed tussock graminoid,10,Absent,Thin linear,low,88,27.4497666675985,-24.5049649981068
+MA_S04_P02,MA_S04,Marakele,Aristida congesta,1,Graminoid,species_level,Sparse upward graminoid,7,Absent,Thin linear,low,49,27.4501783342648,-24.4995116647732
+MA_S04_P03,MA_S04,Marakele,Aristida congesta,1,Graminoid,species_level,Relaxed tussock graminoid,10,Absent,Thin linear,low,28,27.4506700009314,-24.4996399981066
+MA_S04_P04,MA_S04,Marakele,Aristida congesta,1,Graminoid,species_level,Tree single-stemmed,7,Absent,Thin linear,low,65,27.4511183342647,-24.4997516647732
+MA_S01_P05,MA_S01,Marakele,Aristida stipitata,2,Graminoid,species_level,Sparse upward graminoid,19,Absent,Thin linear,low,62,27.4711083342638,-24.5187299981087
+MA_S03_P01,MA_S03,Marakele,Aristida stipitata,2,Graminoid,species_level,Sparse upward graminoid,22,Absent,Thin linear,low,90,27.4496583342653,-24.5058783314402
+MA_S04_P01,MA_S04,Marakele,Aristida stipitata,10,Graminoid,species_level,Sparse upward graminoid,39,Absent,Thin linear,extremely thick,89,27.4496533342648,-24.4993816647732
+MA_S03_P03,MA_S03,Marakele,Aristida stipitata,1,Graminoid,species_level,Sparse upward graminoid,8,Absent,Thin linear,low,61,27.4497666675985,-24.5049649981068
+MA_S03_P05,MA_S03,Marakele,Aristida stipitata,1,Graminoid,species_level,Sparse upward graminoid,30,Absent,Thin linear,low,85,27.4498716675984,-24.5040683314401
+MA_S04_P03,MA_S04,Marakele,Aristida stipitata,10,Graminoid,species_level,Sparse upward graminoid,17,Absent,Thin linear,low,45,27.4506700009314,-24.4996399981066
+MA_S05_P01,MA_S05,Marakele,Aristida stipitata,5,Graminoid,species_level,Sparse upward graminoid,24,Absent,Thin linear,low,100,27.4701850009286,-24.4907416647737
+MA_S02_P03,MA_S02,Marakele,Barleria macrostegia,1,Forb,species_level,Straight forb,13,Leaves and Stems,Micro,low,,27.457441667599,-24.5226349981083
+MA_S03_P02,MA_S03,Marakele,Barleria macrostegia,1,Forb,species_level,Straight forb,15,Leaves and Stems,Macro,low,,27.4496983342652,-24.5054516647735
+MA_S02_P04,MA_S02,Marakele,Chamaecrista comosa,1,Forb,species_level,Straight forb,13,Absent,Macro,low,,27.4575666675989,-24.5222449981083
+MA_S03_P01,MA_S03,Marakele,Chamaecrista comosa,1,Forb,species_level,Messy forb,19,Stems,Macro,low,,27.4496583342653,-24.5058783314402
+MA_S04_P05,MA_S04,Marakele,Chamaecrista comosa,1,Forb,species_level,Round forb,28,Absent,Macro,low,,27.451611667598,-24.4998916647733
+MA_S02_P01,MA_S02,Marakele,Chrysopogon serrulatus,10,Graminoid,species_level,Large graminoid,48,Absent,Thin linear,high,130,27.4571483342657,-24.523546664775
+MA_S05_P01,MA_S05,Marakele,Combretum apiculatum,1,Shrub,species_level,Shrub single-stemmed,195,Absent,Macro,medium,,27.4701850009286,-24.4907416647737
+MA_S05_P04,MA_S05,Marakele,Combretum apiculatum,1,Shrub,species_level,Shrub single-stemmed,95,Absent,Macro,low,,27.4687850009288,-24.4912299981069
+MA_S02_P01,MA_S02,Marakele,Combretum hereroense,15,Shrub,species_level,Shrub multi-stemmed,70,Absent,Macro,high,,27.4571483342657,-24.523546664775
+MA_S02_P02,MA_S02,Marakele,Combretum hereroense,2,Shrub,species_level,Shrub multi-stemmed,40,Leaves,Macro,low,,27.4572833342657,-24.5230999981083
+MA_S01_P01,MA_S01,Marakele,Combretum hereroense,2,Forb,species_level,Messy forb,10,Leaves,Thick linear,medium,,27.4693016675974,-24.519273331442
+MA_S01_P02,MA_S01,Marakele,Combretum hereroense,2,Shrub,species_level,Shrub multi-stemmed,39,Leaves,Macro,low,,27.4697566675973,-24.5191349981086
+MA_S01_P03,MA_S01,Marakele,Combretum hereroense,1,Shrub,species_level,Shrub single-stemmed,9,Leaves,Macro,low,,27.470208334264,-24.518993331442
+MA_S01_P05,MA_S01,Marakele,Combretum hereroense,1,Shrub,species_level,Shrub single-stemmed,11,Absent,Macro,low,,27.4711083342638,-24.5187299981087
+MA_S04_P03,MA_S04,Marakele,Combretum microphyllum,2,Forb,species_level,Creeping forb,47,Leaves and Stems,Macro,low,47,27.4506700009314,-24.4996399981066
+MA_S05_P04,MA_S05,Marakele,Combretum microphyllum,1,Shrub,species_level,Shrub single-stemmed,95,Leaves,Macro,low,,27.4687850009288,-24.4912299981069
+MA_S03_P03,MA_S03,Marakele,Combretum molle,2,Shrub,species_level,Shrub multi-stemmed,79,Leaves,Macro,low,,27.4497666675985,-24.5049649981068
+MA_S05_P02,MA_S05,Marakele,Combretum zeyheri,1,Shrub,species_level,Shrub single-stemmed,26,Leaves,Macro,low,,27.469753334262,-24.490889998107
+MA_S01_P02,MA_S01,Marakele,Commelina africana,1,Forb,species_level,Messy forb,31,Absent,Thick linear,low,,27.4697566675973,-24.5191349981086
+MA_S05_P01,MA_S05,Marakele,Commelina africana,1,Forb,species_level,Round forb,6,Leaves,Macro,low,,27.4701850009286,-24.4907416647737
+MA_S05_P03,MA_S05,Marakele,Commelina benghalensis,1,Forb,species_level,Round forb,27,Leaves,Macro,low,,27.4692650009287,-24.491059998107
+MA_S05_P05,MA_S05,Marakele,Commelina erecta,1,Forb,species_level,Straight forb,12,Absent,Macro,low,,27.4683783841468,-24.4913918604045
+MA_S01_P03,MA_S01,Marakele,Cordylostigma longifolium,1,Forb,species_level,Straight forb,10.5,Leaves and Stems,Thin linear,low,,27.470208334264,-24.518993331442
+MA_S01_P03,MA_S01,Marakele,Cordylostigma virgatum,1,Forb,species_level,Straight forb,21,Stems,Thin linear,low,,27.470208334264,-24.518993331442
+MA_S01_P04,MA_S01,Marakele,Cordylostigma virgatum,1,Forb,species_level,Straight forb,10,Leaves and Stems,Thin linear,low,,27.4706583342639,-24.5188616647753
+MA_S01_P05,MA_S01,Marakele,Cordylostigma virgatum,1,Forb,species_level,Straight forb,25,Stems,Thin linear,low,30,27.4711083342638,-24.5187299981087
+MA_S04_P02,MA_S04,Marakele,Cordylostigma virgatum,1,Forb,species_level,Straight forb,28,Leaves and Stems,Thick linear,low,37,27.4501783342648,-24.4995116647732
+MA_S03_P02,MA_S03,Marakele,Crabbea angustifolia,1,Forb,species_level,Straight forb,10,Absent,Thick linear,low,,27.4496983342652,-24.5054516647735
+MA_S04_P01,MA_S04,Marakele,Crabbea angustifolia,1,Forb,species_level,Creeping forb,18,Absent,Thick linear,medium,,27.4496533342648,-24.4993816647732
+MA_S04_P03,MA_S04,Marakele,Crabbea angustifolia,1,Forb,species_level,Straight forb,9,Absent,Macro,low,,27.4506700009314,-24.4996399981066
+MA_S01_P01,MA_S01,Marakele,Cymbopogon pospischilii,2,Graminoid,species_level,Relaxed tussock graminoid,33,Leaves,Thin linear,medium,,27.4693016675974,-24.519273331442
+MA_S01_P02,MA_S01,Marakele,Cymbopogon pospischilii,5,Graminoid,species_level,Relaxed tussock graminoid,29,Leaves,Thick linear,medium,73,27.4697566675973,-24.5191349981086
+MA_S04_P04,MA_S04,Marakele,Cymbopogon pospischilii,2,Graminoid,species_level,Relaxed tussock graminoid,29,Leaves,Thin linear,low,130,27.4511183342647,-24.4997516647732
+MA_S02_P01,MA_S02,Marakele,Cyperus margaritaceus,1,Graminoid,species_level,Relaxed tussock graminoid,8,Absent,Thin linear,low,45,27.4571483342657,-24.523546664775
+MA_S02_P04,MA_S02,Marakele,Cyperus margaritaceus,1,Graminoid,species_level,Angry tussock graminoid,6,Absent,Thin linear,medium,,27.4575666675989,-24.5222449981083
+MA_S01_P02,MA_S01,Marakele,Cyperus margaritaceus,1,Graminoid,species_level,Relaxed tussock graminoid,4.5,Absent,Thin linear,low,24,27.4697566675973,-24.5191349981086
+MA_S01_P03,MA_S01,Marakele,Cyperus margaritaceus,1,Graminoid,species_level,Relaxed tussock graminoid,9,Absent,Thin linear,low,34,27.470208334264,-24.518993331442
+MA_S01_P04,MA_S01,Marakele,Cyperus margaritaceus,1,Graminoid,species_level,Relaxed tussock graminoid,9,Absent,Thin linear,low,32,27.4706583342639,-24.5188616647753
+MA_S01_P05,MA_S01,Marakele,Cyperus margaritaceus,1,Forb,species_level,Relaxed tussock graminoid,3,Absent,Thin linear,low,,27.4711083342638,-24.5187299981087
+MA_S03_P01,MA_S03,Marakele,Cyperus margaritaceus,1,Graminoid,species_level,Angry tussock graminoid,9,Absent,Thin linear,low,22,27.4496583342653,-24.5058783314402
+MA_S03_P02,MA_S03,Marakele,Cyperus margaritaceus,1,Graminoid,species_level,Relaxed tussock graminoid,16,Absent,Thin linear,low,44,27.4496983342652,-24.5054516647735
+MA_S04_P01,MA_S04,Marakele,Cyperus margaritaceus,1,Graminoid,species_level,Angry tussock graminoid,10,Absent,Thin linear,low,35,27.4496533342648,-24.4993816647732
+MA_S04_P02,MA_S04,Marakele,Cyperus margaritaceus,1,Graminoid,species_level,Relaxed tussock graminoid,5,Absent,Thin linear,low,39,27.4501783342648,-24.4995116647732
+MA_S04_P03,MA_S04,Marakele,Cyperus margaritaceus,1,Graminoid,species_level,Relaxed tussock graminoid,6,Absent,Thin linear,low,23,27.4506700009314,-24.4996399981066
+MA_S04_P04,MA_S04,Marakele,Cyperus margaritaceus,1,Graminoid,species_level,Relaxed tussock graminoid,13,Absent,Thin linear,low,34,27.4511183342647,-24.4997516647732
+MA_S04_P05,MA_S04,Marakele,Cyperus margaritaceus,1,Graminoid,species_level,Relaxed tussock graminoid,5,Absent,Thin linear,medium,,27.451611667598,-24.4998916647733
+MA_S05_P01,MA_S05,Marakele,Cyperus margaritaceus,1,Graminoid,species_level,Relaxed tussock graminoid,5,Absent,Thin linear,low,14,27.4701850009286,-24.4907416647737
+MA_S05_P03,MA_S05,Marakele,Cyperus margaritaceus,1,Graminoid,species_level,Relaxed tussock graminoid,11,Absent,Thin linear,low,,27.4692650009287,-24.491059998107
+MA_S01_P05,MA_S01,Marakele,Dichrostachys cinerea,1,Shrub,species_level,Shrub multi-stemmed,28,Absent,Macro,low,,27.4711083342638,-24.5187299981087
+MA_S03_P03,MA_S03,Marakele,Dichrostachys cinerea,1,Shrub,species_level,Shrub single-stemmed,70,Absent,Macro,low,,27.4497666675985,-24.5049649981068
+MA_S05_P04,MA_S05,Marakele,Dicliptera clinopodia,1,Forb,species_level,Round forb,17,Leaves and Stems,Macro,low,14,27.4687850009288,-24.4912299981069
+MA_S05_P03,MA_S05,Marakele,Dicliptera clinopodia,1,Forb,species_level,Round forb,15,Leaves and Stems,Macro,medium,,27.4692650009287,-24.491059998107
+MA_S02_P01,MA_S02,Marakele,Digitaria eriantha,2,Graminoid,species_level,Sparse upward graminoid,19,Absent,Thick linear,low,63,27.4571483342657,-24.523546664775
+MA_S02_P03,MA_S02,Marakele,Digitaria eriantha,1,Graminoid,species_level,Creeping graminoid,35,Leaves,Thick linear,low,130,27.457441667599,-24.5226349981083
+MA_S01_P02,MA_S01,Marakele,Digitaria eriantha,1,Graminoid,species_level,Creeping graminoid,25,Leaves and Stems,Thick linear,low,,27.4697566675973,-24.5191349981086
+MA_S01_P03,MA_S01,Marakele,Digitaria eriantha,10,Graminoid,species_level,Creeping graminoid,21,Leaves and Stems,Thick linear,high,66,27.470208334264,-24.518993331442
+MA_S01_P04,MA_S01,Marakele,Digitaria eriantha,2,Graminoid,species_level,Creeping graminoid,7,Leaves,Thick linear,low,,27.4706583342639,-24.5188616647753
+MA_S01_P05,MA_S01,Marakele,Digitaria eriantha,5,Graminoid,species_level,Creeping graminoid,28,Leaves and Stems,Thick linear,low,98,27.4711083342638,-24.5187299981087
+MA_S03_P03,MA_S03,Marakele,Digitaria eriantha,1,Graminoid,species_level,Sparse upward graminoid,8,Absent,Thick linear,low,90,27.4497666675985,-24.5049649981068
+MA_S03_P05,MA_S03,Marakele,Digitaria eriantha,10,Graminoid,species_level,Creeping graminoid,21,Leaves and Stems,Thin linear,low,118,27.4498716675984,-24.5040683314401
+MA_S04_P03,MA_S04,Marakele,Digitaria eriantha,10,Graminoid,species_level,Creeping graminoid,25,Leaves,Thick linear,low,80,27.4506700009314,-24.4996399981066
+MA_S04_P04,MA_S04,Marakele,Digitaria eriantha,2,Graminoid,species_level,Sparse upward graminoid,10,Leaves,Thin linear,low,70,27.4511183342647,-24.4997516647732
+MA_S05_P01,MA_S05,Marakele,Digitaria eriantha,1,Graminoid,species_level,Creeping graminoid,15,Leaves,Thin linear,medium,80,27.4701850009286,-24.4907416647737
+MA_S05_P02,MA_S05,Marakele,Digitaria eriantha,1,Graminoid,species_level,Creeping graminoid,8,Leaves,Thin linear,low,33,27.469753334262,-24.490889998107
+MA_S05_P04,MA_S05,Marakele,Digitaria eriantha,2,Graminoid,species_level,Creeping graminoid,15,Leaves,Thick linear,low,,27.4687850009288,-24.4912299981069
+MA_S05_P03,MA_S05,Marakele,Digitaria eriantha,20,Graminoid,species_level,Creeping graminoid,20,Leaves,Thin linear,medium,60,27.4692650009287,-24.491059998107
+MA_S01_P04,MA_S01,Marakele,Diospsyrus pyroides,2,Shrub,species_level,Shrub single-stemmed,32,Absent,Macro,high,,27.4706583342639,-24.5188616647753
+MA_S05_P04,MA_S05,Marakele,Ehretia rigida,2,Shrub,species_level,Shrub single-stemmed,100,Absent,Macro,low,,27.4687850009288,-24.4912299981069
+MA_S02_P03,MA_S02,Marakele,Elephantorrhiza elephantina,1,Forb,species_level,Straight forb,15,Absent,Macro,low,,27.457441667599,-24.5226349981083
+MA_S02_P04,MA_S02,Marakele,Elephantorrhiza elephantina,1,Forb,species_level,Straight forb,38,Absent,Macro,medium,,27.4575666675989,-24.5222449981083
+MA_S04_P02,MA_S04,Marakele,Elephantorrhiza elephantina,1,Forb,species_level,Round forb,5,Stems,Macro,medium,,27.4501783342648,-24.4995116647732
+MA_S03_P05,MA_S03,Marakele,Elephantorrhiza elephantina,1,Forb,species_level,Round forb,23,Absent,Macro,medium,,27.4498716675984,-24.5040683314401
+MA_S03_P02,MA_S03,Marakele,Elionurus muticus,10,Graminoid,species_level,Relaxed tussock graminoid,31,Leaves,Thin linear,high,90,27.4496983342652,-24.5054516647735
+MA_S03_P03,MA_S03,Marakele,Elionurus muticus,2,Graminoid,species_level,Angry tussock graminoid,23,Leaves,Thin linear,extremely thick,109,27.4497666675985,-24.5049649981068
+MA_S03_P05,MA_S03,Marakele,Elionurus muticus,15,Graminoid,species_level,Large graminoid,52,Leaves,Thin linear,extremely thick,103,27.4498716675984,-24.5040683314401
+MA_S04_P04,MA_S04,Marakele,Elionurus muticus,5,Graminoid,species_level,Angry tussock graminoid,17,Leaves,Thin linear,high,90,27.4511183342647,-24.4997516647732
+MA_S04_P05,MA_S04,Marakele,Elionurus muticus,1,Graminoid,species_level,Relaxed tussock graminoid,25,Absent,Thin linear,high,,27.451611667598,-24.4998916647733
+MA_S01_P02,MA_S01,Marakele,Emilia transvaalensis,2,Forb,species_level,Round forb,19,Leaves and Stems,Thin linear,high,24,27.4697566675973,-24.5191349981086
+MA_S01_P04,MA_S01,Marakele,Emilia transvaalensis,2,Forb,species_level,Round forb,17,Leaves,Thin linear,medium,23,27.4706583342639,-24.5188616647753
+MA_S01_P05,MA_S01,Marakele,Emilia transvaalensis,1,Forb,species_level,Round forb,6,Leaves and Stems,Micro,low,,27.4711083342638,-24.5187299981087
+MA_S02_P01,MA_S02,Marakele,Enneapogon cenchroides,25,Graminoid,species_level,Sparse upward graminoid,12,Leaves and Stems,Thin linear,low,81,27.4571483342657,-24.523546664775
+MA_S02_P02,MA_S02,Marakele,Enneapogon desvauxii,5,Graminoid,species_level,Angry tussock graminoid,36,Absent,Thin linear,high,55,27.4572833342657,-24.5230999981083
+MA_S01_P01,MA_S01,Marakele,Enneapogon desvauxii,25,Graminoid,species_level,Sparse upward graminoid,28,Absent,Thin linear,medium,42,27.4693016675974,-24.519273331442
+MA_S02_P04,MA_S02,Marakele,Enneapogon desvauxii,50,Graminoid,species_level,Relaxed tussock graminoid,29,Absent,Thin linear,high,,27.4575666675989,-24.5222449981083
+MA_S04_P05,MA_S04,Marakele,Enneapogon desvauxii,5,Graminoid,species_level,Relaxed tussock graminoid,39,Absent,Thin linear,high,96,27.451611667598,-24.4998916647733
+MA_S05_P05,MA_S05,Marakele,Enneapogon desvauxii,5,Graminoid,species_level,Sparse upward graminoid,20,Absent,Thin linear,medium,39,27.4683783841468,-24.4913918604045
+MA_S05_P02,MA_S05,Marakele,Eragrostis acraea,5,Graminoid,species_level,Relaxed tussock graminoid,32,Leaves,Thick linear,medium,120,27.469753334262,-24.490889998107
+MA_S05_P04,MA_S05,Marakele,Eragrostis barbinodis,1,Graminoid,species_level,Creeping graminoid,9,Leaves and Stems,Thick linear,low,48,27.4687850009288,-24.4912299981069
+MA_S04_P02,MA_S04,Marakele,Eragrostis gummiflua,2,Graminoid,species_level,Sparse upward graminoid,15,Absent,Thick linear,medium,50,27.4501783342648,-24.4995116647732
+MA_S02_P02,MA_S02,Marakele,Eragrostis lehmanniana,10,Graminoid,species_level,Sparse upward graminoid,35,Absent,Thin linear,low,58,27.4572833342657,-24.5230999981083
+MA_S05_P01,MA_S05,Marakele,Eragrostis lehmanniana,1,Graminoid,species_level,Sparse upward graminoid,8,Absent,Thin linear,low,75,27.4701850009286,-24.4907416647737
+MA_S01_P01,MA_S01,Marakele,Eragrostis rigidior,1,Graminoid,species_level,Sparse upward graminoid,19,Absent,Thick linear,low,60,27.4693016675974,-24.519273331442
+MA_S02_P04,MA_S02,Marakele,Eragrostis rigidior,2,Graminoid,species_level,Sparse upward graminoid,12,Leaves,Thin linear,low,50,27.4575666675989,-24.5222449981083
+MA_S01_P02,MA_S01,Marakele,Eragrostis rigidior,1,Graminoid,species_level,Sparse upward graminoid,15,Absent,Thin linear,low,41,27.4697566675973,-24.5191349981086
+MA_S02_P05,MA_S02,Marakele,Eragrostis rigidior,30,Graminoid,species_level,Sparse upward graminoid,20,Absent,Thin linear,medium,65,27.4577083342655,-24.5217999981082
+MA_S01_P04,MA_S01,Marakele,Eragrostis rigidior,1,Graminoid,species_level,Sparse upward graminoid,33,Absent,Thin linear,low,105,27.4706583342639,-24.5188616647753
+MA_S01_P05,MA_S01,Marakele,Eragrostis rigidior,5,Graminoid,species_level,Sparse upward graminoid,9,Absent,Thin linear,low,46,27.4711083342638,-24.5187299981087
+MA_S03_P01,MA_S03,Marakele,Eragrostis rigidior,20,Graminoid,species_level,Sparse upward graminoid,10,Absent,Thick linear,low,85,27.4496583342653,-24.5058783314402
+MA_S03_P02,MA_S03,Marakele,Eragrostis rigidior,5,Graminoid,species_level,Sparse upward graminoid,5,Absent,Thick linear,low,60,27.4496983342652,-24.5054516647735
+MA_S04_P01,MA_S04,Marakele,Eragrostis rigidior,5,Graminoid,species_level,Sparse upward graminoid,20,Absent,Thick linear,low,94,27.4496533342648,-24.4993816647732
+MA_S03_P03,MA_S03,Marakele,Eragrostis rigidior,2,Graminoid,species_level,Sparse upward graminoid,25,Absent,Thin linear,low,86,27.4497666675985,-24.5049649981068
+MA_S04_P02,MA_S04,Marakele,Eragrostis rigidior,2,Graminoid,species_level,Sparse upward graminoid,12,Absent,Thick linear,low,115,27.4501783342648,-24.4995116647732
+MA_S03_P04,MA_S03,Marakele,Eragrostis rigidior,2,Graminoid,species_level,Sparse upward graminoid,25,Absent,Thin linear,low,67,27.4498150009318,-24.5045266647735
+MA_S03_P05,MA_S03,Marakele,Eragrostis rigidior,2,Graminoid,species_level,Sparse upward graminoid,30,Absent,Thin linear,low,113,27.4498716675984,-24.5040683314401
+MA_S04_P03,MA_S04,Marakele,Eragrostis rigidior,1,Graminoid,species_level,Sparse upward graminoid,10,Leaves,Thin linear,low,66,27.4506700009314,-24.4996399981066
+MA_S04_P04,MA_S04,Marakele,Eragrostis rigidior,10,Graminoid,species_level,Sparse upward graminoid,12,Absent,Thin linear,low,100,27.4511183342647,-24.4997516647732
+MA_S04_P05,MA_S04,Marakele,Eragrostis rigidior,2,Graminoid,species_level,Large graminoid,70,Leaves,Thick linear,low,110,27.451611667598,-24.4998916647733
+MA_S05_P04,MA_S05,Marakele,Eragrostis rigidior,25,Graminoid,species_level,Sparse upward graminoid,29,Leaves,Thin linear,low,30,27.4687850009288,-24.4912299981069
+MA_S05_P01,MA_S05,Marakele,Euclea crispa,1,Shrub,species_level,Shrub single-stemmed,74,Absent,Macro,low,,27.4701850009286,-24.4907416647737
+MA_S02_P01,MA_S02,Marakele,Euclea natalensis,10,Shrub,species_level,Shrub multi-stemmed,70,Absent,Macro,medium,,27.4571483342657,-24.523546664775
+MA_S04_P02,MA_S04,Marakele,Euclea natalensis,1,Shrub,species_level,Shrub single-stemmed,26,Absent,Macro,medium,,27.4501783342648,-24.4995116647732
+MA_S04_P03,MA_S04,Marakele,Euclea natalensis,1,Shrub,species_level,Shrub single-stemmed,40,Absent,Macro,low,,27.4506700009314,-24.4996399981066
+MA_S05_P02,MA_S05,Marakele,Euclea natalensis,1,Shrub,species_level,Shrub multi-stemmed,32,Absent,Macro,medium,,27.469753334262,-24.490889998107
+MA_S02_P01,MA_S02,Marakele,Euphorbia inaequilatera,1,Forb,species_level,Cussion forb,2,Absent,Micro,low,,27.4571483342657,-24.523546664775
+MA_S02_P04,MA_S02,Marakele,Euphorbia inaequilatera,1,Forb,species_level,Cussion forb,3,Absent,Micro,high,,27.4575666675989,-24.5222449981083
+MA_S04_P05,MA_S04,Marakele,Euphorbia trichadenia,1,Forb,species_level,Round forb,20,Absent,Thick linear,low,,27.451611667598,-24.4998916647733
+MA_S01_P01,MA_S01,Marakele,Evolvulus alsinoides,1,Forb,species_level,Straight forb,15,Leaves and Stems,Micro,low,21,27.4693016675974,-24.519273331442
+MA_S03_P03,MA_S03,Marakele,Evolvulus alsinoides,1,Forb,species_level,Straight forb,2.5,Leaves and Stems,Micro,medium,,27.4497666675985,-24.5049649981068
+MA_S04_P03,MA_S04,Marakele,Evolvulus alsinoides,1,Forb,species_level,Messy forb,20,Leaves and Stems,Micro,low,18,27.4506700009314,-24.4996399981066
+MA_S02_P05,MA_S02,Marakele,Fingerhuthia africana,1,Graminoid,species_level,Sparse upward graminoid,11,Absent,Thick linear,low,80,27.4577083342655,-24.5217999981082
+MA_S01_P01,MA_S01,Marakele,Grewia flava,2,Shrub,species_level,Shrub multi-stemmed,110,Absent,Macro,medium,71,27.4693016675974,-24.519273331442
+MA_S05_P02,MA_S05,Marakele,Grewia flavescens,1,Shrub,species_level,Shrub single-stemmed,163,Absent,Macro,low,130,27.469753334262,-24.490889998107
+MA_S02_P02,MA_S02,Marakele,Gymnosporia buxifolia,20,Shrub,species_level,Shrub multi-stemmed,42,Absent,Micro,extremely thick,,27.4572833342657,-24.5230999981083
+MA_S01_P02,MA_S01,Marakele,Hermania quartiniana,1,Forb,species_level,Round forb,12,Leaves and Stems,Macro,medium,27,27.4697566675973,-24.5191349981086
+MA_S01_P03,MA_S01,Marakele,Hermania quartiniana,1,Forb,species_level,Straight forb,9,Stems,Macro,low,,27.470208334264,-24.518993331442
+MA_S01_P05,MA_S01,Marakele,Hermania quartiniana,1,Forb,species_level,Creeping forb,21,Leaves and Stems,Macro,low,,27.4711083342638,-24.5187299981087
+MA_S02_P03,MA_S02,Marakele,Hermannia quartiniana,1,Forb,species_level,Creeping forb,17,Leaves and Stems,Thick linear,low,,27.457441667599,-24.5226349981083
+MA_S02_P05,MA_S02,Marakele,Hermannia quartiniana,1,Forb,species_level,Creeping forb,12,Leaves and Stems,Macro,low,,27.4577083342655,-24.5217999981082
+MA_S04_P05,MA_S04,Marakele,Hermannia quartiniana,1,Forb,species_level,Messy forb,14,Absent,Macro,low,,27.451611667598,-24.4998916647733
+MA_S04_P03,MA_S04,Marakele,Hermannia stellulata,1,Forb,species_level,Creeping forb,22,Leaves and Stems,Macro,low,20,27.4506700009314,-24.4996399981066
+MA_S02_P01,MA_S02,Marakele,Heteropogon contortus,2,Graminoid,species_level,Relaxed tussock graminoid,25,Leaves,Thin linear,medium,66,27.4571483342657,-24.523546664775
+MA_S01_P02,MA_S01,Marakele,Heteropogon contortus,5,Graminoid,species_level,Relaxed tussock graminoid,19,Leaves,Thin linear,medium,76,27.4697566675973,-24.5191349981086
+MA_S02_P05,MA_S02,Marakele,Heteropogon contortus,5,Graminoid,species_level,Sparse upward graminoid,32,Leaves,Thin linear,medium,70,27.4577083342655,-24.5217999981082
+MA_S01_P03,MA_S01,Marakele,Heteropogon contortus,15,Graminoid,species_level,Large graminoid,41,Absent,Thick linear,high,85,27.470208334264,-24.518993331442
+MA_S01_P04,MA_S01,Marakele,Heteropogon contortus,35,Graminoid,species_level,Relaxed tussock graminoid,32,Absent,Thin linear,high,92,27.4706583342639,-24.5188616647753
+MA_S03_P01,MA_S03,Marakele,Heteropogon contortus,10,Graminoid,species_level,Relaxed tussock graminoid,15,Absent,Thin linear,low,87,27.4496583342653,-24.5058783314402
+MA_S03_P02,MA_S03,Marakele,Heteropogon contortus,30,Graminoid,species_level,Relaxed tussock graminoid,23,Leaves,Thin linear,high,100,27.4496983342652,-24.5054516647735
+MA_S03_P03,MA_S03,Marakele,Heteropogon contortus,10,Graminoid,species_level,Angry tussock graminoid,28,Leaves,Thin linear,high,90,27.4497666675985,-24.5049649981068
+MA_S04_P02,MA_S04,Marakele,Heteropogon contortus,25,Graminoid,species_level,Large graminoid,50,Absent,Thin linear,high,110,27.4501783342648,-24.4995116647732
+MA_S03_P04,MA_S03,Marakele,Heteropogon contortus,20,Graminoid,species_level,Angry tussock graminoid,28,Leaves,Thin linear,high,88,27.4498150009318,-24.5045266647735
+MA_S03_P05,MA_S03,Marakele,Heteropogon contortus,10,Graminoid,species_level,Sparse upward graminoid,40,Leaves,Thin linear,medium,90,27.4498716675984,-24.5040683314401
+MA_S04_P05,MA_S04,Marakele,Heteropogon contortus,5,Graminoid,species_level,Relaxed tussock graminoid,30,Absent,Thin linear,high,70,27.451611667598,-24.4998916647733
+MA_S05_P04,MA_S05,Marakele,Heteropogon contortus,1,Graminoid,species_level,Relaxed tussock graminoid,20,Absent,Thin linear,medium,46,27.4687850009288,-24.4912299981069
+MA_S02_P04,MA_S02,Marakele,Hibiscus calyphyllus,1,Forb,species_level,Straight forb,14,Leaves and Stems,Macro,medium,,27.4575666675989,-24.5222449981083
+MA_S03_P01,MA_S03,Marakele,Hibiscus calyphyllus,1,Forb,species_level,Straight forb,13,Leaves and Stems,Macro,low,,27.4496583342653,-24.5058783314402
+MA_S04_P03,MA_S04,Marakele,Hibiscus calyphyllus,1,Forb,species_level,Round forb,2,Leaves and Stems,Micro,high,,27.4506700009314,-24.4996399981066
+MA_S05_P02,MA_S05,Marakele,Hibiscus calyphyllus,1,Forb,species_level,Round forb,25,Leaves and Stems,Macro,low,,27.469753334262,-24.490889998107
+MA_S02_P04,MA_S02,Marakele,Hibiscus pusillus,1,Forb,species_level,Straight forb,24,Leaves and Stems,Macro,low,,27.4575666675989,-24.5222449981083
+MA_S01_P02,MA_S01,Marakele,Hibiscus pusillus,2,Forb,species_level,Straight forb,27,Stems,Macro,low,27,27.4697566675973,-24.5191349981086
+MA_S02_P05,MA_S02,Marakele,Hibiscus pusillus,1,Forb,species_level,Straight forb,16,Leaves and Stems,Macro,low,,27.4577083342655,-24.5217999981082
+MA_S03_P02,MA_S03,Marakele,Hibiscus pusillus,1,Forb,species_level,Round forb,23,Leaves and Stems,Macro,low,,27.4496983342652,-24.5054516647735
+MA_S04_P02,MA_S04,Marakele,Hibiscus pusillus,1,Forb,species_level,Straight forb,9,Leaves and Stems,Macro,low,,27.4501783342648,-24.4995116647732
+MA_S03_P05,MA_S03,Marakele,Hibiscus pusillus,1,Forb,species_level,Round forb,15,Leaves and Stems,Macro,medium,,27.4498716675984,-24.5040683314401
+MA_S05_P04,MA_S05,Marakele,Hibiscus pusillus,1,Forb,species_level,Round forb,50,Leaves and Stems,Macro,low,,27.4687850009288,-24.4912299981069
+MA_S02_P03,MA_S02,Marakele,Hyparrhenia hirta,20,Graminoid,species_level,Large graminoid,50,Absent,Thin linear,high,135,27.457441667599,-24.5226349981083
+MA_S02_P05,MA_S02,Marakele,Hyparrhenia hirta,1,Graminoid,species_level,Sparse upward graminoid,36,Absent,Thin linear,low,70,27.4577083342655,-24.5217999981082
+MA_S02_P01,MA_S02,Marakele,Indigastrum costatum,1,Forb,species_level,Straight forb,21,Leaves and Stems,Macro,low,,27.4571483342657,-24.523546664775
+MA_S02_P02,MA_S02,Marakele,Indigastrum costatum,2,Forb,species_level,Round forb,38,Leaves and Stems,Macro,low,,27.4572833342657,-24.5230999981083
+MA_S02_P03,MA_S02,Marakele,Indigastrum costatum,1,Forb,species_level,Round forb,24,Leaves,Macro,low,20,27.457441667599,-24.5226349981083
+MA_S02_P04,MA_S02,Marakele,Indigastrum costatum,2,Forb,species_level,Round forb,33,Leaves,Macro,medium,,27.4575666675989,-24.5222449981083
+MA_S02_P05,MA_S02,Marakele,Indigastrum costatum,1,Forb,species_level,Round forb,27,Leaves and Stems,Macro,medium,21,27.4577083342655,-24.5217999981082
+MA_S05_P04,MA_S05,Marakele,Indigofera bainesii,1,Forb,species_level,Straight forb,40,Leaves,Micro,low,36,27.4687850009288,-24.4912299981069
+MA_S04_P01,MA_S04,Marakele,Indigofera delagoaensis,5,Forb,species_level,Round forb,29,Leaves and Stems,Macro,medium,22,27.4496533342648,-24.4993816647732
+MA_S04_P04,MA_S04,Marakele,Indigofera delagoaensis,1,Forb,species_level,Round forb,23,Leaves and Stems,Macro,low,21,27.4511183342647,-24.4997516647732
+MA_S02_P01,MA_S02,Marakele,Indigofera mollicoma,2,Forb,species_level,Round forb,32,Leaves and Stems,Macro,medium,41,27.4571483342657,-24.523546664775
+MA_S02_P03,MA_S02,Marakele,Indigofera mollicoma,2,Forb,species_level,Straight forb,26,Leaves and Stems,Macro,low,,27.457441667599,-24.5226349981083
+MA_S01_P04,MA_S01,Marakele,Indigofera mollicoma,2,Forb,species_level,Round forb,29,Leaves and Stems,Macro,medium,18,27.4706583342639,-24.5188616647753
+MA_S01_P05,MA_S01,Marakele,Indigofera mollicoma,1,Forb,species_level,Round forb,20,Leaves and Stems,Macro,low,,27.4711083342638,-24.5187299981087
+MA_S02_P04,MA_S02,Marakele,Indigofera zeyheri,1,Forb,species_level,Messy forb,12,Leaves and Stems,Macro,low,,27.4575666675989,-24.5222449981083
+MA_S02_P05,MA_S02,Marakele,Indigofera zeyheri,1,Forb,species_level,Messy forb,14,Leaves and Stems,Macro,low,,27.4577083342655,-24.5217999981082
+MA_S02_P01,MA_S02,Marakele,Kyphocarpa angustifolia,1,Forb,species_level,Straight forb,42,Absent,Thin linear,low,44,27.4571483342657,-24.523546664775
+MA_S02_P05,MA_S02,Marakele,Kyphocarpa angustifolia,1,Forb,species_level,Straight forb,42,Absent,Thin linear,low,50,27.4577083342655,-24.5217999981082
+MA_S01_P04,MA_S01,Marakele,Kyphocarpa angustifolia,1,Forb,species_level,Straight forb,19,Absent,Thin linear,low,39,27.4706583342639,-24.5188616647753
+MA_S05_P03,MA_S05,Marakele,Kyphocarpa angustifolia,1,Forb,species_level,Straight forb,13,Absent,Thin linear,low,,27.4692650009287,-24.491059998107
+MA_S01_P03,MA_S01,Marakele,Ledebouria papillata,1,Forb,species_level,Straight forb,9.5,Absent,Thick linear,low,,27.470208334264,-24.518993331442
+MA_S01_P05,MA_S01,Marakele,Lepidagathis scabra,1,Forb,species_level,Straight forb,11,Leaves and Stems,Thin linear,low,9,27.4711083342638,-24.5187299981087
+MA_S01_P01,MA_S01,Marakele,Lippia javanica,2,Forb,species_level,Round forb,19,Absent,Macro,low,,27.4693016675974,-24.519273331442
+MA_S03_P04,MA_S03,Marakele,Lippia javanica,2,Forb,species_level,Round forb,40,Absent,Macro,low,15,27.4498150009318,-24.5045266647735
+MA_S04_P03,MA_S04,Marakele,Lippia javanica,1,Forb,species_level,Round forb,11,Stems,Macro,medium,,27.4506700009314,-24.4996399981066
+MA_S04_P05,MA_S04,Marakele,Lippia javanica,1,Forb,species_level,Round forb,30,Leaves and Stems,Macro,low,,27.451611667598,-24.4998916647733
+MA_S01_P05,MA_S01,Marakele,Maerua junica,1,Shrub,species_level,Shrub multi-stemmed,42,Absent,Macro,low,,27.4711083342638,-24.5187299981087
+MA_S02_P01,MA_S02,Marakele,Melhania prostrata,2,Forb,species_level,Straight forb,42,Absent,Thick linear,low,38,27.4571483342657,-24.523546664775
+MA_S02_P02,MA_S02,Marakele,Melhania prostrata,2,Forb,species_level,Straight forb,21,Absent,Macro,low,20,27.4572833342657,-24.5230999981083
+MA_S01_P01,MA_S01,Marakele,Melhania prostrata,1,Forb,species_level,Straight forb,22,Absent,Macro,low,,27.4693016675974,-24.519273331442
+MA_S02_P04,MA_S02,Marakele,Melhania prostrata,2,Forb,species_level,Straight forb,30,Absent,Macro,low,22,27.4575666675989,-24.5222449981083
+MA_S01_P03,MA_S01,Marakele,Melhania prostrata,1,Forb,species_level,Straight forb,8.5,Absent,Thick linear,low,,27.470208334264,-24.518993331442
+MA_S01_P05,MA_S01,Marakele,Melhania prostrata,1,Forb,species_level,Straight forb,22,Absent,Thin linear,low,,27.4711083342638,-24.5187299981087
+MA_S03_P03,MA_S03,Marakele,Melhania prostrata,2,Forb,species_level,Straight forb,45,Absent,Macro,low,41,27.4497666675985,-24.5049649981068
+MA_S04_P04,MA_S04,Marakele,Melhania prostrata,2,Forb,species_level,Straight forb,25,Absent,Macro,low,,27.4511183342647,-24.4997516647732
+MA_S02_P01,MA_S02,Marakele,Melinis repens,2,Graminoid,species_level,Sparse upward graminoid,19,Leaves,Thin linear,low,98,27.4571483342657,-24.523546664775
+MA_S01_P05,MA_S01,Marakele,Melinis repens,1,Graminoid,species_level,Sparse upward graminoid,8,Leaves,Thin linear,low,81,27.4711083342638,-24.5187299981087
+MA_S01_P01,MA_S01,Marakele,Milky green-blue leaves,1,Forb,no,Straight forb,16,Absent,Macro,low,,27.4693016675974,-24.519273331442
+MA_S01_P02,MA_S01,Marakele,Panicum maximum,2,Graminoid,species_level,Relaxed tussock graminoid,29,Leaves,Thick linear,high,,27.4697566675973,-24.5191349981086
+MA_S01_P03,MA_S01,Marakele,Panicum maximum,5,Graminoid,species_level,Relaxed tussock graminoid,30,Leaves,Thick linear,low,,27.470208334264,-24.518993331442
+MA_S01_P05,MA_S01,Marakele,Panicum maximum,5,Graminoid,species_level,Relaxed tussock graminoid,38,Leaves and Stems,Thick linear,high,87,27.4711083342638,-24.5187299981087
+MA_S03_P03,MA_S03,Marakele,Panicum maximum,2,Graminoid,species_level,Large graminoid,50,Leaves,Thick linear,low,120,27.4497666675985,-24.5049649981068
+MA_S03_P04,MA_S03,Marakele,Panicum maximum,1,Graminoid,species_level,Relaxed tussock graminoid,31,Leaves,Thick linear,low,,27.4498150009318,-24.5045266647735
+MA_S05_P01,MA_S05,Marakele,Panicum maximum,2,Graminoid,species_level,Sparse upward graminoid,20,Leaves,Thick linear,low,60,27.4701850009286,-24.4907416647737
+MA_S05_P02,MA_S05,Marakele,Panicum maximum,5,Graminoid,species_level,Sparse upward graminoid,34,Leaves,Thick linear,low,63,27.469753334262,-24.490889998107
+MA_S05_P04,MA_S05,Marakele,Panicum maximum,5,Graminoid,species_level,Large graminoid,59,Leaves,Thick linear,low,,27.4687850009288,-24.4912299981069
+MA_S05_P05,MA_S05,Marakele,Panicum maximum,30,Graminoid,species_level,Large graminoid,60,Absent,Thick linear,medium,95,27.4683783841468,-24.4913918604045
+MA_S05_P02,MA_S05,Marakele,Peltophorum africanum,1,Shrub,species_level,Shrub single-stemmed,21,Leaves,Macro,low,,27.469753334262,-24.490889998107
+MA_S02_P01,MA_S02,Marakele,Phyllanthus incurvus,1,Forb,species_level,Straight forb,27,Absent,Micro,low,26,27.4571483342657,-24.523546664775
+MA_S02_P04,MA_S02,Marakele,Phyllanthus incurvus,1,Forb,species_level,Straight forb,21,Absent,Micro,low,,27.4575666675989,-24.5222449981083
+MA_S04_P05,MA_S04,Marakele,Phyllanthus incurvus,1,Forb,species_level,Straight forb,4,Absent,Micro,medium,,27.451611667598,-24.4998916647733
+MA_S04_P01,MA_S04,Marakele,Phyllanthus maderaspatensis,1,Forb,species_level,Round forb,21,Absent,Micro,low,19,27.4496533342648,-24.4993816647732
+MA_S04_P04,MA_S04,Marakele,Phyllanthus maderaspatensis,1,Forb,species_level,Round forb,15,Absent,Micro,low,11,27.4511183342647,-24.4997516647732
+MA_S01_P03,MA_S01,Marakele,Phyllanthus parvulus,1,Forb,species_level,Round forb,6,Absent,Micro,low,,27.470208334264,-24.518993331442
+MA_S05_P02,MA_S05,Marakele,Phyllanthus parvulus,1,Forb,species_level,Round forb,16,Absent,Micro,low,,27.469753334262,-24.490889998107
+MA_S05_P05,MA_S05,Marakele,Phyllanthus parvulus,1,Forb,species_level,Round forb,10,Absent,Micro,low,,27.4683783841468,-24.4913918604045
+MA_S02_P01,MA_S02,Marakele,Pogonarthria squarrosa,1,Graminoid,species_level,Sparse upward graminoid,11,Leaves,Thin linear,low,35,27.4571483342657,-24.523546664775
+MA_S02_P02,MA_S02,Marakele,Pogonarthria squarrosa,1,Graminoid,species_level,Sparse upward graminoid,41,Absent,Thick linear,low,66,27.4572833342657,-24.5230999981083
+MA_S02_P03,MA_S02,Marakele,Pogonarthria squarrosa,15,Graminoid,species_level,Sparse upward graminoid,32,Absent,Thin linear,low,90,27.457441667599,-24.5226349981083
+MA_S01_P03,MA_S01,Marakele,Pogonarthria squarrosa,1,Graminoid,species_level,Sparse upward graminoid,20,Absent,Thin linear,low,40,27.470208334264,-24.518993331442
+MA_S02_P01,MA_S02,Marakele,Rhynchosia caribaea,1,Forb,species_level,Creeping forb,11,Absent,Macro,low,,27.4571483342657,-24.523546664775
+MA_S02_P02,MA_S02,Marakele,Rhynchosia caribaea,1,Forb,species_level,Creeping forb,11,Absent,Macro,low,,27.4572833342657,-24.5230999981083
+MA_S01_P01,MA_S01,Marakele,Rhynchosia caribaea,1,Forb,species_level,Creeping forb,24,Absent,Macro,low,24,27.4693016675974,-24.519273331442
+MA_S02_P04,MA_S02,Marakele,Rhynchosia caribaea,2,Forb,species_level,Creeping forb,9,Absent,Macro,low,,27.4575666675989,-24.5222449981083
+MA_S02_P05,MA_S02,Marakele,Rhynchosia caribaea,1,Forb,species_level,Creeping forb,50,Absent,Macro,low,,27.4577083342655,-24.5217999981082
+MA_S01_P03,MA_S01,Marakele,Rhynchosia caribaea,1,Forb,species_level,Straight forb,17,Absent,Macro,medium,,27.470208334264,-24.518993331442
+MA_S01_P04,MA_S01,Marakele,Rhynchosia caribaea,1,Forb,species_level,Creeping forb,23,Absent,Macro,low,,27.4706583342639,-24.5188616647753
+MA_S03_P02,MA_S03,Marakele,Rhynchosia caribaea,1,Forb,species_level,Creeping forb,20,Absent,Macro,low,,27.4496983342652,-24.5054516647735
+MA_S03_P04,MA_S03,Marakele,Rhynchosia caribaea,1,Forb,species_level,Creeping forb,14,Absent,Macro,low,,27.4498150009318,-24.5045266647735
+MA_S04_P05,MA_S04,Marakele,Rhynchosia caribaea,1,Forb,species_level,Creeping forb,23,Absent,Macro,low,,27.451611667598,-24.4998916647733
+MA_S01_P03,MA_S01,Marakele,Rhynchosia totta,2,Forb,species_level,Creeping forb,32.5,Absent,Macro,low,,27.470208334264,-24.518993331442
+MA_S03_P01,MA_S03,Marakele,Rhynchosia totta,1,Forb,species_level,Creeping forb,24,Stems,Macro,low,,27.4496583342653,-24.5058783314402
+MA_S03_P03,MA_S03,Marakele,Rhynchosia totta,2,Forb,species_level,Creeping forb,22,Absent,Macro,low,,27.4497666675985,-24.5049649981068
+MA_S03_P03,MA_S03,Marakele,Rhynchosia totta,1,Forb,species_level,Creeping forb,46,Leaves and Stems,Macro,low,,27.4497666675985,-24.5049649981068
+MA_S04_P02,MA_S04,Marakele,Rhynchosia totta,5,Forb,species_level,Messy forb,32,Absent,Macro,low,,27.4501783342648,-24.4995116647732
+MA_S03_P05,MA_S03,Marakele,Rhynchosia totta,1,Forb,species_level,Round forb,6,Absent,Macro,low,,27.4498716675984,-24.5040683314401
+MA_S04_P04,MA_S04,Marakele,Rhynchosia totta,2,Forb,species_level,Creeping forb,42,Leaves and Stems,Macro,low,,27.4511183342647,-24.4997516647732
+MA_S05_P02,MA_S05,Marakele,Rhynchosia totta,1,Forb,species_level,Creeping forb,16,Leaves and Stems,Macro,low,13,27.469753334262,-24.490889998107
+MA_S05_P03,MA_S05,Marakele,Rhynchosia totta,1,Forb,species_level,Creeping forb,80,Leaves,Macro,low,,27.4692650009287,-24.491059998107
+MA_S02_P02,MA_S02,Marakele,Rhynchosia waterbergensis,1,Forb,species_level,Round forb,32,Absent,Macro,medium,,27.4572833342657,-24.5230999981083
+MA_S05_P04,MA_S05,Marakele,Ruella patula,1,Forb,species_level,Straight forb,25,Leaves,Macro,low,,27.4687850009288,-24.4912299981069
+MA_S05_P05,MA_S05,Marakele,Ruella patula,5,Forb,species_level,Messy forb,30,Leaves,Macro,low,19,27.4683783841468,-24.4913918604045
+MA_S05_P03,MA_S05,Marakele,Ruella patula,5,Forb,species_level,Round forb,60,Leaves,Macro,low,20,27.4692650009287,-24.491059998107
+MA_S05_P03,MA_S05,Marakele,Sansevieria pearsonii,1,Forb,species_level,Messy forb,10,Absent,Absent,low,,27.4692650009287,-24.491059998107
+MA_S02_P01,MA_S02,Marakele,Schmidtia pappophoroides,2,Graminoid,species_level,Sparse upward graminoid,27,Leaves,Thick linear,low,72,27.4571483342657,-24.523546664775
+MA_S02_P03,MA_S02,Marakele,Schmidtia pappophoroides,2,Graminoid,species_level,Sparse upward graminoid,22,Leaves,Thin linear,low,65,27.457441667599,-24.5226349981083
+MA_S02_P04,MA_S02,Marakele,Schmidtia pappophoroides,2,Graminoid,species_level,Sparse upward graminoid,32,Leaves,Thick linear,low,51,27.4575666675989,-24.5222449981083
+MA_S02_P05,MA_S02,Marakele,Schmidtia pappophoroides,1,Graminoid,species_level,Sparse upward graminoid,31,Leaves,Thin linear,low,64,27.4577083342655,-24.5217999981082
+MA_S01_P04,MA_S01,Marakele,Schmidtia pappophoroides,5,Graminoid,species_level,Sparse upward graminoid,25,Leaves,Thick linear,low,62,27.4706583342639,-24.5188616647753
+MA_S03_P02,MA_S03,Marakele,Schmidtia pappophoroides,2,Graminoid,species_level,Sparse upward graminoid,31,Absent,Thick linear,low,94,27.4496983342652,-24.5054516647735
+MA_S04_P01,MA_S04,Marakele,Schmidtia pappophoroides,40,Graminoid,species_level,Sparse upward graminoid,32,Leaves,Thin linear,low,95,27.4496533342648,-24.4993816647732
+MA_S03_P03,MA_S03,Marakele,Schmidtia pappophoroides,1,Graminoid,species_level,Sparse upward graminoid,12,Absent,Thick linear,low,73,27.4497666675985,-24.5049649981068
+MA_S04_P02,MA_S04,Marakele,Schmidtia pappophoroides,15,Graminoid,species_level,Sparse upward graminoid,25,Leaves,Thick linear,low,98,27.4501783342648,-24.4995116647732
+MA_S03_P05,MA_S03,Marakele,Schmidtia pappophoroides,10,Graminoid,species_level,Sparse upward graminoid,35,Leaves,Thin linear,low,93,27.4498716675984,-24.5040683314401
+MA_S04_P03,MA_S04,Marakele,Schmidtia pappophoroides,2,Graminoid,species_level,Sparse upward graminoid,30,Leaves,Thick linear,low,68,27.4506700009314,-24.4996399981066
+MA_S04_P04,MA_S04,Marakele,Schmidtia pappophoroides,20,Graminoid,species_level,Sparse upward graminoid,34.5,Leaves,Thin linear,low,70,27.4511183342647,-24.4997516647732
+MA_S04_P05,MA_S04,Marakele,Schmidtia pappophoroides,15,Graminoid,species_level,Large graminoid,45,Absent,Thin linear,low,110,27.451611667598,-24.4998916647733
+MA_S05_P01,MA_S05,Marakele,Schmidtia pappophoroides,1,Graminoid,species_level,Sparse upward graminoid,32,Leaves,Thin linear,low,42,27.4701850009286,-24.4907416647737
+MA_S01_P01,MA_S01,Marakele,Senegalia erubescens,5,Shrub,species_level,Shrub single-stemmed,120,Absent,Macro,high,,27.4693016675974,-24.519273331442
+MA_S01_P03,MA_S01,Marakele,Senegalia erubescens,1,Shrub,species_level,Shrub single-stemmed,16,Absent,Macro,high,,27.470208334264,-24.518993331442
+MA_S04_P01,MA_S04,Marakele,Senegalia erubescens,1,Forb,species_level,Straight forb,10,Absent,Macro,low,,27.4496533342648,-24.4993816647732
+MA_S05_P02,MA_S05,Marakele,Senegalia erubescens,1,Shrub,species_level,Shrub single-stemmed,25,Leaves,Macro,low,,27.469753334262,-24.490889998107
+MA_S05_P04,MA_S05,Marakele,Senegalia erubescens,1,Shrub,species_level,Shrub single-stemmed,11,Absent,Macro,low,,27.4687850009288,-24.4912299981069
+MA_S05_P05,MA_S05,Marakele,Senegalia erubescens,2,Tree,species_level,Tree single-stemmed,500,Absent,Macro,low,,27.4683783841468,-24.4913918604045
+MA_S01_P05,MA_S01,Marakele,Sida cordifolia,1,Forb,species_level,Straight forb,26,Leaves and Stems,Macro,low,,27.4711083342638,-24.5187299981087
+MA_S03_P01,MA_S03,Marakele,Sida cordifolia,2,Forb,species_level,Round forb,78,Leaves and Stems,Macro,low,78,27.4496583342653,-24.5058783314402
+MA_S02_P02,MA_S02,Marakele,Solanum campylacanthum,2,Forb,species_level,Straight forb,70,Leaves,Macro,low,,27.4572833342657,-24.5230999981083
+MA_S02_P05,MA_S02,Marakele,Solanum campylacanthum,5,Forb,species_level,Straight forb,44,Leaves,Macro,low,,27.4577083342655,-24.5217999981082
+MA_S03_P01,MA_S03,Marakele,Solanum campylacanthum,2,Forb,species_level,Straight forb,55,Absent,Macro,low,,27.4496583342653,-24.5058783314402
+MA_S03_P02,MA_S03,Marakele,Solanum campylacanthum,1,Forb,species_level,Straight forb,19,Leaves,Macro,low,,27.4496983342652,-24.5054516647735
+MA_S03_P03,MA_S03,Marakele,Solanum campylacanthum,2,Forb,species_level,Straight forb,42,Absent,Macro,low,,27.4497666675985,-24.5049649981068
+MA_S03_P05,MA_S03,Marakele,Solanum campylacanthum,5,Forb,species_level,Straight forb,65,Absent,Macro,low,,27.4498716675984,-24.5040683314401
+MA_S04_P05,MA_S04,Marakele,Solanum campylacanthum,1,Forb,species_level,Straight forb,21,Absent,Macro,low,,27.451611667598,-24.4998916647733
+MA_S01_P05,MA_S01,Marakele,Sopubia cana,1,Forb,species_level,Round forb,8,Absent,Macro,high,,27.4711083342638,-24.5187299981087
+MA_S02_P01,MA_S02,Marakele,Spermacoce senensis,1,Forb,species_level,Straight forb,10,Leaves and Stems,Macro,low,10,27.4571483342657,-24.523546664775
+MA_S04_P02,MA_S04,Marakele,Spermacoce senensis,1,Forb,species_level,Straight forb,6,Leaves and Stems,Macro,medium,5.5,27.4501783342648,-24.4995116647732
+MA_S01_P01,MA_S01,Marakele,Spirostachys africana,5,Shrub,species_level,Shrub single-stemmed,54,Absent,Macro,medium,,27.4693016675974,-24.519273331442
+MA_S01_P03,MA_S01,Marakele,Spirostachys africana,1,Shrub,species_level,Shrub single-stemmed,145,Absent,Macro,low,,27.470208334264,-24.518993331442
+MA_S02_P05,MA_S02,Marakele,Stipagrostis unipumis,1,Graminoid,species_level,Sparse upward graminoid,30,Absent,Thin linear,low,66,27.4577083342655,-24.5217999981082
+MA_S01_P02,MA_S01,Marakele,Stylosanthes fruticosa,2,Forb,species_level,Round forb,13,Leaves and Stems,Micro,medium,,27.4697566675973,-24.5191349981086
+MA_S03_P05,MA_S03,Marakele,Stylosanthes fruticosa,1,Forb,species_level,Round forb,16,Leaves and Stems,Macro,medium,,27.4498716675984,-24.5040683314401
+MA_S05_P05,MA_S05,Marakele,Stylosanthes fruticosa,1,Forb,species_level,Round forb,20,Leaves and Stems,Micro,extremely thick,,27.4683783841468,-24.4913918604045
+MA_S01_P01,MA_S01,Marakele,Talinum caffrum,1,Forb,species_level,Straight forb,34,Absent,Thick linear,low,,27.4693016675974,-24.519273331442
+MA_S05_P01,MA_S05,Marakele,Talinum caffrum,1,Forb,species_level,Straight forb,4,Absent,Micro,low,,27.4701850009286,-24.4907416647737
+MA_S02_P01,MA_S02,Marakele,Tephrosia polystachya,1,Forb,species_level,Creeping forb,12,Leaves and Stems,Macro,low,8,27.4571483342657,-24.523546664775
+MA_S02_P03,MA_S02,Marakele,Tephrosia polystachya,1,Forb,species_level,Round forb,11,Leaves and Stems,Macro,low,16,27.457441667599,-24.5226349981083
+MA_S02_P04,MA_S02,Marakele,Tephrosia polystachya,1,Forb,species_level,Straight forb,6,Leaves and Stems,Macro,medium,,27.4575666675989,-24.5222449981083
+MA_S02_P05,MA_S02,Marakele,Tephrosia polystachya,1,Forb,species_level,Messy forb,12,Leaves and Stems,Macro,low,,27.4577083342655,-24.5217999981082
+MA_S03_P04,MA_S03,Marakele,Tephrosia polystachya,1,Forb,species_level,Straight forb,4,Leaves and Stems,Macro,low,,27.4498150009318,-24.5045266647735
+MA_S03_P05,MA_S03,Marakele,Tephrosia polystachya,1,Forb,species_level,Straight forb,4,Leaves and Stems,Macro,low,,27.4498716675984,-24.5040683314401
+MA_S04_P03,MA_S04,Marakele,Tephrosia polystachya,1,Forb,species_level,Straight forb,18,Leaves and Stems,Macro,low,,27.4506700009314,-24.4996399981066
+MA_S05_P01,MA_S05,Marakele,Tephrosia polystachya,1,Forb,species_level,Round forb,3,Leaves and Stems,Macro,low,,27.4701850009286,-24.4907416647737
+MA_S03_P03,MA_S03,Marakele,Terminalia brachystemma,1,Shrub,species_level,Shrub single-stemmed,52,Absent,Macro,low,,27.4497666675985,-24.5049649981068
+MA_S05_P01,MA_S05,Marakele,Terminalia brachystemma,1,Shrub,species_level,Shrub single-stemmed,162,Absent,Macro,low,,27.4701850009286,-24.4907416647737
+MA_S05_P04,MA_S05,Marakele,Terminalia sericea,1,Shrub,species_level,Shrub single-stemmed,300,Absent,Macro,low,,27.4687850009288,-24.4912299981069
+MA_S05_P05,MA_S05,Marakele,Terminalia sericea,10,Tree,species_level,Tree single-stemmed,550,Absent,Macro,low,,27.4683783841468,-24.4913918604045
+MA_S04_P03,MA_S04,Marakele,Trachypogon spicatus,1,Graminoid,species_level,Relaxed tussock graminoid,27,Leaves,Thick linear,low,62,27.4506700009314,-24.4996399981066
+MA_S01_P02,MA_S01,Marakele,Tragia dioica,1,Forb,species_level,Round forb,31,Stems,Macro,medium,23,27.4697566675973,-24.5191349981086
+MA_S03_P04,MA_S03,Marakele,Tragia dioica,2,Forb,species_level,Straight forb,31,Leaves and Stems,Macro,low,27,27.4498150009318,-24.5045266647735
+MA_S05_P01,MA_S05,Marakele,Triraphis schinzii,10,Graminoid,species_level,Large graminoid,70,Leaves,Thick linear,low,145,27.4701850009286,-24.4907416647737
+MA_S05_P04,MA_S05,Marakele,Triraphis schinzii,10,Graminoid,species_level,Large graminoid,50,Leaves,Thick linear,low,170,27.4687850009288,-24.4912299981069
+MA_S05_P05,MA_S05,Marakele,Triraphis schinzii,15,Graminoid,species_level,Large graminoid,44,Absent,Thick linear,low,115,27.4683783841468,-24.4913918604045
+MA_S02_P01,MA_S02,Marakele,Vachellia gerrardii,1,Shrub,species_level,Shrub single-stemmed,185,Absent,Macro,low,,27.4571483342657,-24.523546664775
+MA_S04_P04,MA_S04,Marakele,Vachellia gerrardii,2,Shrub,species_level,Shrub single-stemmed,54,Absent,Macro,high,,27.4511183342647,-24.4997516647732
+MA_S04_P05,MA_S04,Marakele,Vachellia gerrardii,2,Shrub,species_level,Shrub single-stemmed,16,Absent,Macro,high,,27.451611667598,-24.4998916647733
+MA_S02_P01,MA_S02,Marakele,Very hairy everything,1,Forb,no,Round forb,47,Leaves and Stems,Micro,low,46,27.4571483342657,-24.523546664775
+MA_S01_P04,MA_S01,Marakele,Waltheria indica,1,Forb,species_level,Round forb,22,Leaves and Stems,Macro,low,22,27.4706583342639,-24.5188616647753
+MA_S01_P05,MA_S01,Marakele,Waltheria indica,1,Forb,species_level,Straight forb,9,Leaves and Stems,Macro,low,,27.4711083342638,-24.5187299981087
+MA_S05_P01,MA_S05,Marakele,Waltheria indica,1,Forb,species_level,Straight forb,45,Leaves and Stems,Macro,low,49,27.4701850009286,-24.4907416647737
+MA_S05_P04,MA_S05,Marakele,Waltheria indica,1,Forb,species_level,Round forb,32,Leaves and Stems,Macro,low,32,27.4687850009288,-24.4912299981069
+MA_S05_P03,MA_S05,Marakele,Ximenia americana,5,Shrub,species_level,Shrub multi-stemmed,130,Absent,Macro,medium,15,27.4692650009287,-24.491059998107
+MA_S01_P03,MA_S01,Marakele,Zehneria scabra,1,Forb,species_level,Creeping forb,13,Leaves and Stems,Macro,medium,,27.470208334264,-24.518993331442
+MA_S03_P03,MA_S03,Marakele,Ziziphus mucronata,1,Shrub,species_level,Shrub multi-stemmed,50,Absent,Macro,medium,,27.4497666675985,-24.5049649981068

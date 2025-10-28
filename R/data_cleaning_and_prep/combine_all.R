@@ -30,7 +30,8 @@ names(dt_ct)
 
 # load plant functional diversity 
 
-dt_fd <- fread("data/processed_data/data_fragments/plant_functional_diversity.csv")
+dt_fd <- fread("data/processed_data/data_fragments/plant_functional_diversity.csv") %>% 
+  dplyr::select(-contains("dominance"))
 names(dt_fd)
 
 
@@ -41,7 +42,10 @@ dt_comb <- dt_div %>%
   left_join(dt_div) %>% 
   left_join(dt_ct) %>% 
   left_join(plot_level) %>% 
-  unique() %>% mutate(across(where(is.numeric), ~ ifelse(is.infinite(.), NA, .)))
+  unique() %>% mutate(across(where(is.numeric), ~ ifelse(is.infinite(.), NA, .))) %>% 
+  dplyr::select(-contains("beta"), -contains("cover"),
+                -contains("ratio"), -contains("predator"), 
+                -contains("canopy_height"), -contains("tsq")) #clean final dataset 
 summary(dt_comb)
 
 
