@@ -215,7 +215,7 @@ p_div4
 
 p_div_raw <- gridExtra::grid.arrange(p_div1, p_div2, p_div3, p_div4, heights = c(1.3, 1, 1, 1))
 
-ggsave(plot = p_div_raw, "builds/plots/taxonomic_diversity_grid_univariate.png", dpi = 600, height = 9, width = 7)
+ggsave(plot = p_div_raw, "builds/plots/taxonomic_diversity_grid_univariate.png", dpi = 1500, height = 9, width = 7)
 
 
 #### Functional Diversity -------------------------------------------------- 
@@ -279,7 +279,7 @@ p_fd_raw <- gridExtra::grid.arrange(p_fd1, p_fd2, heights = c(1.3, 1))
 #p_fd <- gridExtra::grid.arrange(p_fd_raw, lfd_leg, heights = c(5, 1))
 
 
-ggsave(plot = p_fd_raw, "builds/plots/functional_diversity_grid_univariate.png", dpi = 600, height = 6, width = 6)
+ggsave(plot = p_fd_raw, "builds/plots/functional_diversity_grid_univariate.png", dpi = 1500, height = 6, width = 6)
 
 
 # #### Structure ---------------------
@@ -369,7 +369,7 @@ ggsave(plot = p_fd_raw, "builds/plots/functional_diversity_grid_univariate.png",
 # 
 # p_str_raw <- gridExtra::grid.arrange(p_str1, p_str2, p_str3, heights = c(1.3, 1, 1))
 # 
-# ggsave(plot = p_str_raw, "builds/plots/vegetation_structure_grid_univariate.png", dpi = 600, height = 10, width = 7)
+# ggsave(plot = p_str_raw, "builds/plots/vegetation_structure_grid_univariate.png", dpi = 1500, height = 10, width = 7)
 
 
 #### Trends ---------------------------
@@ -473,9 +473,9 @@ p
 
 reserve_leg <- ggpubr::get_legend(p, position = "bottom")
 as_ggplot(reserve_leg)
-ggsave(plot = reserve_leg, "builds/plots/reserve_leg.png", dpi = 600, height =2, width = 10)
+ggsave(plot = reserve_leg, "builds/plots/reserve_leg.png", dpi = 1500, height =2, width = 10)
 
-ggsave(plot = p_div_t, "builds/plots/taxonomic_diversity_sig_pred.png", dpi = 600, height = 10, width = 5.5)
+ggsave(plot = p_div_t, "builds/plots/taxonomic_diversity_sig_pred.png", dpi = 1500, height = 10, width = 5.5)
 
 
 ##### Functional Diversity -----------
@@ -540,7 +540,7 @@ p_fd_t <- wrap_plots(p_fd_trends, ncol = 2, nrow = 2)  # Adjust ncol as needed
 print(p_fd_t)
 
 
-ggsave(plot = p_fd_t, "builds/plots/functional_diversity_sig_pred.png", dpi = 600, height = 5, width = 5)
+ggsave(plot = p_fd_t, "builds/plots/functional_diversity_sig_pred.png", dpi = 1500, height = 5, width = 5)
 
 
 ### combine -------------
@@ -558,7 +558,7 @@ print(p_div_trend_fig)
 
 
 fig2 <- gridExtra::grid.arrange(p_div_raw, empty_plot,  p_div_trend_fig, widths = c(1.2, 0.1, 1))
-ggsave(plot = fig2, "builds/plots/fig2_new.png", height = 10, width = 12)
+ggsave(plot = fig2, "builds/plots/fig2_new.png", dpi = 1500, height = 10, width = 12)
 
 ## Figure 3: 
 p_fd_raw <- gridExtra::grid.arrange(p_fd1, p_fd2, heights = c(1.3, 1))
@@ -569,12 +569,12 @@ print(p_fd_trend_fig)
 
 
 fig3 <- gridExtra::grid.arrange(p_fd_raw, empty_plot, p_fd_trend_fig, widths = c(1.2, 0.15, 1))
-ggsave(plot = fig3, "builds/plots/fig3_new.png", height = 5, width = 12)
+ggsave(plot = fig3, "builds/plots/fig3_new.png", dpi = 1500, height = 5, width = 12)
 
 ### Export Model Stats ---------------------
 dt_exp <- dt_est %>% 
   filter(response_tier %in% c("taxonomic_diversity", "functional_diversity", "vegetation_structure")) %>% 
-  filter(!(response_tier == "vegetation_structure" & clean_var == "Herbivore Visitation")) %>%
+  filter(!(response_tier == "vegetation_structure" & clean_term == "Herbivore Visitation")) %>%
   mutate(estimate_and_ci = paste0(round(estimate,2),
                                   " (", round(ci_lb, 2), "-",
                                   round(ci_ub,2), ")"), 
